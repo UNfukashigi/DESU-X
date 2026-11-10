@@ -369,6 +369,36 @@ changeDoSaveHistory();
 }
 }
 
+// ファイルメニューの「DESU-X JSON を読み込み（JSON・ZIP）」。ファイルを選ぶと、キャンバスへドロップしたときと同じ処理で読み込む
+document.addEventListener('DOMContentLoaded',function(){
+const button=$("qanimaFileLoad");
+const input=$("qanimaFileInput");
+if(!button||!input){
+return;
+}
+button.addEventListener("click",function(e){
+e.preventDefault();
+input.value="";
+input.click();
+});
+input.addEventListener("change",async function(){
+const file=input.files&&input.files[0];
+if(!file){
+return;
+}
+try{
+if(qaIsQanimaZipFile(file)){
+await qaImportDroppedZip(file);
+}else{
+await qaImportDroppedJson(file);
+}
+}catch(error){
+console.error(error);
+createToastError("DESU-X JSON 読み込み",String(error));
+}
+});
+});
+
 document.addEventListener('DOMContentLoaded',function(){
 const button=$("qanimaFolderLoad");
 const input=$("qanimaFolderInput");

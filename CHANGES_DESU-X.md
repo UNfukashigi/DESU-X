@@ -18,7 +18,7 @@ DESU-X は [Manga Editor Desu! Pro Edition](https://github.com/new-sankaku/manga
 ## 変更したファイル
 | ファイル | 変更 |
 |---|---|
-| `index.html` | ツール名を DESU-X に（元のツールへのリンクは残す）。ファイルメニューに読み込み・書き出しを追加。スクリプト・CSS の読み込みを追加。吹き出しの文字の向きの既定を縦書きに |
+| `index.html` | ツール名を DESU-X に（元のツールへのリンクは残す）。ファイルメニューに DESU-X JSON の読み込み（JSON・ZIP、フォルダ）・書き出しを追加。スクリプト・CSS の読み込みを追加。吹き出しの文字の向きの既定を縦書きに |
 | `manifest.json`、`404.html`、`js/core/util/share-util.js` | 表示名を DESU-X に（元のツールの名前・リンクは出典として残す） |
 | `js/core/settings.js` | `AI_FEATURES_ENABLED`、保存する項目（フォルダ・取り込み元の情報）を追加 |
 | `js/layer/layer-management.js` | 選んでいる行の色付け、種類ごとの色とアイコン、フォルダ表示、AI のボタン列を削除、文字編集ボタン、行のレイアウト |

@@ -16,7 +16,7 @@ AI に作らせた漫画の JSON を読み込んで、コマ割り・フキダ�
 
 1. GitHub の「Code → Download ZIP」でダウンロードして、展開する。
 2. 展開したフォルダの **`index.html` をブラウザ（Chrome 推奨）で開く**。これだけで使えます（インストール不要、Python なども不要）。
-3. 漫画の JSON（または ZIP）を、真ん中のキャンバスにドロップする。新しいページとして入ります。
+3. 漫画の JSON（または ZIP）を、真ん中のキャンバスにドロップする（または「ファイル → DESU-X JSON を読み込み」で選ぶ）。新しいページとして入ります。
    - 試しに `examples/sample-text-only.json` をドロップすると、どう入るかが分かります。
 4. コマ・フキダシ・セリフを手で直す。
 5. 「ファイル → 画像ダウンロード」（Ctrl+D）で画像として保存する。
@@ -81,7 +81,7 @@ AI エージェント（Claude Code、Codex など、フォルダを読めるも
 It is a personal tool shared as-is, with no support. Please solve problems on your own (for example, by asking an AI).
 
 - Download the ZIP, extract it, and open `index.html` in a browser (Chrome recommended). No install, no Python needed.
-- Drop a DESU-X JSON (or ZIP) onto the canvas to load manga pages. Try `examples/sample-text-only.json`.
+- Drop a DESU-X JSON (or ZIP) onto the canvas, or use File → "DESU-X JSON を読み込み", to load manga pages. Try `examples/sample-text-only.json`.
 - Ask an AI agent with this folder: "Make a JSON for this tool". It reads `DESU-X_JSON仕様.md` (spec, Japanese).
 - Export your edits with File → "DESU-X JSON で書き出し" (JSON only / ZIP with images).
 - Hosting on a server or modifying the code is at your own risk. Changes from the original: `CHANGES_DESU-X.md`.
