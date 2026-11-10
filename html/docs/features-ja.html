@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manga Editor Desu 機能一覧 — コマ割り・フキダシ・テキスト・トーン・AI生成</title>
+<meta name="description" content="Manga Editor Desu の全機能リファレンス。コマ割りテンプレート69種、フキダシ48種、同梱フォント156種、画像テキスト31種、スクリーントーン5種、ブレンドモード25種、および6種のAIバックエンドに対応した画像生成。">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html">
+<link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html">
+<link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html">
+<link rel="stylesheet" href="../common.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Manga Editor Desu 機能一覧",
+  "description": "ブラウザで動作する漫画編集ツール Manga Editor Desu の全機能リファレンス。",
+  "inLanguage": "ja",
+  "url": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Manga Editor Desu",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "モダンなWebブラウザ",
+    "url": "https://new-sankaku.github.io/manga-editor-desu/",
+    "license": "https://www.gnu.org/licenses/gpl-3.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Manga Editor Desu",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "機能リファレンス",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-buttons">
+<a class="lang-btn" href="features.html">English</a>
+<a class="lang-btn active" href="features-ja.html">日本語</a>
+</div>
+
+<h1>Manga Editor Desu — 機能リファレンス</h1>
+
+<p>Manga Editor Desu は、ブラウザだけで動作する無料の漫画・コミック編集ツールです。インストールもアカウント登録も不要で、サーバー側の処理もありません。アプリケーションは静的ファイルの集合であり、作成したページは書き出すまでお使いのマシンの中にとどまります。</p>
+
+<p>このページには、ソースコードと照合して確認した実際の機能を記載しています。アプリ本体は <a href="../../index.html">Manga Editor Desu</a> から開けます。あわせて <a href="faq-ja.html">よくある質問</a> と <a href="ai-setup-ja.html">AIバックエンド設定ガイド</a> もご覧ください。</p>
+
+<div class="notice">
+<strong>概要:</strong> コマ割りテンプレート69種 ・ フキダシ48種 ・ 同梱フォント156種 ・ 装飾画像テキスト31種 ・ ペン8種 ・ スクリーントーン5種 ・ 画像フィルタ15種 ・ ブレンドモード25種 ・ 対応言語8種 ・ AIバックエンド6種（任意）
+</div>
+
+<h2>コマ割り</h2>
+
+<div class="card">
+<p>ページはコマから構成されます。テンプレートから始める、手で切り分ける、ランダムに生成する、のいずれの方法でも作成できます。</p>
+
+<table>
+<thead><tr><th>機能</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>コマ割りテンプレート</td><td>縦向き41種・横向き28種の計69種。向きの切り替え付きギャラリーから選択します。</td></tr>
+<tr><td>ナイフツール</td><td>マウスで引いた線に沿って既存のコマを分割します。分割後のコマ間の余白は0〜75で調整できます。</td></tr>
+<tr><td>コマ編集モード</td><td>コマの頂点を表示し、長方形を台形など任意の四角形に変形できます。</td></tr>
+<tr><td>図形コマ</td><td>正方形・縦長の長方形・横長の長方形・三角形・五角形・六角形・星形・ハートのコマを挿入します。</td></tr>
+<tr><td>ランダムカット</td><td>ページを自動でコマに分割します。縦横それぞれの最大分割数（0〜5）、最大傾き（0〜50%）、線のばらつき（0〜45%）を指定できます。</td></tr>
+<tr><td>コマの装飾</td><td>コマごとに線色・塗り色・線幅（0.1〜10）・不透明度（0〜100）を設定でき、現在の設定をページ内の全コマへ一括適用する操作もあります。</td></tr>
+<tr><td>カスタムページサイズ</td><td>新規ページは縦・横のほか、1〜4096の範囲で任意の幅と高さを指定して作成できます。</td></tr>
+<tr><td>複数ページ作成</td><td>2〜50ページを一度に作成します。</td></tr>
+<tr><td>グリッド</td><td>間隔を調整できるスナップ用グリッド。Ctrl+G で切り替えます。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>複数ページの管理</h2>
+
+<div class="card">
+<p>1つのプロジェクトに必要なだけページを持てます。画面下部のサムネイル列に全ページが並び、クリックで切り替え、ドラッグで並べ替えができます。Alt+← と Alt+→ でページを移動し、Ctrl+B で列の表示・非表示を切り替えます。</p>
+<p>サムネイルは編集内容に応じて自動更新されます。</p>
+</div>
+
+<h2>フキダシ</h2>
+
+<div class="card">
+<p>48種類のフキダシテンプレートを同梱しています。丸型、無音（思考）型、四角のキャプション型、爆発・叫び型、集中線付きなどが含まれます。いずれも線色・塗り色・不透明度（0〜100）・線幅（0〜40）を即時反映で設定できます。</p>
+
+<h3>カスタムフキダシ</h3>
+<p>テンプレート以外に、2つの方法でフキダシを自作できます。頂点を順にクリックする<strong>座標モード</strong>と、輪郭を直接ドラッグする<strong>フリーハンドモード</strong>です。作成後に頂点を移動・削除することもできます。</p>
+<p>フリーハンドの輪郭は滑らかにでき、角の丸めは0〜15回の範囲で適用されます。座標間隔（0〜100px）でドラッグの記録密度を調整します。輪郭の線種は7種類あります。</p>
+<p>重なり合ったカスタムフキダシは、ポリゴンの論理演算によって1つの輪郭に統合されます。複数の房がつながったフキダシはこの仕組みで作られます。</p>
+<p>フキダシ内のテキストは、横書き・縦書きのどちらでも配置できます。</p>
+</div>
+
+<h2>テキスト</h2>
+
+<div class="card">
+<h3>通常テキスト</h3>
+<p>テキストボックスは横書きと縦書きに対応しています。縦書きは横書きを回転させたものではなく、専用の縦書きテキストオブジェクトとして実装されています。各テキストには塗り色・アウトライン色・背景色・文字サイズ（7〜150）・アウトライン幅（0〜5）・太字の切り替え・左右中央の揃えを設定できます。</p>
+
+<h3>フォント</h3>
+<p>156種類のフォントを同梱し、用途別に4つのカテゴリへ分類しています。</p>
+<table>
+<thead><tr><th>カテゴリ</th><th>収録数</th><th>想定用途</th></tr></thead>
+<tbody>
+<tr><td>セリフ</td><td>70</td><td>フキダシ内のテキスト</td></tr>
+<tr><td>特殊</td><td>35</td><td>見出し・装飾的な文字</td></tr>
+<tr><td>説明・ナレーション</td><td>28</td><td>キャプション、ナレーション枠</td></tr>
+<tr><td>擬音</td><td>23</td><td>オノマトペ</td></tr>
+</tbody>
+</table>
+<p>5つ目のカテゴリには、ご自身で追加したフォントが入ります。OSにインストール済みのフォントを名前で登録する、WebフォントをURLで追加する、<code>.ttf</code> / <code>.otf</code> / <code>.woff</code> / <code>.woff2</code> ファイルをアップロードする、のいずれも可能です。アップロードしたフォントはブラウザに保存され、次回以降も利用できます。</p>
+<p>プロジェクトで使用したフォントはプロジェクトとともに記録され、読み込み時に復元されます。</p>
+
+<h3>画像テキスト</h3>
+<p>31種類の装飾テキストスタイルは、文字を編集可能なテキストではなく画像として描画します。落ち影や多重の縁取りから、荒れ・ひび割れ・侵食といった加工、さらにネオン、クローム、金属、基板、オーロラ調の仕上げまで揃っています。</p>
+<p>共通のパラメータ（粗さ、強さ、縁の太さ、模様の大きさ、光の広がりと濃さ、最大4色の効果色、縁の色、光の色、文字サイズ、行の高さ、文字間隔、2層の影、塗り色、塗りの不透明度）はスタイルを切り替えても引き継がれ、選択中のオブジェクトがその場で差し替わります。</p>
+<div class="notice">画像テキストは画像として書き出すため、利用できるのはOSにインストールされたフォントのみです。同梱のWebフォントは画像テキストには使用できません。</div>
+</div>
+
+<h2>ペン・ブラシ</h2>
+
+<div class="card">
+<p>8種類のブラシがあり、それぞれ固有のパラメータを持ちます。</p>
+<table>
+<thead><tr><th>ブラシ</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td>マーカー</td><td>半透明で、重ねると濃くなります。</td></tr>
+<tr><td>インク</td><td>入り抜きのある、先細りの線を引きます。</td></tr>
+<tr><td>クレヨン</td><td>ざらついた、かすれた質感です。</td></tr>
+<tr><td>鉛筆</td><td>線に加えて、影の色・幅・XYオフセットを設定できます。</td></tr>
+<tr><td>二重縁取り</td><td>二重の縁取りが付いた線を描きます。</td></tr>
+<tr><td>円</td><td>円を連ねて線を構成します。</td></tr>
+<tr><td>モザイク</td><td>なぞった箇所をぼかします。モザイクの大きさと範囲を調整できます。</td></tr>
+<tr><td>消しゴム</td><td>描いた線を消します。</td></tr>
+</tbody>
+</table>
+<p>すべてのブラシに共通して、色・サイズ・不透明度と、実線・破線・点線の線スタイルを設定できます。</p>
+</div>
+
+<h2>スクリーントーン</h2>
+
+<div class="card">
+<p>5種類のトーン生成機能があります。コマを選択した状態ではそのコマの内側に、何も選択していない状態ではページ全体に適用されます。</p>
+<table>
+<thead><tr><th>種類</th><th>生成される内容</th></tr></thead>
+<tbody>
+<tr><td>網点</td><td>濃度と階調を指定できるドットスクリーン。ドット形状は円・正方形・三角形・星形・十字・ハートから選べ、ドットサイズと間隔は1〜100です。グラデーションは上下・下上・左右・右左の方向と、始点・終点の濃度を指定できます。</td></tr>
+<tr><td>ノイズ</td><td>砂目状のざらついた質感です。</td></tr>
+<tr><td>雪</td><td>手前と奥の粒を別レイヤーで重ね、降雪を表現します。</td></tr>
+<tr><td>流線</td><td>方向のある線。線種・線数・サイズ・幅の拡大・角度を調整できます。</td></tr>
+<tr><td>集中線</td><td>1点に集まる強調線。中心位置、最小・最大半径、ノイズ幅、密度を調整できます。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>画像と効果</h2>
+
+<div class="card">
+<h3>読み込み</h3>
+<p>画像はファイル選択、キャンバスへのドラッグ＆ドロップ、クリップボードからの貼り付けで取り込めます。コマの内側に直接ドロップすると、自動でサイズを合わせてコマの形に切り抜かれます。</p>
+
+<h3>ワンクリック変換</h3>
+<p>カラー原稿を漫画向けのモノクロへ変換する処理が6種類あります。白黒（薄い・濃い・ラフ・シンプルの4種）、トーンと薄いカラー化、そして強度を調整できる黒強調です。</p>
+<p>変換は、選択中の画像のみ、現在のページの全画像、プロジェクト内の全画像のいずれかを対象に実行できます。</p>
+<div class="notice"><strong>一括変換は Undo では元に戻せません。</strong>代わりに「一括適用前の状態に戻す」操作が用意されています。この復元ポイントはメモリ上にのみ保持され、ページを再読み込みすると失われます。</div>
+
+<h3>フィルタ</h3>
+<p>15種類の画像フィルタを選択できます。明るさ／コントラスト、色相／彩度、セピア、アンシャープマスク、鮮やかさ、ビネット、レンズぼかし、三角ぼかし、ズームぼかし、カラーハーフトーン、ドットスクリーン、エッジワーク、六角形ピクセル化、インク、渦巻きです。</p>
+
+<h3>ブレンドモード</h3>
+<p>25種類のブレンドモードを5つの系統に分類しています。</p>
+<ul>
+<li><strong>暗く</strong> — 比較（暗）、焼き込みカラー、焼き込み（リニア）</li>
+<li><strong>明るく</strong> — 比較（明）、スクリーン、覆い焼きカラー、覆い焼き（リニア）、加算、加算（NPM）</li>
+<li><strong>コントラスト</strong> — オーバーレイ、ハードライト、ソフトライト、ピンライト、ビビッドライト、リニアライト、ハードミックス</li>
+<li><strong>差分</strong> — 差の絶対値、除外、否定、減算、除算</li>
+<li><strong>色</strong> — 結合、彩度、色、明るさ</li>
+</ul>
+<p>ブレンドには2枚以上のレイヤー画像の選択が必要です。結果はドラッグ可能なウィンドウに表示され、対象レイヤーを変更して再ブレンドできます。</p>
+
+<h3>変形</h3>
+<p>オブジェクトは回転（0〜360°）、拡大縮小（0.01〜10倍）、位置変更、XY方向の傾き（±60°）、不透明度（0〜100）の設定に加え、左右反転・上下反転が可能です。画像は切り抜きができ、上下左右それぞれ独立して表示範囲を制限することもできます。</p>
+</div>
+
+<h2>レイヤー</h2>
+
+<div class="card">
+<p>レイヤーパネル（Ctrl+L）には、ページ上の全オブジェクトがサムネイルと編集可能な名前とともに並び、グループ化されたオブジェクトは階層表示されます。</p>
+<p>各レイヤーは表示・非表示、移動のロック、重ね順の上下移動（Ctrl+↑ / Ctrl+↓）、削除ができます。レイヤー画像は、全体をそのまま、あるいは所属するコマ枠で切り抜いた状態でダウンロードできます。</p>
+<p>AIバックエンドを設定している場合は、レイヤーごとに画像生成、背景削除、高解像度化、インペイント、アングル再生成、プロンプト解析も実行できます。</p>
+<p>キャンバス上の右クリックメニューでも同じ操作にアクセスでき、変形・スタイル・コマ・操作・表示制限・AIのサブメニューに整理されています。スライダーやカラーピッカーもその場で扱えます。</p>
+</div>
+
+<h2>元に戻す・やり直す</h2>
+
+<div class="card">
+<p>ページ内での Undo（Ctrl+Z）と Redo（Ctrl+Y）に回数制限はありません。履歴スタックは切り詰められません。</p>
+<div class="notice"><strong>履歴はページ単位です。</strong>ページを切り替えるか読み込むと履歴は消去されるため、ページをまたいで元に戻すことはできません。</div>
+<p>履歴の記録には遅延処理が入っており、連続したドラッグは数百件ではなく1件の履歴になります。選択状態など見た目に影響しない変更は履歴に残りません。復元処理の途中で押された Undo / Redo は破棄されず、順番待ちに入ります。</p>
+</div>
+
+<h2>保存と書き出し</h2>
+
+<div class="card">
+<table>
+<thead><tr><th>操作</th><th>出力</th></tr></thead>
+<tbody>
+<tr><td>プロジェクト保存（Ctrl+S）</td><td><code>DESU-Project.lz4</code> — 全ページを1つのLZ4アーカイブに圧縮します。</td></tr>
+<tr><td>プロジェクト読み込み（Ctrl+O）</td><td><code>.lz4</code> と <code>.zip</code> のプロジェクトファイルに対応します。</td></tr>
+<tr><td>画像ダウンロード（Ctrl+D）</td><td>タイムスタンプ付きのPNG。出力解像度は、ミリ単位の原稿サイズとダウンロードDPI（既定300）から算出されます。用紙の向きはキャンバスに追従し、書き出し前にグリッドは除去されます。</td></tr>
+<tr><td>画像コピー</td><td>描画結果をPNGとしてシステムのクリップボードへ書き込みます。</td></tr>
+<tr><td>SVGダウンロード</td><td>キャンバスを <code>canvas.svg</code> として書き出します。</td></tr>
+<tr><td>設定保存（Ctrl+Shift+S）</td><td>ツール・キャンバス・接続の設定をブラウザに保存します。</td></tr>
+<tr><td>自動保存</td><td>10〜600秒の間隔（既定60秒）でプロジェクトをブラウザに保存します。ブラウザが予期せず終了した場合、次回起動時に自動保存分の復元を提案します。</td></tr>
+</tbody>
+</table>
+<p>設定リセットは、実行前に削除対象を具体的に一覧表示します。</p>
+</div>
+
+<h2>AI画像生成（任意）</h2>
+
+<div class="card">
+<p>上記の編集機能はすべてAIなしで動作します。生成機能は完全に任意で、ご自身で用意・設定したバックエンドが必要です。</p>
+<p>6種類のサービスに対応しており、処理の種類ごとに独立して振り分けられます。画像生成は別のサービス、プロンプト生成はまた別のサービス、という使い方が可能です。</p>
+<table>
+<thead><tr><th>サービス</th><th>動作場所</th><th>対応する処理</th></tr></thead>
+<tbody>
+<tr><td>ComfyUI</td><td>お使いのマシン</td><td>Text2Image、Image2Image、インペイント、高解像度化、背景削除、アングル再生成</td></tr>
+<tr><td>RunPod ComfyUI</td><td>クラウド（ご自身のPod）</td><td>ComfyUIと同じ</td></tr>
+<tr><td>SD WebUI（A1111 / Forge）</td><td>お使いのマシン</td><td>Text2Image、Image2Image、背景削除、CLIP・DeepDanbooru解析、ADetailer</td></tr>
+<tr><td>Fal.ai</td><td>クラウド</td><td>Text2Image、Image2Image、高解像度化、背景削除</td></tr>
+<tr><td>Grok（xAI）</td><td>クラウド</td><td>テキスト・画像認識の言語モデル処理</td></tr>
+<tr><td>Ollama</td><td>お使いのマシン</td><td>テキスト・画像認識の言語モデル処理</td></tr>
+</tbody>
+</table>
+<p>インペイントとアングル再生成には ComfyUI（ローカルまたはRunPod）が必要です。各サービスの設定手順は <a href="ai-setup-ja.html">AIバックエンド設定ガイド</a> にまとめています。</p>
+
+<h3>インペイント</h3>
+<p>専用エディタで、ブラシと消しゴム（サイズ1〜500）を使って画像の一部にマスクを描き、全体の塗りつぶしやクリアを行い、独自のプロンプト・ネガティブプロンプト・デノイズ強度を指定して生成できます。</p>
+
+<h3>アングル再生成</h3>
+<p>3Dのカメラウィジェットと自由入力の指示を組み合わせ、既存の画像を別のカメラアングルから描き直します。</p>
+
+<h3>言語モデル機能</h3>
+<p>Grok または Ollama を接続すると、文章で書いた場面描写を画像生成用のタグに変換する、既存の画像からタグを読み取る、ストーリーをページ単位あるいはプロジェクト全体のコマごとのプロンプトへ展開する、といった処理が使えます。生成されたプロンプトは必ず編集可能なプレビューに表示され、追記するか置き換えるかを選べます。キャンバスへ直接書き込まれることはありません。</p>
+
+<h3>ComfyUIワークフロー</h3>
+<p>ComfyUI から API 形式で書き出したワークフローを、1つでも複数でも読み込めます。各ワークフローに処理の種類を割り当て、種類ごとに1つを有効化します。ノードの入力値はその場で編集でき、モデル・LoRA・サンプラー・VAE の選択肢は稼働中の ComfyUI サーバーから取得されます。サーバーに存在しないノードには印が付きます。ローカルと RunPod はワークフローを完全に別管理します。</p>
+
+<h3>キュー</h3>
+<p>生成リクエストはサービスごとにキューイングされます。クラウドサービスはサービスごとに1〜10の同時実行数を設定できます。キュー内の各タスクは対象レイヤー上に順番と進捗が表示され、個別に取り消せます。</p>
+</div>
+
+<h2>統計ダッシュボード</h2>
+
+<div class="card">
+<p>利用状況を記録するダッシュボードがあります。生成回数と所要時間（合計・平均・最小・最大）、モード別の内訳、時間帯別アクティビティ、日次・週次・月次のトレンド、よく使うタグ、ダウンロード可能なワードクラウド、連続記録、セッション統計、アクティビティカレンダー、成功率、プロンプト長の分布、タグの共起、モデル使用率、日次・週次の目標と進捗バー、バッジが含まれます。</p>
+<p>単価が公開されているクラウドサービスについては、サービス別・モデル別の概算費用を表示します。これは請求額ではなく推定値である旨を明記しています。すべての内容は JSON または CSV で書き出せます。</p>
+</div>
+
+<h2>インターフェース</h2>
+
+<div class="card">
+<p>インターフェースは8言語に対応しています。英語、日本語、韓国語、中国語、フランス語、ロシア語、スペイン語、ドイツ語です。表示はダークテーマです。</p>
+<p>ブラウザのインストール機能からスタンドアロンアプリとして導入でき、静的アセットはオフライン利用のためにキャッシュされます。</p>
+<p>初回利用時には、各サイドバーパネルを案内するチュートリアルが表示されます。</p>
+</div>
+
+<h2>キーボードショートカット</h2>
+
+<div class="card">
+<table>
+<thead><tr><th>操作</th><th>Windows</th><th>macOS</th></tr></thead>
+<tbody>
+<tr><td>新規ページ</td><td>Alt + N</td><td>Alt + N</td></tr>
+<tr><td>前 / 次のページ</td><td>Alt + ← / →</td><td>Alt + ← / →</td></tr>
+<tr><td>プロジェクト保存</td><td>Ctrl + S</td><td>⌘ + S</td></tr>
+<tr><td>プロジェクト読み込み</td><td>Ctrl + O</td><td>⌘ + O</td></tr>
+<tr><td>画像ダウンロード</td><td>Ctrl + D</td><td>⌘ + D</td></tr>
+<tr><td>設定保存</td><td>Ctrl + Shift + S</td><td>⌘ + Shift + S</td></tr>
+<tr><td>元に戻す / やり直す</td><td>Ctrl + Z / Ctrl + Y</td><td>⌘ + Z / ⌘ + Y</td></tr>
+<tr><td>コピー / 貼り付け</td><td>Ctrl + C / Ctrl + V</td><td>⌘ + C / ⌘ + V</td></tr>
+<tr><td>レイヤー削除</td><td>Delete / Backspace</td><td>Delete / Backspace</td></tr>
+<tr><td>グリッド切替</td><td>Ctrl + G</td><td>Ctrl + G</td></tr>
+<tr><td>レイヤーパネル切替</td><td>Ctrl + L</td><td>Ctrl + L</td></tr>
+<tr><td>AI操作パネル切替</td><td>Ctrl + K</td><td>Ctrl + K</td></tr>
+<tr><td>ページバー切替</td><td>Ctrl + B</td><td>Ctrl + B</td></tr>
+<tr><td>プロンプト表示</td><td>Ctrl + P</td><td>⌘ + P</td></tr>
+<tr><td>拡大 / 縮小 / 等倍</td><td>Ctrl + 8 / 9 / 0</td><td>Ctrl + 8 / 9 / 0</td></tr>
+<tr><td>オブジェクト移動</td><td>矢印キー</td><td>矢印キー</td></tr>
+<tr><td>10px単位で移動</td><td>Shift + 矢印</td><td>Shift + 矢印</td></tr>
+<tr><td>レイヤーを上 / 下へ</td><td>Ctrl + ↑ / ↓</td><td>⌘ + ↑ / ↓</td></tr>
+<tr><td>選択解除・モード解除</td><td>Escape</td><td>Escape</td></tr>
+<tr><td>ショートカット一覧</td><td>F1</td><td>F1</td></tr>
+<tr><td>切り抜き確定</td><td>Enter</td><td>Enter</td></tr>
+</tbody>
+</table>
+<p>矢印キーによる移動は、グリッド表示中はグリッド間隔に、非表示時は1pxずつ動きます。長押しすると移動量が加速します。テキスト入力中はショートカットが無効化されます。</p>
+</div>
+
+<h2>ライセンス</h2>
+<div class="card">
+<p>Manga Editor Desu は GNU General Public License v3.0 で公開されています。ソースコードは <a href="https://github.com/new-sankaku/manga-editor-desu">github.com/new-sankaku/manga-editor-desu</a> にあります。</p>
+</div>
+
+<p><a href="../../index.html">← Manga Editor Desu を開く</a> ・ <a href="faq-ja.html">よくある質問</a> ・ <a href="ai-setup-ja.html">AIバックエンド設定</a></p>
+
+</div>
+</body>
+</html>

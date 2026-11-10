@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs><filter id="f" x="-25%" y="-25%" width="150%" height="150%" filterUnits="objectBoundingBox" color-interpolation-filters="linearRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.05000" numOctaves="1" seed="10" result="noise"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displace"/>
+<feFlood flood-color="#00ffff" result="colorA"/>
+<feComposite in="colorA" in2="displace" operator="in" result="compA"/>
+<feFlood flood-color="#ff00ff" result="colorB"/>
+<feOffset in="displace" dx="1" result="offset"/>
+<feComposite in="colorB" in2="offset" operator="in" result="compB"/>
+<feBlend in="compA" in2="compB" mode="screen"/>
+</filter></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="#35322a" fill-opacity="1" filter="url(#f)" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

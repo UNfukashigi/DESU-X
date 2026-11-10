@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy — Manga Editor Desu</title>
+<meta name="description" content="What Manga Editor Desu collects and stores: analytics, browser storage including API keys, and what is sent to cloud AI services.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="../common.css">
+<script src="../../third/i18next/i18next.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="lang-buttons">
+<button class="lang-btn active" data-lang="ja">日本語</button>
+<button class="lang-btn" data-lang="en">English</button>
+<button class="lang-btn" data-lang="zh">中文</button>
+<button class="lang-btn" data-lang="ko">한국어</button>
+<button class="lang-btn" data-lang="fr">Français</button>
+<button class="lang-btn" data-lang="de">Deutsch</button>
+<button class="lang-btn" data-lang="ru">Русский</button>
+<button class="lang-btn" data-lang="es">Español</button>
+</div>
+
+<p class="notice" data-i18n="notice"></p>
+
+<div class="card">
+<h1 data-i18n="privacy.title"></h1>
+
+<h2 data-i18n="privacy.collection.title"></h2>
+<p data-i18n="privacy.collection.description"></p>
+<p data-i18n="privacy.collection.items"></p>
+<ul>
+<li data-i18n="privacy.collection.list.source"></li>
+<li data-i18n="privacy.collection.list.pages"></li>
+<li data-i18n="privacy.collection.list.device"></li>
+<li data-i18n="privacy.collection.list.duration"></li>
+</ul>
+
+<h2 data-i18n="privacy.analytics.title"></h2>
+<p data-i18n="privacy.analytics.description"></p>
+<p data-i18n="privacy.analytics.cookie"></p>
+
+<h2 data-i18n="privacy.storage.title"></h2>
+<p data-i18n="privacy.storage.description"></p>
+<ul>
+<li data-i18n="privacy.storage.list.settings"></li>
+<li data-i18n="privacy.storage.list.workflows"></li>
+<li data-i18n="privacy.storage.list.projects"></li>
+<li data-i18n="privacy.storage.list.stats"></li>
+</ul>
+<p class="notice" data-i18n="privacy.storage.apikey"></p>
+
+<h2 data-i18n="privacy.ai.title"></h2>
+<p data-i18n="privacy.ai.noserver"></p>
+<p data-i18n="privacy.ai.cloud"></p>
+<p data-i18n="privacy.ai.local"></p>
+<p data-i18n="privacy.ai.cdn"></p>
+</div>
+</div>
+
+<script>
+const resources = {
+ja: { translation: {
+notice: "※ 各言語版に相違がある場合は、日本語版が優先されます。",
+privacy: {
+title: "プライバシーポリシー",
+collection: {
+title: "1. 情報の収集と利用目的",
+description: "当サイトでは、Google アナリティクスを使用してサイトの利用状況を確認しています。",
+items: "これにより以下の情報が収集されます：",
+list: { source: "アクセス元情報", pages: "閲覧したページの情報", device: "使用したデバイスの情報", duration: "滞在時間などの利用状況" }
+},
+analytics: {
+title: "2. Google アナリティクスの使用について",
+description: "Google アナリティクスは完全に匿名な形で利用情報を収集します、個人が特定されることはありません。",
+cookie: "データの収集のためにCookieを使用します。"
+},
+storage: {
+title: "3. ブラウザ内に保存される情報",
+description: "本アプリケーションは、以下の情報をお使いのブラウザ内（localStorage および IndexedDB）に保存します。これらがサーバーへ送信されることはありません。",
+list: {
+settings: "表示言語、ツールおよびキャンバスの設定、AI接続設定（URL・APIキーを含む）、保存したプロンプトセット",
+workflows: "読み込んだ ComfyUI ワークフロー、アップロードしたフォント",
+projects: "自動保存されたプロジェクトデータ",
+stats: "生成時間などの利用統計、外部API利用料の推定記録"
+},
+apikey: "⚠ クラウドサービスのAPIキーは暗号化されずに保存されます。共用のコンピューターや公共の端末での入力はお控えください。保存された情報はアプリ内の「設定リセット」またはブラウザのサイトデータ削除で消去できます。"
+},
+ai: {
+title: "4. 生成AIサービスへの送信について",
+noserver: "本アプリケーション自体にサーバーはなく、作成されたプロジェクトがアップロードされることはありません。",
+cloud: "ただし、クラウド型の生成AIサービス（RunPod ComfyUI、Fal.ai、Grok）を設定してご利用の場合、その処理に必要なプロンプト、ストーリーやセリフのテキスト、コマの画像が当該サービスへ送信されます。送信後の取り扱いは各サービスのプライバシーポリシーに従います。",
+local: "ComfyUI、SD WebUI（A1111 / Forge）、Ollama をお使いのマシン上でのみ利用する場合、生成処理は端末内で完結し、外部への送信は発生しません。",
+cdn: "また、ページの読み込み時に Google Fonts、cdnjs、unpkg から表示用のアセットを取得します。"
+}
+}
+}},
+en: { translation: {
+notice: "* In case of any discrepancy between language versions, the Japanese version shall prevail.",
+privacy: {
+title: "Privacy Policy",
+collection: {
+title: "1. Information Collection and Purpose",
+description: "This website uses Google Analytics to monitor site usage.",
+items: "The following information is collected:",
+list: { source: "Access source information", pages: "Viewed page information", device: "Device information", duration: "Usage data such as duration of visit" }
+},
+analytics: {
+title: "2. Use of Google Analytics",
+description: "Google Analytics collects usage information completely anonymously, and individuals cannot be identified.",
+cookie: "Cookies are used for data collection."
+},
+storage: {
+title: "3. Information Stored in Your Browser",
+description: "The application stores the following in your own browser (localStorage and IndexedDB). None of it is transmitted to any server:",
+list: {
+settings: "Interface language, tool and canvas settings, AI connection settings including URLs and API keys, and saved prompt sets",
+workflows: "Imported ComfyUI workflows and uploaded fonts",
+projects: "Auto-saved project data",
+stats: "Usage statistics such as generation times, and estimated external API cost records"
+},
+apikey: "⚠ API keys for cloud services are stored unencrypted. Please avoid entering them on a shared or public computer. Stored data can be removed with Settings Reset in the application, or with your browser's clear-site-data feature."
+},
+ai: {
+title: "4. Transmission to AI Generation Services",
+noserver: "The application itself has no server, and projects you create are never uploaded by it.",
+cloud: "However, if you configure and use a cloud AI service (RunPod ComfyUI, Fal.ai or Grok), the prompts, story or dialogue text and panel images required for those requests are sent to that service. Their subsequent handling is governed by that service's own privacy policy.",
+local: "If you use ComfyUI, SD WebUI (A1111 / Forge) or Ollama only on your own machine, generation is completed locally and nothing is transmitted externally.",
+cdn: "Page loads also fetch display assets from Google Fonts, cdnjs and unpkg."
+}
+}
+}},
+zh: { translation: {
+notice: "* 如果语言版本之间存在差异，以日文版本为准。",
+privacy: {
+title: "隐私政策",
+collection: {
+title: "1. 信息收集和使用目的",
+description: "本网站使用Google Analytics来监控网站使用情况。",
+items: "收集以下信息：",
+list: { source: "访问来源信息", pages: "浏览页面信息", device: "设备信息", duration: "访问时长等使用数据" }
+},
+analytics: {
+title: "2. Google Analytics的使用",
+description: "Google Analytics完全匿名收集使用信息，不会识别个人身份。",
+cookie: "数据收集使用Cookie。"
+},
+storage: {
+title: "3. 保存在浏览器中的信息",
+description: "本应用会将以下信息保存在您的浏览器中（localStorage 和 IndexedDB）。这些信息不会发送到任何服务器：",
+list: {
+settings: "界面语言、工具与画布设置、AI连接设置（包括URL和API密钥）、已保存的提示词集合",
+workflows: "导入的 ComfyUI 工作流、上传的字体",
+projects: "自动保存的项目数据",
+stats: "生成时间等使用统计、外部API费用的估算记录"
+},
+apikey: "⚠ 云服务的API密钥以未加密的形式保存。请勿在公用或公共电脑上输入。已保存的数据可通过应用内的“设置重置”或浏览器的清除站点数据功能删除。"
+},
+ai: {
+title: "4. 关于向AI生成服务的发送",
+noserver: "本应用本身没有服务器，您创建的项目不会被上传。",
+cloud: "但是，若您配置并使用云端AI服务（RunPod ComfyUI、Fal.ai、Grok），相关请求所需的提示词、故事或对白文本以及分格图像会发送至该服务。发送后的处理方式遵循各服务自身的隐私政策。",
+local: "若您仅在本机使用 ComfyUI、SD WebUI（A1111 / Forge）或 Ollama，生成处理将在本地完成，不会向外部发送。",
+cdn: "此外，页面加载时会从 Google Fonts、cdnjs 和 unpkg 获取显示所需的资源。"
+}
+}
+}},
+ko: { translation: {
+notice: "* 언어 버전 간 차이가 있는 경우 일본어 버전이 우선됩니다.",
+privacy: {
+title: "개인정보 처리방침",
+collection: {
+title: "1. 정보 수집 및 이용 목적",
+description: "본 웹사이트는 Google 애널리틱스를 사용하여 사이트 이용 현황을 모니터링합니다.",
+items: "다음과 같은 정보가 수집됩니다:",
+list: { source: "접속 출처 정보", pages: "조회한 페이지 정보", device: "사용 기기 정보", duration: "체류 시간 등 이용 데이터" }
+},
+analytics: {
+title: "2. Google 애널리틱스 사용에 대하여",
+description: "Google 애널리틱스는 완전히 익명으로 이용 정보를 수집하며, 개인을 식별할 수 없습니다.",
+cookie: "데이터 수집을 위해 쿠키를 사용합니다."
+},
+storage: {
+title: "3. 브라우저에 저장되는 정보",
+description: "본 애플리케이션은 다음 정보를 사용자의 브라우저(localStorage 및 IndexedDB)에 저장합니다. 이 정보가 서버로 전송되는 일은 없습니다:",
+list: {
+settings: "표시 언어, 도구 및 캔버스 설정, AI 연결 설정(URL과 API 키 포함), 저장된 프롬프트 세트",
+workflows: "가져온 ComfyUI 워크플로, 업로드한 폰트",
+projects: "자동 저장된 프로젝트 데이터",
+stats: "생성 시간 등 이용 통계, 외부 API 사용료 추정 기록"
+},
+apikey: "⚠ 클라우드 서비스의 API 키는 암호화되지 않은 상태로 저장됩니다. 공용 컴퓨터나 공공 단말기에서의 입력은 삼가시기 바랍니다. 저장된 정보는 앱 내 '설정 초기화' 또는 브라우저의 사이트 데이터 삭제 기능으로 지울 수 있습니다."
+},
+ai: {
+title: "4. AI 생성 서비스로의 전송에 대하여",
+noserver: "본 애플리케이션 자체에는 서버가 없으며, 작성한 프로젝트가 업로드되는 일은 없습니다.",
+cloud: "다만 클라우드형 AI 서비스(RunPod ComfyUI, Fal.ai, Grok)를 설정하여 사용하는 경우, 해당 처리에 필요한 프롬프트, 스토리나 대사 텍스트, 컷 이미지가 해당 서비스로 전송됩니다. 전송 이후의 취급은 각 서비스의 개인정보 처리방침을 따릅니다.",
+local: "ComfyUI, SD WebUI(A1111 / Forge), Ollama를 사용자의 컴퓨터에서만 이용하는 경우, 생성 처리는 기기 내에서 완결되며 외부로 전송되지 않습니다.",
+cdn: "또한 페이지를 불러올 때 Google Fonts, cdnjs, unpkg에서 표시용 자원을 가져옵니다."
+}
+}
+}},
+fr: { translation: {
+notice: "* En cas de divergence entre les versions linguistiques, la version japonaise prévaut.",
+privacy: {
+title: "Politique de Confidentialité",
+collection: {
+title: "1. Collecte d'Informations et Objectif",
+description: "Ce site utilise Google Analytics pour surveiller l'utilisation du site.",
+items: "Les informations suivantes sont collectées :",
+list: { source: "Informations sur la source d'accès", pages: "Informations sur les pages consultées", device: "Informations sur l'appareil", duration: "Données d'utilisation telles que la durée de visite" }
+},
+analytics: {
+title: "2. Utilisation de Google Analytics",
+description: "Google Analytics collecte les informations d'utilisation de manière totalement anonyme, et les individus ne peuvent pas être identifiés.",
+cookie: "Des cookies sont utilisés pour la collecte de données."
+},
+storage: {
+title: "3. Informations Stockées dans Votre Navigateur",
+description: "L'application stocke les éléments suivants dans votre propre navigateur (localStorage et IndexedDB). Rien de tout cela n'est transmis à un serveur :",
+list: {
+settings: "Langue de l'interface, réglages des outils et du canevas, paramètres de connexion IA (URL et clés API incluses), ensembles de prompts enregistrés",
+workflows: "Workflows ComfyUI importés et polices téléversées",
+projects: "Données de projet enregistrées automatiquement",
+stats: "Statistiques d'utilisation telles que les temps de génération, et estimations des coûts d'API externes"
+},
+apikey: "⚠ Les clés API des services cloud sont stockées non chiffrées. Évitez de les saisir sur un ordinateur partagé ou public. Les données stockées peuvent être supprimées via « Réinitialiser les paramètres » dans l'application, ou via la fonction d'effacement des données de site de votre navigateur."
+},
+ai: {
+title: "4. Transmission aux Services de Génération IA",
+noserver: "L'application elle-même n'a pas de serveur, et les projets que vous créez ne sont jamais téléversés par celle-ci.",
+cloud: "Toutefois, si vous configurez et utilisez un service IA cloud (RunPod ComfyUI, Fal.ai ou Grok), les prompts, les textes d'histoire ou de dialogue et les images des cases nécessaires à ces requêtes sont envoyés à ce service. Leur traitement ultérieur est régi par la politique de confidentialité de ce service.",
+local: "Si vous utilisez ComfyUI, SD WebUI (A1111 / Forge) ou Ollama uniquement sur votre propre machine, la génération se fait localement et rien n'est transmis à l'extérieur.",
+cdn: "Le chargement des pages récupère également des ressources d'affichage depuis Google Fonts, cdnjs et unpkg."
+}
+}
+}},
+de: { translation: {
+notice: "* Bei Abweichungen zwischen den Sprachversionen ist die japanische Version maßgebend.",
+privacy: {
+title: "Datenschutzerklärung",
+collection: {
+title: "1. Informationserfassung und Zweck",
+description: "Diese Website verwendet Google Analytics zur Überwachung der Websitenutzung.",
+items: "Folgende Informationen werden erfasst:",
+list: { source: "Zugriffsquelleninformationen", pages: "Informationen zu aufgerufenen Seiten", device: "Geräteinformationen", duration: "Nutzungsdaten wie Besuchsdauer" }
+},
+analytics: {
+title: "2. Verwendung von Google Analytics",
+description: "Google Analytics erfasst Nutzungsinformationen vollständig anonym, und Einzelpersonen können nicht identifiziert werden.",
+cookie: "Für die Datenerfassung werden Cookies verwendet."
+},
+storage: {
+title: "3. Im Browser gespeicherte Informationen",
+description: "Die Anwendung speichert Folgendes in Ihrem eigenen Browser (localStorage und IndexedDB). Nichts davon wird an einen Server übertragen:",
+list: {
+settings: "Oberflächensprache, Werkzeug- und Canvas-Einstellungen, KI-Verbindungseinstellungen einschließlich URLs und API-Schlüsseln, gespeicherte Prompt-Sets",
+workflows: "Importierte ComfyUI-Workflows und hochgeladene Schriftarten",
+projects: "Automatisch gespeicherte Projektdaten",
+stats: "Nutzungsstatistiken wie Generierungszeiten sowie geschätzte Kosten externer APIs"
+},
+apikey: "⚠ API-Schlüssel für Cloud-Dienste werden unverschlüsselt gespeichert. Bitte geben Sie sie nicht auf einem gemeinsam genutzten oder öffentlichen Computer ein. Gespeicherte Daten lassen sich über „Einstellungen zurücksetzen“ in der Anwendung oder über die Funktion zum Löschen der Websitedaten Ihres Browsers entfernen."
+},
+ai: {
+title: "4. Übertragung an KI-Generierungsdienste",
+noserver: "Die Anwendung selbst hat keinen Server, und von Ihnen erstellte Projekte werden von ihr niemals hochgeladen.",
+cloud: "Wenn Sie jedoch einen Cloud-KI-Dienst (RunPod ComfyUI, Fal.ai oder Grok) einrichten und nutzen, werden die für diese Anfragen erforderlichen Prompts, Story- oder Dialogtexte und Panelbilder an diesen Dienst gesendet. Die weitere Verarbeitung richtet sich nach der Datenschutzerklärung des jeweiligen Dienstes.",
+local: "Wenn Sie ComfyUI, SD WebUI (A1111 / Forge) oder Ollama ausschließlich auf Ihrem eigenen Rechner verwenden, erfolgt die Generierung lokal und es wird nichts nach außen übertragen.",
+cdn: "Beim Laden der Seiten werden zudem Darstellungsressourcen von Google Fonts, cdnjs und unpkg abgerufen."
+}
+}
+}},
+ru: { translation: {
+notice: "* В случае расхождений между языковыми версиями преимущественную силу имеет японская версия.",
+privacy: {
+title: "Политика конфиденциальности",
+collection: {
+title: "1. Сбор информации и цели использования",
+description: "Этот сайт использует Google Analytics для отслеживания использования сайта.",
+items: "Собирается следующая информация:",
+list: { source: "Информация об источнике перехода", pages: "Информация о просмотренных страницах", device: "Информация об устройстве", duration: "Данные об использовании, такие как длительность визита" }
+},
+analytics: {
+title: "2. Об использовании Google Analytics",
+description: "Google Analytics собирает информацию об использовании полностью анонимно, идентификация отдельных лиц невозможна.",
+cookie: "Для сбора данных используются файлы cookie."
+},
+storage: {
+title: "3. Информация, сохраняемая в браузере",
+description: "Приложение сохраняет следующие данные в вашем браузере (localStorage и IndexedDB). Ничего из этого не передаётся на сервер:",
+list: {
+settings: "Язык интерфейса, настройки инструментов и холста, настройки подключения ИИ, включая URL и API-ключи, сохранённые наборы промптов",
+workflows: "Импортированные рабочие процессы ComfyUI и загруженные шрифты",
+projects: "Автоматически сохранённые данные проекта",
+stats: "Статистика использования, например время генерации, и оценочные записи расходов на внешние API"
+},
+apikey: "⚠ API-ключи облачных сервисов хранятся в незашифрованном виде. Не вводите их на общем или общедоступном компьютере. Сохранённые данные можно удалить с помощью «Сброса настроек» в приложении или функции очистки данных сайта в браузере."
+},
+ai: {
+title: "4. О передаче данных сервисам генерации ИИ",
+noserver: "У самого приложения нет сервера, и создаваемые вами проекты им никогда не загружаются.",
+cloud: "Однако, если вы настроите и будете использовать облачный сервис ИИ (RunPod ComfyUI, Fal.ai или Grok), необходимые для этих запросов промпты, текст истории или реплик и изображения кадров будут отправлены этому сервису. Их дальнейшая обработка регулируется политикой конфиденциальности соответствующего сервиса.",
+local: "Если вы используете ComfyUI, SD WebUI (A1111 / Forge) или Ollama только на собственном компьютере, генерация выполняется локально и ничего не передаётся вовне.",
+cdn: "При загрузке страниц также запрашиваются ресурсы отображения с Google Fonts, cdnjs и unpkg."
+}
+}
+}},
+es: { translation: {
+notice: "* En caso de discrepancia entre las versiones lingüísticas, prevalecerá la versión japonesa.",
+privacy: {
+title: "Política de Privacidad",
+collection: {
+title: "1. Recopilación de Información y Finalidad",
+description: "Este sitio web utiliza Google Analytics para supervisar el uso del sitio.",
+items: "Se recopila la siguiente información:",
+list: { source: "Información sobre la fuente de acceso", pages: "Información sobre las páginas visitadas", device: "Información del dispositivo", duration: "Datos de uso como la duración de la visita" }
+},
+analytics: {
+title: "2. Uso de Google Analytics",
+description: "Google Analytics recopila información de uso de forma totalmente anónima y no permite identificar a las personas.",
+cookie: "Se utilizan cookies para la recopilación de datos."
+},
+storage: {
+title: "3. Información Almacenada en Su Navegador",
+description: "La aplicación almacena lo siguiente en su propio navegador (localStorage e IndexedDB). Nada de ello se transmite a ningún servidor:",
+list: {
+settings: "Idioma de la interfaz, ajustes de herramientas y lienzo, configuración de conexión de IA incluidas URL y claves API, y conjuntos de prompts guardados",
+workflows: "Flujos de trabajo de ComfyUI importados y fuentes subidas",
+projects: "Datos de proyecto guardados automáticamente",
+stats: "Estadísticas de uso como los tiempos de generación, y registros estimados de costes de API externas"
+},
+apikey: "⚠ Las claves API de los servicios en la nube se almacenan sin cifrar. Evite introducirlas en un ordenador compartido o público. Los datos almacenados pueden eliminarse con «Restablecer configuración» en la aplicación o con la función de borrado de datos del sitio de su navegador."
+},
+ai: {
+title: "4. Transmisión a Servicios de Generación con IA",
+noserver: "La aplicación en sí no tiene servidor, y los proyectos que usted cree nunca son subidos por ella.",
+cloud: "Sin embargo, si configura y utiliza un servicio de IA en la nube (RunPod ComfyUI, Fal.ai o Grok), los prompts, el texto de la historia o los diálogos y las imágenes de las viñetas necesarios para esas peticiones se envían a dicho servicio. Su tratamiento posterior se rige por la política de privacidad de ese servicio.",
+local: "Si utiliza ComfyUI, SD WebUI (A1111 / Forge) u Ollama únicamente en su propia máquina, la generación se completa localmente y no se transmite nada al exterior.",
+cdn: "La carga de las páginas también obtiene recursos de visualización de Google Fonts, cdnjs y unpkg."
+}
+}
+}}
+};
+
+i18next.init({ resources, lng: 'ja' }).then(updateContent);
+
+function updateContent() {
+document.querySelectorAll('[data-i18n]').forEach(el => {
+el.innerHTML = i18next.t(el.getAttribute('data-i18n'));
+});
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+this.classList.add('active');
+i18next.changeLanguage(this.getAttribute('data-lang')).then(updateContent);
+});
+});
+</script>
+</body>
+</html>

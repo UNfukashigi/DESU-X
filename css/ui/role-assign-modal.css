@@ -1,0 +1,33 @@
+.role-assign-btn-cancel{padding:6px 16px;border-radius:4px;font-size:12px;cursor:pointer;background:rgba(255,255,255,0.08);color:var(--color-text-secondary);border:1px solid rgba(255,255,255,0.1);margin:0;}
+.role-assign-btn-submit{padding:6px 16px;border-radius:4px;font-size:12px;cursor:pointer;background:var(--color-accent);color:#fff;border:1px solid rgba(160,48,48,0.6);margin:0;}
+.role-assign-btn-submit:hover{background:#a00;}
+.role-matrix{width:100%;border-collapse:collapse;border:1px solid var(--color-tertiary);table-layout:fixed;}
+.role-matrix th{font-size:10px;color:#fff;font-weight:600;padding:8px 4px;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.25);word-wrap:break-word;overflow-wrap:break-word;}
+/* 使用サービス表はサービス名が1行のものと2行のものが混ざるので、タグはセル下端に貼り付けて高さを揃える。
+   列が細いため字と余白も詰める */
+.role-matrix th{position:relative;padding-bottom:24px;}
+.role-matrix th .us-tag{position:absolute;left:0;right:0;bottom:5px;margin:0 auto;font-size:8px;padding:0 3px;letter-spacing:0;}
+.role-matrix th:first-child{text-align:left;color:var(--color-component-minitext);font-weight:bold;width:30%;}
+.role-matrix td{padding:10px 2px;text-align:center;border:1px solid rgba(255,255,255,0.25);vertical-align:middle;height:36px;}
+.role-matrix td:first-child{text-align:left;font-size:11px;color:var(--color-text-secondary);font-weight:bold;background:rgba(255,255,255,0.02);white-space:normal;overflow-wrap:break-word;width:30%;padding:6px 6px;line-height:1.35;}
+.role-matrix .role-col-none{width:9%;}
+.role-matrix tbody tr{background:transparent;}
+.role-matrix tr:hover td{background:rgba(255,255,255,0.06);}
+input.role-radio{cursor:pointer;margin:0;padding:0;vertical-align:middle;flex-shrink:0;accent-color:var(--color-accent);width:18px;height:18px;}
+.role-provider-unavailable input.role-radio{display:none;}
+.role-provider-unavailable::after{content:'—';color:rgba(255,255,255,0.15);font-size:14px;}
+.role-assign-note{margin-top:12px;font-size:10px;color:#888;}
+.role-assign-trigger{font-size:11px;padding:1px 6px;margin-left:auto;color:var(--color-action-text);border:1px solid var(--color-action-border);background:var(--color-action-bg);border-radius:4px;cursor:pointer;white-space:nowrap;}
+.role-assign-trigger:hover{background:var(--color-action-bg-hover);border-color:var(--color-action-text);color:#fff;}
+/* 生成AI設定の入口ボタンをまとめる帯。
+   .input-groupは`1fr auto`の2列グリッドなので、ボタンを直に並べると
+   3つ目だけが次の行の広い列へ落ちて幅いっぱいに伸び、1つだけ形が変わる。
+   帯に入れて横に流し、入り切らないところで折り返す（幅は決め打ちにしない）。
+   高さはstretchで揃える。設定資料のボタンだけ枚数バッジの分だけ背が高くなるため */
+.es-trigger-row{display:flex;flex-wrap:wrap;align-items:stretch;gap:5px;margin:5px 0;min-width:0;}
+.es-trigger-row .role-assign-trigger{margin:0;}
+/* form.cssの素の`span`が全部のspanへ`--text-color-B`と左右3pxを当てる。
+   ボタンの文字をspanで包むと、そこだけ地の文字色になって隣のボタンと色が変わる。
+   バッジ（.rs-badge）は自前の色を持つので巻き込まないよう、ラベルだけを指す */
+.role-assign-trigger .role-assign-label{color:inherit;margin:0;}
+

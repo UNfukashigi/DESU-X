@@ -1,0 +1,3019 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<!-- ========== Head ========== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DESU-X — Manga Editor Desu! をもとにした漫画エディタ</title>
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121111">
+    <link rel="apple-touch-icon" href="03_images/icon/icon_full_192_192.png">
+    <link rel="icon" href="03_images/icon/icon_full_192_192.png">
+    <link rel="shortcut icon" href="03_images/icon/icon_full_192_192.png">
+
+    <meta property="og:title" content="Manga Editor DESU!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://new-sankaku.github.io/manga-editor-desu/03_images/PagePreview/Git/Preview-mini.png" />
+    <meta property="og:description" content="A free browser-based manga editor with no install and no account. 69 panel templates, 48 speech bubble styles, 156 fonts, screen tones and 25 blend modes. Optional AI image generation through a backend you configure yourself." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hypersankaku2" />
+    <meta property="og:site_name" content="Manga Editor" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Manga Editor Preview Image" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="description"
+        content="Discover Manga Editor Desu! Pro Edition, your ultimate online manga editing tool. Customize and enhance your manga with user-friendly panels, speech bubbles, and dynamic text effects. Perfect for both beginners and professional artists.">
+    <meta name="keywords"
+        content="manga editor, manga editor online, manga creation tool, comic editing software, panel layout, speech bubble editor, vertical japanese text, screen tone, ComfyUI, Stable Diffusion WebUI, Forge, manga-editor-desu">
+    <script async src="third/GoogleAnalytics/googleAnalytics.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=ZCOOL+KuaiLe&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=East+Sea+Dokdo&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bangers&family=Bungee+Shade&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Creepster&family=Permanent+Marker&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://new-sankaku.github.io/manga-editor-desu/#website",
+      "url": "https://new-sankaku.github.io/manga-editor-desu/",
+      "name": "DESU-X",
+      "description": "A free browser-based manga editor with panel layouts, speech bubbles, vertical text, screen tones and optional AI image generation.",
+      "inLanguage": ["en", "ja", "ko", "zh", "fr", "ru", "es", "de"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://new-sankaku.github.io/manga-editor-desu/#app",
+      "name": "DESU-X",
+      "alternateName": ["DESU-X"],
+      "isBasedOn": "https://github.com/new-sankaku/manga-editor-desu",
+      "url": "https://new-sankaku.github.io/manga-editor-desu/",
+      "description": "DESU-X (based on Manga Editor Desu!) is a free, open-source manga and comic page editor that runs entirely in a web browser with no installation and no account. It provides 69 panel layout templates, 48 speech bubble styles, 156 bundled fonts, 31 decorative image-text styles, 8 pen brushes, 5 screentone generators, 15 image filters, 25 blend modes, layer management and per-page undo history. AI image generation is optional and runs through a backend the user supplies: ComfyUI, RunPod ComfyUI, SD WebUI (AUTOMATIC1111 or Forge), Fal.ai, Grok or Ollama.",
+      "applicationCategory": "DesignApplication",
+      "applicationSubCategory": "Manga and comic page editor",
+      "operatingSystem": "Any modern web browser (Windows, macOS, Linux, ChromeOS)",
+      "browserRequirements": "Requires JavaScript and HTML5 Canvas",
+      "inLanguage": ["en", "ja", "ko", "zh", "fr", "ru", "es", "de"],
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "license": "https://www.gnu.org/licenses/gpl-3.0",
+      "screenshot": "https://new-sankaku.github.io/manga-editor-desu/03_images/PagePreview/Git/Preview-mini.png",
+      "softwareHelp": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html",
+      "sameAs": ["https://github.com/new-sankaku/manga-editor-desu"],
+      "featureList": [
+        "69 panel layout templates (41 portrait, 28 landscape)",
+        "Knife tool for splitting panels along a drawn line",
+        "Random panel generation with adjustable tilt and variance",
+        "Multi-page projects with drag-to-reorder page thumbnails",
+        "48 speech bubble styles plus freehand and point-mode custom bubbles",
+        "Custom bubble merging via polygon boolean operations",
+        "Horizontal and vertical (tategaki) text",
+        "156 bundled fonts in four categories, plus user-uploaded fonts",
+        "31 decorative image-text styles",
+        "8 pen brushes including ink, crayon, pencil and mosaic",
+        "5 screentone generators: halftone, noise, snow, speed lines, focus lines",
+        "6 one-click monochrome conversions with page and project-wide batch apply",
+        "15 image filters and 25 blend modes",
+        "Layer management with visibility, locking, reordering and per-layer export",
+        "Unlimited undo and redo within a page",
+        "Project save as LZ4, PNG export at configurable DPI, SVG export",
+        "Auto-save with crash recovery",
+        "Optional AI image generation via ComfyUI, RunPod ComfyUI, SD WebUI, Forge, Fal.ai, Grok or Ollama",
+        "Per-task routing of AI work to different services",
+        "Inpainting editor and 3D camera angle regeneration",
+        "Language model features: story to panel prompts, image to prompt",
+        "Custom ComfyUI workflow import with inline node editing",
+        "Usage statistics dashboard with JSON and CSV export",
+        "Progressive web app installation and offline asset caching",
+        "Interface in 8 languages"
+      ]
+    }
+  ]
+}
+</script>
+
+</head>
+<!-- ========== Body ========== -->
+<body>
+
+    <!-- The editor is a canvas application, so the page has no visible heading of
+         its own. This one is for crawlers and screen readers; it is positioned
+         off-screen rather than hidden with display:none so assistive technology
+         still announces it. -->
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;">DESU-X (based on Manga Editor Desu!) — free browser-based manga editor with panel layouts, speech bubbles, vertical text, screen tones and optional AI image generation</h1>
+
+    <noscript>
+        <div style="max-width:52rem;margin:2rem auto;padding:1.5rem;font-family:system-ui,sans-serif;line-height:1.7;color:#e0e0e0;background:#1e1e1e;border:1px solid #333;border-radius:8px;">
+            <h2 style="margin-top:0;">JavaScript is required to run the editor</h2>
+            <p>DESU-X is a modified version of Manga Editor Desu!, a browser-based manga and comic page editor. It runs entirely on your own machine — there is no installation, no account and no server component — but the editing canvas itself needs JavaScript enabled.</p>
+            <p>It provides 69 panel layout templates, 48 speech bubble styles, 156 bundled fonts, 31 decorative image-text styles, 8 pen brushes, 5 screentone generators, 15 image filters, 25 blend modes, layer management and print-resolution export. AI image generation is optional and runs through a backend you configure yourself: ComfyUI, RunPod ComfyUI, SD WebUI (AUTOMATIC1111 or Forge), Fal.ai, Grok or Ollama.</p>
+            <p>You can read the full documentation without JavaScript:</p>
+            <ul>
+                <li><a href="html/docs/features.html" style="color:#9e7bff;">Feature reference</a> (<a href="html/docs/features-ja.html" style="color:#9e7bff;">日本語</a>) — every editing and AI feature in detail</li>
+                <li><a href="html/docs/faq.html" style="color:#9e7bff;">FAQ</a> (<a href="html/docs/faq-ja.html" style="color:#9e7bff;">日本語</a>) — installation, file formats, privacy, offline use</li>
+                <li><a href="html/docs/ai-setup.html" style="color:#9e7bff;">AI backend setup</a> (<a href="html/docs/ai-setup-ja.html" style="color:#9e7bff;">日本語</a>) — CORS flags, API keys, ComfyUI workflows</li>
+            </ul>
+            <p>Original tool (Manga Editor Desu!) source code and issue tracker: <a href="https://github.com/new-sankaku/manga-editor-desu" style="color:#9e7bff;">github.com/new-sankaku/manga-editor-desu</a> — free and open source under GPL-3.0.</p>
+        </div>
+    </noscript>
+
+    <div id="a" style="display:none"></div>
+<!-- ========== Boot Animation ========== -->
+    <script>
+
+
+const $ = (id) => document.getElementById(id);
+const $on = (element, event, callback) => element.addEventListener(event, callback);
+// function addEL(a, b, c, d = !1) { a.addEventListener(b, c, d) }
+
+        const e = $("a"), f = [
+"Initializing core system...","Sun network connection: Failed","Moon network connection: Successful","Authentication process: All green","CO2 emission reduction system: Started",
+"Layer launch: Completed","Canvas launch: Completed","Fabric.js launch: Completed","Effect function initialization: Completed",
+"Font download: Completed","Coordinate measurement: Normal","CSS launch: Normal","Script launch: Normal"
+        ];
+        function g() {
+            const a = document.createElement("div");
+            a.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;color:#fff;font-size:11px;display:flex;flex-direction:column;z-index:1000;";
+const b = `<svg viewBox="0 0 100 100" width="100%" height="100%" style="position:absolute;top:0;left:0;opacity:.2;">
+  <rect x="5" y="5" width="90" height="90" fill="none" stroke="#aaa" stroke-width="3"/>
+  <rect x="7" y="7" width="86" height="30" fill="none" stroke="#aaa" stroke-width="3"/>
+  <rect x="7" y="39" width="40" height="54" fill="none" stroke="#aaa" stroke-width="3"/>
+  <rect x="49" y="39" width="44" height="25" fill="none" stroke="#aaa" stroke-width="3"/>
+  <rect x="49" y="66" width="21" height="27" fill="none" stroke="#aaa" stroke-width="3"/>
+  <rect x="72" y="66" width="21" height="27" fill="none" stroke="#aaa" stroke-width="3"/>
+  <path d="M 7 37 L 93 37 M 47 39 L 47 93" stroke="#aaa" stroke-width="3" fill="none"/>
+</svg>`;
+            a.innerHTML = b;
+            const c = document.createElement("div");
+            c.style.cssText = "padding:20px;";
+            const d = document.createElement("div");
+            d.textContent = "DESU-X", d.style.cssText = "color:orange; font-size:220px;font-weight:700;", c.appendChild(d), a.appendChild(c);
+            const e = document.createElement("div");
+            e.id = "h", e.style.cssText = "flex-grow:1;padding:20px;", f.forEach(() => { const a = document.createElement("div"); a.style.cssText = "margin:8px 0;height:1em;opacity:.9;", e.appendChild(a) }), a.appendChild(e);
+            const g = `<svg width="100%" height="40" style="position:absolute;bottom:0;left:0;opacity:.5;"><defs><g id="i"><path d="M1 13L5 17L17 5L13 1L1 13Z M15 3L13 1L16 4M1 13L4 16" stroke="#aaa" stroke-width="1" fill="none"/></g><g id="j"><path d="M3 17L7 13L15 5L13 3L5 11L1 15L3 17Z M14 4L12 2L16 6" stroke="#aaa" stroke-width="1" fill="none"/></g><g id="k"><path d="M3 15C3 17 5 17 5 15C5 13 7 11 9 9C11 7 13 5 15 3M15 3L13 5M15 3L17 5" stroke="#aaa" stroke-width="1" fill="none"/></g></defs></svg>`, h = document.createElement("div");
+            h.style.cssText = "position:absolute;bottom:0;left:0;width:100%;height:40px;overflow:hidden;", h.innerHTML = g;
+            const l = 20, m = Math.ceil(window.innerWidth / l);
+            for (let a = 0; a < m; a++) { const b = document.createElementNS("http://www.w3.org/2000/svg", "use"); b.setAttributeNS(null, "href", `#${["i", "j", "k"][a % 3]}`), b.setAttributeNS(null, "x", a * l), b.setAttributeNS(null, "y", 10), h.querySelector("svg").appendChild(b) }
+            a.appendChild(h);
+            const p = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            p.setAttribute("width", "100"), p.setAttribute("height", "100"), p.style.cssText = "position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);";
+
+            const q = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            q.setAttribute("points", "50,10 90,30 90,70 50,90 10,70 10,30"), q.setAttribute("stroke", "#fff"), q.setAttribute("stroke-width", "2"), q.setAttribute("fill", "none");
+
+            const r = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            return r.setAttribute("points", "50,25 75,75 25,75"), r.setAttribute("stroke", "#fff"), r.setAttribute("stroke-width", "2"), r.setAttribute("fill", "none"), r.style.transformOrigin = "center", r.style.animation = "n 1s linear infinite", p.appendChild(q), p.appendChild(r), a.appendChild(p), document.body.appendChild(a), { page: a, hexagon: q, triangle: r }
+        }
+        function h(a, b) {
+            let c = 0;
+            function d() { c < b.length && (a.textContent += b[c], c++, setTimeout(d, 5 + 5 * Math.random())) }
+            d()
+        }
+        function i(a, b) { a.setAttribute("stroke", "#ffa500"), b.setAttribute("stroke", "#ffa500") }
+
+        function k() {
+            const { page: a, hexagon: b, triangle: c } = g(), d = a.querySelectorAll("#h div");
+            f.forEach((a, b) => h(d[b], a));
+            const o = Date.now();
+
+            window.addEventListener('load', function () {
+                const p = Date.now(), q = Math.max(0, 500 - (p - o));
+                setTimeout(() => {
+                    i(b, c);
+                    a.remove();
+                    l();
+                }, q);
+            });
+        }
+        function l() {
+            $('desu-nav').style.display = 'flex',
+            $('head-id').style.display = 'flex',
+            $('btm-drawer').style.display = 'block'
+            $('a').style.display = 'none'
+            initResizeCanvas();
+        }
+        function n() { k() }
+        n();
+
+
+
+
+
+
+// ========== Analytics ==========
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YWPRKY7WKV', {
+'cookie_domain': 'new-sankaku.github.io'
+});
+
+        function trackCustomEvent(eventCategory, eventAction, eventLabel, eventValue, additionalParams) {
+            gtag('event', eventAction, {
+                'event_category': eventCategory,
+                'event_label': eventLabel,
+                'value': eventValue,
+                ...additionalParams
+            });
+        }
+
+document.addEventListener('click', function (event) {
+    var element = event.target;
+    var elementId = element.id || 'no-id';
+    var elementClasses = getElementClasses(element);
+    var tagName = element.tagName.toLowerCase();
+    var textContent = (element.textContent || '').trim().substring(0, 10);
+    var clickX = event.clientX;
+    var clickY = event.clientY;
+    var pageUrl = window.location.href;
+    var parentTag = element.parentElement ? element.parentElement.tagName.toLowerCase() : 'no-parent';
+
+    trackCustomEvent(
+        'click_' + tagName,
+        elementId + ' | ' + elementClasses,
+        textContent,
+        1,
+        {
+            'click_x': clickX,
+            'click_y': clickY,
+            'page_url': pageUrl,
+            'parent_tag': parentTag
+        }
+    );
+});
+
+function getElementClasses(element) {
+    if (element.className && typeof element.className === 'string') {
+        return element.className.split(' ').join(', ');
+    } else if (element.classList && element.classList.length) {
+        return Array.from(element.classList).join(', ');
+    }
+    return 'no-class';
+}
+        window.addEventListener('scroll', function () {
+            var scrollDepth = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+            trackCustomEvent('scroll', 'page_scroll', 'Scroll Depth', scrollDepth, {});
+        });
+
+        window.addEventListener('load', function () {
+            trackCustomEvent('page_load', 'page_load', 'Page Load', 1, {});
+        });
+
+        window.addEventListener('beforeunload', function () {
+            trackCustomEvent('page_unload', 'page_unload', 'Page Unload', 1, {});
+        });
+    </script>
+<!-- ========== CSS Stylesheets ========== -->
+<link rel="stylesheet" href="css/core/main-component.css?v=7.2">
+<link rel="stylesheet" href="css/css2.css?v=7.2">
+<link rel="stylesheet" href="css/icon.css?v=7.2">
+<link rel="stylesheet" href="css/controls-mini.css?v=7.2">
+<link rel="stylesheet" href="css/common.css?v=7.2">
+<link rel="stylesheet" href="css/components.css?v=7.2">
+<link rel="stylesheet" href="css/layout.css?v=7.2">
+<link rel="stylesheet" href="css/image-control-manager.css?v=7.2">
+<!-- <link rel="stylesheet" href="css/anime.css?v=7.2"> -->
+<link rel="stylesheet" href="css/layout-layer.css?v=8.0">
+<link rel="stylesheet" href="css/toast.css?v=7.2">
+<link rel="stylesheet" href="css/ui/preset-panel.css?v=7.6">
+<link rel="stylesheet" href="css/ui/preset-picker.css?v=7.6">
+<link rel="stylesheet" href="css/ui/mode-change.css?v=7.2">
+<link rel="stylesheet" href="css/ui/object-menu.css?v=7.2">
+<link rel="stylesheet" href="css/ui/share.css?v=7.2" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/ui/floating-window.css?v=7.2">
+<link rel="stylesheet" href="css/ui/image-prompt-helper.css?v=7.2">
+<link rel="stylesheet" href="css/ui/llm-prompt.css?v=7.5">
+<link rel="stylesheet" href="css/ui/overlay-progress.css?v=7.2" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/ui/inpaint-editor.css?v=7.3" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/ui/angle-editor.css?v=7.3" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/ui/dashboard.css?v=7.3" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/no-ai.css">
+
+<link rel="stylesheet" href="third/tippy/tippy.css">
+<link rel="stylesheet" href="third/Bootstrup/bootstrap.min.css">
+<link rel="stylesheet" href="css/form.css?v=7.2">
+<link rel="stylesheet" href="css/all.min.css?v=7.2">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.3/css/flag-icons.min.css">
+<link rel="stylesheet" href="css/ui/blend.css?v=7.2" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/ui/bottom-bar.css?v=7.3">
+<link rel="stylesheet" href="css/ui/custom-html-components.css?v=7.2">
+<link rel="stylesheet" href="css/tagify.css?v=7.2" media="print" onload="this.media='all'">
+
+<link rel="stylesheet" href="css/ui/font-manager.css?v=7.2" media="print" onload="this.media='all'">
+
+<script src="third/stacktrace/stacktrace.min.js?v=7.2"></script>
+<script src="third/tagify/tagify.min.js?v=7.2"></script>
+<link href="third/tagify/tagify.min.css?v=7.2" rel="stylesheet" type="text/css" />
+<script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" defer></script>
+<script src="third/chartjs/chart.min.js?v=7.2" defer></script>
+<script src="third/wordcloud/wordcloud.min.js?v=7.2" defer></script>
+
+<link rel="stylesheet" href="css/comfyui-workflow-editor.css?v=7.2" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/responsive.css?v=7.3">
+
+    <div>
+
+
+<!-- ========== Navbar ========== -->
+        <nav id="desu-nav" class="navbar navbar-expand custom-navbar" style="display: none;">
+<span class="navbar-logo-text" id="navbar-logo">DESU-X<br><span class="navbar-logo-ver">v1</span></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFile" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span data-i18n="file">File</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownFile">
+                            <label data-i18n="fileProject"></label>
+                            <li>
+                                <a class="dropdown-item" href="#" id="projectSave">
+                                    <i class="material-icons">folder_zip</i>
+                                    <span data-i18n="projectSave">Project Save</span> (Ctrl+S)
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="projectLoad">
+                                    <i class="material-icons">folder_zip</i> <span data-i18n="projectLoad">Project
+                                        Load</span> (Ctrl+O)
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="qanimaFolderLoad">
+                                    <i class="material-icons">folder_open</i> <span>フォルダから読み込み（DESU-X JSON）</span>
+                                </a>
+                                <input type="file" id="qanimaFolderInput" webkitdirectory multiple style="display:none">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="qanimaExportJson">
+                                    <i class="material-icons">data_object</i> <span>DESU-X JSON で書き出し（JSONだけ）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="qanimaExportZip">
+                                    <i class="material-icons">folder_zip</i> <span>DESU-X JSON で書き出し（ZIP：画像込み）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="settingsSave">
+                                    <i class="material-icons">settings</i> <span data-i18n="settingsSave">Settings
+                                        Save</span> (Ctrl+Shift+S)
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="settingsReset" onclick="resetAllSettings()">
+                                    <i class="material-icons">restart_alt</i> <span data-i18n="settingsReset">Settings Reset</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="newPage" onclick="loadBookSize(canvas.width,canvas.height,true,true)">
+                                    <span class="material-symbols-outlined">note_add</span>
+                                    <span data-i18n="sc_newPage">New Page</span> (Alt+N)
+                                </a>
+                            </li>
+                            <label data-i18n="fileImage"></label>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="inputImageFile()">
+                                    <span class="material-symbols-outlined">image</span>
+                                    <span data-i18n="imageImport">画像インポート</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="imageDownload" onclick="cropAndDownload()">
+                                    <span class="material-symbols-outlined">imagesmode</span> <span
+                                        data-i18n="imageDownload">Image Download</span> (Ctrl+D)
+                                    <span class="output-pixel-size-value"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="imageCopy" onclick="clipCopy()">
+                                    <i class="material-icons">content_copy</i> <span data-i18n="imageCopy">Image
+                                        Copy</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="svgDownload">
+                                    <span class="material-symbols-outlined">polyline</span>
+                                    <span data-i18n="SvgDownload">Svg Download</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="confirmAllRemove()">
+                                    <i class="material-icons">delete</i> <span data-i18n="allRemove">All Remove</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <span data-i18n="settingsMenu">Settings</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <label data-i18n="20260214155000_001"></label>
+                            <li>
+                                <div style="padding:4px 10px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="autoSaveCheckbox" checked>
+                                        <span data-i18n="autoSave">Auto Save</span>
+                                    </label>
+                                    <input type="number" id="autoSaveInterval" value="60" min="10" max="600" style="width:50px;margin-left:8px;">
+                                    <span data-i18n="autoSaveSeconds">sec</span>
+                                    <div id="autoSaveLastSavedLabel" style="opacity:0.75;margin-top:2px;"></div>
+                                    <div data-i18n="autoSaveStorageNote" style="opacity:0.6;white-space:normal;max-width:22em;margin-top:2px;"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="padding:4px 10px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="settingsAutoSaveCheckbox" checked>
+                                        <span data-i18n="settingsAutoSave">設定値自動保存</span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="padding:4px 10px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="apiHeartbeatCheckbox" checked>
+                                        <span data-i18n="aiCheck">AI接続確認</span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownView" role="button"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <span data-i18n="viewMenu">表示</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownView">
+                            <label data-i18n="viewPanel"></label>
+                            <li>
+                                <div style="padding:2px 10px 2px 18px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="view_layers_checkbox" checked>
+                                        <i class="material-icons" style="font-size:16px;">layers</i>
+                                        <span data-i18n="view_Layer">レイヤー</span> (Ctrl+L)
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="padding:2px 10px 4px 18px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="view_controls_checkbox" checked>
+                                        <i class="material-icons" style="font-size:16px;">smart_toy</i>
+                                        <span data-i18n="view_AI">AI</span> (Ctrl+K)
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div style="padding:2px 10px 2px 18px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="view_prompt_checkbox">
+                                        <i class="material-icons" style="font-size:16px;">document_scanner</i>
+                                        <span data-i18n="promptView">Prompt View</span> (Ctrl+P)
+                                    </label>
+                                </div>
+                            </li>
+                            <label data-i18n="viewCanvasMarks"></label>
+                            <li>
+                                <div style="padding:2px 10px 4px 18px;white-space:nowrap;font-size:11px;">
+                                    <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+                                        <input type="checkbox" id="view_reference_marks_checkbox" onchange="referenceCanvasOverlay.setEnabled(this.checked)">
+                                        <i class="material-icons" style="font-size:16px;">photo_library</i>
+                                        <span data-i18n="viewReferenceMarks">コマの設定資料</span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPrompt" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span data-i18n="prompt">Prompt</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPrompt">
+                            <li>
+                                <a class="dropdown-item" onclick="openPromptChangeFloatingWindow()">
+                                    <i class="material-icons">manage_search</i> <span data-i18n="searchReplace">Search &
+                                        Replace</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" onclick="createImagePromptHelperFlotingWindow()">
+                                    <i class="material-icons">medical_information</i> <span
+                                        data-i18n="PromptHelper">Prompt Helper</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCanvas" role="button"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <span data-i18n="canvas">Canvas</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCanvas">
+                            <label data-i18n="canvasDisplay"></label>
+                            <a class="dropdown-item">
+                                <i class="material-icons">format_color_fill</i>
+                                <span data-i18n="canvasBG">Canvas BG</span>
+                                <input id="bg-color" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)" >
+                            </a>
+
+                            <a class="dropdown-item">
+                                <i class="material-icons">photo_size_select_large</i> <span
+                                    data-i18n="downloadDpi">Download Dpi</span>
+                                <input type="number" id="outputDpi" class="dropdown-item-mini-text" value="300" min="96"
+                                    step="1">
+                            </a>
+
+                            <a class="dropdown-item">
+                                <i class="material-icons">crop_free</i> <span
+                                    data-i18n="pageSizeMm">Page Size (mm)</span>
+                                <input type="number" id="pageWidthMm" class="dropdown-item-mini-text" value="148" min="1"
+                                    step="1">
+                                <input type="number" id="pageHeightMm" class="dropdown-item-mini-text" value="210"
+                                    min="1" step="1">
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="material-icons">aspect_ratio</i> <span
+                                    data-i18n="outputPixelSize">Output Size</span>
+                                <span class="output-pixel-size-value"></span>
+                            </a>
+                            <label data-i18n="canvasGrid"></label>
+                            <a class="dropdown-item" href="#" id="toggleGridButton">
+                                <i class="material-icons">grid_4x4</i>
+                                <span data-i18n="gridLine">Grid Line (Ctrl+G)</span>
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="material-icons">format_line_spacing</i> <span data-i18n="gridLineSize">Grid
+                                    Line Size</span>
+                                <input type="number" id="gridSizeInput" class="dropdown-item-mini-text" value="10"
+                                    min="1">
+                            </a>
+                            <label data-i18n="canvasLayout"></label>
+                            <a class="dropdown-item">
+                                <i class="material-icons">fit_screen</i> <span data-i18n="marginFromPanel">Margin From
+                                    Panel</span>
+                                <input type="number" id="marginFromPanel" class="dropdown-item-mini-text" value="20"
+                                    step="1" min="0" max="100">
+                            </a>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openDashboardModal();return false;">
+                            <span data-i18n="dashboard">Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguage" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="language" data-i18n="language" data-step="1" data-intro="">Language</span> <span id="languageFlag" class="flag-icon"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLanguage">
+                            <label data-i18n="languageSelect"></label>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('en', event)">
+                                <span class="flag-icon flag-icon-us"></span> <span data-i18n="english">English</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('ja', event)">
+                                <span class="flag-icon flag-icon-jp"></span>
+                                <span data-i18n="japanese">日本語</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('ko', event)">
+                                <span class="flag-icon flag-icon-kr"></span> <span data-i18n="korean">한국어</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('zh', event)">
+                                <span class="flag-icon flag-icon-cn"></span> <span data-i18n="chinese">中文</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('fr', event)">
+                                <span class="flag-icon flag-icon-fr"></span> <span data-i18n="french">Français</span>
+                            </a>
+
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('ru', event)">
+                                <span class="flag-icon flag-icon-ru"></span> <span data-i18n="russian">Русский</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('es', event)">
+                                <span class="flag-icon flag-icon-es"></span> <span data-i18n="spanish">Español</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('de', event)">
+                                <span class="flag-icon flag-icon-de"></span> <span data-i18n="german">Deutsch</span>
+                            </a>
+
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span data-i18n="help">Help</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownHelp">
+                            <label data-i18n="helpGuide"></label>
+                            <a id="Intro_Tutorial" class="dropdown-item" href="#" target="_blank">
+                                <i class="material-icons">volunteer_activism</i>
+                                <span data-i18n="Tutorial">Tutorial</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="openShortcutModal()" id="shortcutPage">
+                                <i class="material-icons">switch_access_shortcut</i>
+                                <span data-i18n="shortcutPage">Shortcut Page</span> (F1)
+                            </a>
+                            <a class="dropdown-item" href="html/functionList.html" target="_blank">
+                                <i class="material-icons">functions</i>
+                                <span data-i18n="functionList">Function List</span>
+                            </a>
+                            <a class="dropdown-item" href="html/docs/features.html" target="_blank">
+                                <i class="material-icons">menu_book</i>
+                                <span>Feature Reference</span>
+                            </a>
+                            <a class="dropdown-item" href="html/docs/faq.html" target="_blank">
+                                <i class="material-icons">help_center</i>
+                                <span>FAQ</span>
+                            </a>
+                            <a class="dropdown-item" href="html/docs/ai-setup.html" target="_blank">
+                                <i class="material-icons">settings_ethernet</i>
+                                <span>AI Backend Setup</span>
+                            </a>
+                            <label data-i18n="helpManual"></label>
+                            <a class="dropdown-item" href="html/Minual/custom-speechBubble.html" target="_blank">
+                                <i class="material-icons">reviews</i>
+                                <span>Custom Bubble</span>
+                            </a>
+                            <a class="dropdown-item" href="html/Minual/screen-tone.html" target="_blank">
+                                <i class="material-icons">blur_linear</i>
+                                <span>Screen Tone</span>
+                            </a>
+                            <a class="dropdown-item" href="html/Minual/effect.html" target="_blank">
+                                <i class="material-icons">filter_b_and_w</i>
+                                <span>Effect</span>
+                            </a>
+                            <a class="dropdown-item" href="html/API_Help/llm_settings.html" target="_blank">
+                                <i class="material-icons">smart_toy</i>
+                                <span>LLM (Grok / Ollama)</span>
+                            </a>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLinks" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="intro_links" data-i18n="links">Links</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLinks">
+                            <label data-i18n="linksTools"></label>
+                            <a class="dropdown-item" href="https://new-sankaku.github.io/manga-editor-desu/"
+                                target="_blank">
+                                <i class="material-icons">emoji_people</i>
+                                <span>元のツール MANGA EDITOR DESU!(Web)</span>
+                            </a>
+                            <a class="dropdown-item" href="https://new-sankaku.github.io/ImageTagSearcher/"
+                                target="_blank">
+                                <i class="material-icons">emoji_people</i>
+                                <span>Danbooru Tag Check</span>
+                            </a>
+
+                            <a class="dropdown-item" href="https://new-sankaku.github.io/desu-lz4-viewer/"
+                            target="_blank">
+                            <i class="material-icons">emoji_people</i>
+                            <span>Project File Viewer</span>
+                        </a>
+
+                            
+
+                            <label data-i18n="linksCommunity"></label>
+                            <a class="dropdown-item" href="https://discord.gg/zuU96TqNUb" target="_blank">
+                                <i class="fab fa-discord"></i>
+                                <span data-i18n="discord">Discord</span>
+                            </a>
+                            <a class="dropdown-item"
+                                href="https://github.com/new-sankaku/stable-diffusion-webui-simple-manga-maker"
+                                target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span data-i18n="github">GitHub</span>
+                            </a>
+
+                            <label data-i18n="20260214150000_000"></label>
+                            <a class="dropdown-item" href="html/PrivacyPolicy/i18n-privacy-dark-complete.html" target="_blank">
+                                <i class="material-icons">verified_user</i>
+                                <span>Privacy Policy</span>
+                            </a>
+                            <a class="dropdown-item" href="html/TermsOfService/terms-of-service.html" target="_blank">
+                                <i class="material-icons">verified_user</i>
+                                <span data-i18n="terms_of_service">Terms of Service</span>
+                            </a>
+                            <label data-i18n="Share"></label>
+                            <a class="dropdown-item" target="_blank" onclick="snsTweet()">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDonate" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span data-i18n="DevelopmentDonations"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownDonate">
+                            <a class="dropdown-item"
+                                href="https://github.com/sponsors/new-sankaku"
+                                target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub Sponsors</span>
+                            </a>
+                            <a class="dropdown-item"
+                                href="https://sankaku-desu.booth.pm/items/6399546"
+                                target="_blank">
+                                <span>[Japan] Booth</span>
+                            </a>
+                            <a class="dropdown-item"
+                                href="https://note.com/vivid_walrus6061/n/n40e38122c45b?from=notice"
+                                target="_blank">
+                                <span>[Japan] Note</span>
+                            </a>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+                <ul class="navbar-nav ms-auto d-flex align-items-center py-2">
+                    <li class="nav-item d-flex" >
+                     <button data-i18n="pwa_install" id="pwa-install-button" class="btn btn-outline-secondary me-2" style="margin-top: 5px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px;padding-right: 10px;"></button>
+                    </li>
+                    <li class="nav-item d-flex align-items-center my-2 d-none">
+                     <i class="fas fa-sun"></i>
+                     <label class="toggle-switchTermaMode mx-2">
+                      <input type="checkbox" id="mode-toggle">
+                      <span class="slider">
+                       <span class="mode-icons">
+                       </span>
+                      </span>
+                     </label>
+                     <i class="fas fa-moon"></i>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+<!-- ========== Sidebar ========== -->
+        <div id="head-id" style="display: none; flex-grow: 1;">
+            <div id="sidebar">
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="svg-container-template">
+                 <i class="material-icons" id="intro_svg-container-template">auto_awesome_mosaic</i>
+                 <span class="icon-label" data-i18n="side-label-template">ひな形</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="panel-manager-area">
+                 <i class="material-icons" id="intro_page-manager-area">dashboard_customize</i>
+                 <span class="icon-label" data-i18n="side-label-page-manager">ページ管理</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="auto-generate-area">
+                 <i class="material-icons" id="intro_auto-generate-area">smart_toy</i>
+                 <span class="icon-label" data-i18n="auto_generate">自動生成</span>
+                </div>
+                <hr>
+
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="prompt-manager-area">
+                 <i class="material-icons" id="intro_prompt-manager-area">assignment</i>
+                 <span class="icon-label" data-i18n="prompt">プロンプト</span>
+                 </div>
+                <hr>
+  
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="speech-bubble-area1">
+                 <i class="material-icons" id="intro_speech-bubble-area1">chat_bubble</i>
+                 <span class="icon-label" data-i18n="side-label-template-bubble">ひな形💭</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="speech-bubble-area2">
+                 <i class="material-icons" id="intro_speech-bubble-area2">reviews</i>
+                 <span class="icon-label" data-i18n="side-label-free-bubble">自由💭</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="text-area">
+                 <i class="material-icons" id="intro_text-area">text_format</i>
+                 <span class="icon-label" data-i18n="side-label-text">テキスト</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="text-area2">
+                 <i class="material-icons" id="intro_text-area2">text_increase</i>
+                 <span class="icon-label" data-i18n="side-label-image-text">画像テキスト</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="tool-area">
+                 <i class="material-icons" id="intro_tool-area">brush</i>
+                 <span class="icon-label" data-i18n="side-label-pen">ペン</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="manga-tone-area">
+                 <i class="material-icons" id="intro_manga-tone-area">blur_linear</i>
+                 <span class="icon-label" data-i18n="side-label-tone">トーン</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="manga-effect-area">
+                 <i class="material-icons" id="intro_manga-effect-area">filter_b_and_w</i>
+                 <span class="icon-label" data-i18n="side-label-effect">効果</span>
+                </div>
+                <hr>
+
+
+                
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="control-area">
+                 <i class="material-icons" id="intro_control-area">videogame_asset</i>
+                 <span class="icon-label" data-i18n="side-label-control">操作</span>
+                </div>
+                <hr>
+                <div class="icon-wrapper" data-action="toggleVisibility" data-target="shape-area">
+                 <i class="material-icons" id="intro_shape-area">interests</i>
+                 <span class="icon-label" data-i18n="side-label-shape">図形</span>
+                </div>
+               </div>
+
+<!-- ========== Panel: Template ========== -->
+            <div class="left_area" id="svg-container-template" style="display: none;">
+                <div class="area-header template-header">
+                    <span data-i18n="panelsTemplate">パネル</span>
+                    <label class="template-orientation-toggle">
+                        <input type="checkbox" id="template-orientation-toggle" onchange="switchTemplateOrientation()">
+                        <span class="template-toggle-label">
+                            <span class="template-toggle-v"><i class="material-icons">crop_portrait</i><span data-i18n="templateVertical">縦</span></span>
+                            <span class="template-toggle-sep">/</span>
+                            <span class="template-toggle-h"><i class="material-icons">crop_16_9</i><span data-i18n="templateHorizontal">横</span></span>
+                        </span>
+                    </label>
+                </div>
+                <div id="svg-preview-area-vertical"></div>
+                <div id="svg-preview-area-landscape" style="display:none;"></div>
+            </div>
+
+<!-- ========== Panel: Page Manager ========== -->
+            <div class="left_area" id="panel-manager-area" style="display: none;">
+                <div class="area-header" data-i18n="pageManager">Page Manager</div>
+                <div id="panel-manager-items">
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="sectionPageAdd"></div>
+                        <button id="page-portrait">
+                            <i class="material-icons">crop_portrait</i>
+                            <span data-i18n="pagePortrait">縦ページ</span>
+                        </button>
+                        <button id="page-landscape">
+                            <i class="material-icons">crop_landscape</i>
+                            <span data-i18n="pageLandscape">横ページ</span>
+                        </button>
+                        <button id="CustomPanelButton">
+                            <i class="material-icons">crop_landscape</i>
+                            <span data-i18n="customPanel">Custom Page</span>
+                        </button>
+                        <div class="input-group">
+                            <label for="customPanelSizeX" data-i18n="customPanelSizeX">Width</label>
+                            <input type="number" id="customPanelSizeX" name="customPanelSizeX" min="1" max="4096" step="1"
+                                value="1380">
+                        </div>
+                        <div class="input-group">
+                            <label for="customPanelSizeY" data-i18n="customPanelSizeY">Height</label>
+                            <input type="number" id="customPanelSizeY" name="customPanelSizeY" min="1" max="4096" step="1"
+                                value="4000">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="sectionPanelSplit"></div>
+                        <div class="input-group">
+                            <button id="knifeModeButton">
+                                <i class="material-icons">content_cut</i>
+                                <span data-i18n="knifeMode">Knife Mode: OFF</span>
+                            </button>
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="spaceSizeLabel">
+                            <input type="range" id="knifePanelSpaceSize" name="knifePanelSpaceSize" min="0" max="75" step="1" value="20">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="sectionPanelSettings"></div>
+                        <div class="input-group">
+                            <label for="panelStrokeColor" data-i18n="line">Line:</label>
+                            <input id="panelStrokeColor" class="jscolor-color-picker" data-initial-color="rgba(0,0,0,1)" oninput="changePanelStrokeColor(this.value)">
+                        </div>
+                        <div class="input-group">
+                            <label for="panelFillColor" data-i18n="fill">Fill:</label>
+                            <input id="panelFillColor" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)" oninput="changePanelFillColor(this.value)">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="lineWidth">
+                            <input type="range" id="panelStrokeWidth" name="panelStrokeWidth" min="0.1" max="10" step="0.1" value="2" oninput="changePanelStrokeWidth(this.value)">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="panelOpacity">
+                            <input type="range" id="panelOpacity" name="panelOpacity" min="0" max="100" step="1" value="100" oninput="changePanelOpacity(this.value)">
+                        </div>
+                        <button id="add" onclick="panelAllChange()"><i class="material-icons">border_all</i> <span
+                                data-i18n="all_change">All Change</span></button>
+                        <button id="edit" onclick="Edit()"><i class="material-icons">edit_square</i> <span
+                                data-i18n="editModeOn">Panel Edit Mode ON</span></button>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="sectionShapeAdd"></div>
+                        <button id="addSquare" onclick="addSquare()">
+                            <i class="material-icons">add_box</i>
+                            <span data-i18n="square">Square</span>
+                        </button>
+                        <button id="addTallRect" onclick="addTallRect()">
+                            <i class="material-icons">vertical_split</i>
+                            <span data-i18n="tallRect">Tall Rectangle</span>
+                        </button>
+                        <button id="addWideRect" onclick="addWideRect()">
+                            <i class="material-icons">horizontal_split</i>
+                            <span data-i18n="wideRect">Wide Rectangle</span>
+                        </button>
+                        <button id="addTriangle" onclick="addTriangle()">
+                            <i class="material-icons">change_history</i>
+                            <span data-i18n="triangle">Triangle</span>
+                        </button>
+                        <button id="addPentagon" onclick="addPentagon()">
+                            <i class="material-icons">pentagon</i>
+                            <span data-i18n="pentagon">Pentagon</span>
+                        </button>
+                        <button id="addHexagon" onclick="addHexagon()">
+                            <i class="material-icons">hexagon</i>
+                            <span data-i18n="hexagon">Hexagon</span>
+                        </button>
+                        <button id="addStar" onclick="addStar()">
+                            <i class="material-icons">star</i>
+                            <span data-i18n="star">Star</span>
+                        </button>
+                        <button id="addHeart" onclick="addHeart()">
+                            <i class="material-icons">favorite</i>
+                            <span data-i18n="heartShape">Heart</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== Panel: Auto Generate ========== -->
+            <div class="left_area" id="auto-generate-area" style="display: none;">
+                <div class="area-header" data-i18n="auto_generate">Auto Generate</div>
+                <div class="prompt-manager-items">
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secMultiPage"></div>
+                        <div class="input-group">
+                            <button id="multiPageGenerate">
+                                <span data-i18n="multiPageGenerate">Multi Page Generate</span>
+                            </button>
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="pageCount">
+                            <input type="range" id="pageCount" name="pageCount" min="2" max="50" step="1" value="18">
+                        </div>
+                        <div class="input-group-multi" data-group="multiPageType">
+                            <button id="mPortraitButton" data-value="mPortrait" onclick="changeSelected(this)" class="selected" >
+                                <i class="material-icons">crop_portrait</i><span data-i18n="pagePortrait">縦ページ</span>
+                            </button>
+                            <button id="mLandscapeButton" data-value="mLandscape" onclick="changeSelected(this)">
+                                <i class="material-icons">crop_landscape</i><span data-i18n="pageLandscape">横ページ</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secRandomCut"></div>
+                        <div class="input-group">
+                            <button id="panelRandomCutButton">
+                                <span data-i18n="panelRandamCut">Random Cut</span>
+                            </button>
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="verticalRandomPanelCount">
+                            <input type="range" id="verticalRandomPanelCount" name="verticalRandomPanelCount" min="0" max="5" step="1" value="2">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="horizontalRandamPanelCount">
+                            <input type="range" id="horizontalRandomPanelCount" name="horizontalRandomPanelCount" min="0" max="5" step="1" value="3">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="tiltRandam">
+                            <input type="range" id="tiltRandom" name="tiltRandom" min="0" max="50" step="1" value="6">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="cutChangeRate">
+                            <input type="range" id="cutChangeRate" name="cutChangeRate" min="0" max="45" step="1" value="10">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secAutoPrompt"></div>
+                        <div class="input-group">
+                            <label data-i18n="scenario"></label>
+                        </div>
+                        <div class="input-group">
+                            <select id="ScenarioPromptSelecter"></select>
+                        </div>
+                        <button id="" onclick="autoMultiPromptSet()">
+                            <i class="material-icons">generating_tokens</i>
+                            <span data-i18n="promptMultiAutoGenerate">Multi Prompt Generate</span>
+                        </button>
+                        <button id="" onclick="openLLMStoryboardWindow()">
+                            <i class="material-icons">smart_toy</i>
+                            <span data-i18n="llmStoryboardButton">Storyboard from Text</span>
+                        </button>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secBatchGenerate"></div>
+                        <div class="input-container-leftSpace" data-i18n-label="onePanelGenerateNumber">
+                            <input type="range" id="onePanelGenerateNumber" name="onePanelGenerateNumber" min="1" max="10" step="1" value="1">
+                        </div>
+                        <button id="" onclick="autoMultiGenerate()">
+                            <i class="material-icons">all_inbox</i>
+                            <span data-i18n="pageMultiAutoGenerate">Multi Page Generate</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!-- ========== Panel: Prompt Manager ========== -->
+<div class="left_area preset-panel" id="prompt-manager-area" style="display: none;">
+    <div class="area-header preset-panel-header">
+        <span class="pp-title" data-i18n="prompt"></span>
+    </div>
+
+    <div class="preset-panel-body">
+
+        <!-- ストーリーからコマのプロンプトを作る。作る範囲はこのグループの内側だけに効く -->
+        <div class="preset-group-header">
+            <span data-i18n="storyPromptGroup">Story to prompts</span>
+            <span class="preset-group-hint" data-i18n="storyPromptGroupHint">LLM</span>
+        </div>
+        <div class="preset-section">
+            <label class="effect-scope-label" data-i18n="storyApplyScope">Create for</label>
+            <div class="input-group-multi effect-scope-group" data-group="storyApplyScope">
+                <button id="storyScopeSelectedButton" data-value="selected" class="selected" onclick="changeSelected(this)">
+                    <span data-i18n="storyScopeSelectedShort">Panel</span>
+                </button>
+                <button id="storyScopePageButton" data-value="page" onclick="changeSelected(this)">
+                    <span data-i18n="storyScopePageShort">Page</span>
+                </button>
+                <button id="storyScopeAllPagesButton" data-value="allPages" onclick="changeSelected(this)">
+                    <span data-i18n="storyScopeAllPagesShort">All</span>
+                </button>
+            </div>
+
+            <label class="preset-field-label" for="storyPromptInput" data-i18n="storyInputLabel">Story</label>
+            <textarea class="preset-field-input" id="storyPromptInput" rows="5"></textarea>
+
+            <!-- 1行のあらすじをそのままページへ配ると各ページが空になる。
+                 先にページ数に見合う量まで膨らませる -->
+            <button class="preset-sub-button" id="storyExpandButton" data-action="llmStoryExpand">
+                <i class="material-icons">auto_stories</i>
+                <span data-i18n="storyExpand">Fit to page count</span>
+            </button>
+
+            <!-- 各コマで同じ外見タグを使い回すためのキャラ表。空でも動く -->
+            <label class="preset-field-label" for="storyCharacterInput" data-i18n="storyCharacterLabel">Characters</label>
+            <textarea class="preset-field-input" id="storyCharacterInput" rows="3"></textarea>
+
+            <!-- 同じ場所のコマで同じ背景タグを使い回すためのロケーション表。空でも動く -->
+            <label class="preset-field-label" for="storyLocationInput" data-i18n="storyLocationLabel">Locations</label>
+            <textarea class="preset-field-input" id="storyLocationInput" rows="3"></textarea>
+
+            <button class="preset-sub-button" id="storySheetButton" data-action="llmStoryExtractSheets">
+                <i class="material-icons">person_search</i>
+                <span data-i18n="storyCharacterExtract">Extract from story</span>
+            </button>
+
+            <!-- 画風はLLMに毎回書かせると揺れるので、書き込む側で足す -->
+            <label class="preset-field-label" for="storyArtStyle" data-i18n="storyArtStyleLabel">Art style</label>
+            <select class="preset-field-input" id="storyArtStyle">
+                <option value="none" data-i18n="storyArtStyleNone">Do not add</option>
+                <option value="screentone" data-i18n="storyArtStyleScreentone">Monochrome + screentone</option>
+                <option value="lineart" data-i18n="storyArtStyleLineart">Monochrome line art</option>
+            </select>
+
+            <!-- 作品傾向。タグではなくLLMへ渡す指示文。どのコマを寄りにして
+                 どのコマを引きにするかはLLMが判断する -->
+            <label class="preset-field-label" for="storyComposition" data-i18n="storyToneLabel">Kind of manga</label>
+            <select class="preset-field-input" id="storyComposition">
+                <option value="general" data-i18n="storyToneGeneral">General</option>
+                <option value="seinen" data-i18n="storyToneSeinen">Seinen</option>
+                <option value="shonen" data-i18n="storyToneShonen">Shonen</option>
+                <option value="shojo" data-i18n="storyToneShojo">Shojo</option>
+                <option value="adult" data-i18n="storyToneAdult">Adult</option>
+                <option value="none" data-i18n="storyToneNone">Do not tell</option>
+            </select>
+
+            <details class="preset-details">
+                <summary data-i18n="storyToneDetail">Edit what the LLM is told</summary>
+                <div class="preset-details-hint" data-i18n="storyToneHint"></div>
+                <textarea class="preset-field-input" id="storyToneGuidance" rows="5"></textarea>
+                <button class="preset-sub-button" data-action="llmStoryToneReset">
+                    <i class="material-icons">restart_alt</i>
+                    <span data-i18n="storyToneReset">Reset to preset</span>
+                </button>
+
+                <!-- 見切れは後から直せないので常にネガティブへ入れる。
+                     意図して切りたいときは生成後に画像をコマの枠へ接させる -->
+                <label class="preset-field-label" for="storyFrameNegative" data-i18n="storyFrameNegativeLabel">Always negative</label>
+                <div class="preset-details-hint" data-i18n="storyFrameNegativeHint"></div>
+                <textarea class="preset-field-input" id="storyFrameNegative" rows="4"></textarea>
+                <button class="preset-sub-button" data-action="llmStoryFrameNegativeReset">
+                    <i class="material-icons">restart_alt</i>
+                    <span data-i18n="storyToneReset">Reset to preset</span>
+                </button>
+            </details>
+
+            <!-- コマの形と生成解像度が繋がっていないと、横長コマに引きの絵を頼んでも
+                 正方形で生成して嵌める段で上下が切られ、結局バストアップに見える -->
+            <label class="preset-check">
+                <input type="checkbox" id="storyPanelSizeFromShape">
+                <span data-i18n="storyPanelSize">Match size to panel shape</span>
+            </label>
+
+            <label class="preset-check">
+                <input type="checkbox" id="storyRightToLeft" checked>
+                <span data-i18n="llmStoryboardRightToLeft">Read right to left</span>
+            </label>
+
+            <button class="preset-apply-button" id="storyGenerateButton" data-action="llmStoryGenerate">
+                <i class="material-icons">auto_awesome</i>
+                <span data-i18n="storyGenerate">Create prompts</span>
+            </button>
+            <div class="preset-status" id="storyPromptStatus"></div>
+        </div>
+
+        <div class="preset-group-header">
+            <span data-i18n="promptToolsGroup">Tools</span>
+        </div>
+        <div class="prompt-manager-items">
+            <div class="input-group">
+                <button onclick="createImagePromptHelperFlotingWindow()">
+                    <span data-i18n="prompt_gallery">Prompt Gallery</span>
+                </button>
+            </div>
+        </div>
+    </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== Panel: Speech Bubble Template ========== -->
+            <div class="left_area" id="speech-bubble-area1" style="display: none;">
+                <div class="area-header" data-i18n="bubble">Bubble</div>
+                <div id="speech-bubble-svg-preview-area1">
+                    <div class="input-group">
+                        <label data-i18n="line">Line</label>
+                        <input id="bubbleStrokeColor" class="jscolor-color-picker" data-initial-color="rgba(0,0,0,1)" oninput="changeSpeechBubble()">
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="background">Background</label>
+                        <input id="bubbleFillColor" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)"  oninput="changeSpeechBubble()">
+                    </div>
+
+                    <div class="input-container-leftSpace" data-i18n-label="opacity">
+                        <input type="range" id="speechBubbleOpacity" name="speechBubbleOpacity" min="0" max="100" step="1" value="100" oninput="changeSpeechBubble()">
+                    </div>
+                    <div class="input-container-leftSpace" data-i18n-label="svg_icon_line_width">
+                        <input type="range" id="bubbleStrokewidht" name="stroke" min="0" max="40" step="0.1" value="4.0" oninput="changeSpeechBubble()">
+                    </div>
+
+                    <div class="input-group-multi" data-group="sbTextGroup">
+                        <button id="sbNothingText" onclick="sbTextChange('Nothing', this)" data-value="Nothing" data-tip="tipBubbleTextNone">
+                            <i class="material-icons">do_not_disturb</i>
+                            <i class="material-icons">text_fields</i>
+                        </button>
+                        <button id="sbHorizontalText" onclick="sbTextChange('Horizontal', this)" data-value="Horizontal" data-tip="tipBubbleTextHorizontal">
+                            <i class="material-icons">east</i>
+                            <i class="material-icons">text_fields</i>
+                        </button>
+                        <button id="sbVerticalText" onclick="sbTextChange('Vertical', this)" class="selected" data-value="Vertical" data-tip="tipBubbleTextVertical">
+                            <i class="material-icons">south</i>
+                            <i class="material-icons">text_fields</i>
+                        </button>
+                    </div>
+
+                    <label style="display: none;">Line Size</label>
+                    <input style="display: none;" type="range" id="speechBubbleLineSizeSlider" min="1" max="10" value="3">
+                    <hr>
+                </div>
+                <div id="speech-bubble-preview">
+
+                </div>
+            </div>
+
+<!-- ========== Panel: Custom Speech Bubble ========== -->
+            <div class="left_area" id="speech-bubble-area2" style="display: none;">
+                <div class="area-header">
+                    <a href="html/Minual/custom-speechBubble.html" target="_blank" data-i18n="custom_bubble">
+                        Custom Bubble (Help)
+                    </a>
+                </div>
+                <div id="speech-bubble-svg-preview-area2">
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secDrawMode"></div>
+                        <div class="input-group">
+                            <button id="sbSelectButton" data-i18n="sbSelectmode">Select Mode</button>
+                            <button id="sbPointButton" data-i18n="sbPointMode">Point Mode</button>
+                            <button id="sbFreehandButton" data-i18n="sbFreehandMode">Free Hand</button>
+                            <button id="sbMoveButton" data-i18n="sbMoveMode">Move Point</button>
+                            <button id="sbDeleteButton" data-i18n="sbDeleteMode">Delete Point</button>
+                        </div>
+                        <div class="input-group-multi" data-group="sbFreehandTextGroup">
+                            <button id="sbFreehandNothingText" onclick="sbFreehandTextChange('Nothing', this)" data-tip="tipBubbleTextNone" data-value="Nothing">
+                                <i class="material-icons">do_not_disturb</i>
+                                <i class="material-icons">text_fields</i>
+                            </button>
+                            <button id="sbFreehandHorizontalText" onclick="sbFreehandTextChange('Horizontal', this)" data-tip="tipBubbleTextHorizontal" class="selected" data-value="Horizontal">
+                                <i class="material-icons">east</i>
+                                <i class="material-icons">text_fields</i>
+                            </button>
+                            <button id="sbFreehandVerticalText" onclick="sbFreehandTextChange('Vertical', this)" data-tip="tipBubbleTextVertical" data-value="Vertical">
+                                <i class="material-icons">south</i>
+                                <i class="material-icons">text_fields</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secBubbleStyle"></div>
+                        <div class="input-group">
+                            <label for="sbStrokeColor" data-i18n="line">Line</label>
+                            <input id="sbStrokeColor" class="jscolor-color-picker" data-initial-color="rgba(0,0,0,1)" oninput="applySpeechBubbleStyleFromSidebar()">
+                        </div>
+                        <div class="input-group">
+                            <label for="sbFillColor" data-i18n="fill">Fill</label>
+                            <input id="sbFillColor" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)" oninput="applySpeechBubbleStyleFromSidebar()">
+                        </div>
+                        <div class="input-group">
+                            <label for="sbSmoothing" data-i18n="smooth">Smooth</label>
+                            <input type="checkbox" id="sbSmoothing" checked>
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="lineWidth">
+                            <input type="range" id="sbStrokeWidth" min="1" max="20" value="1" step="0.1" oninput="applySpeechBubbleStyleFromSidebar()">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="pointSpace">
+                            <input type="range" id="sbPointSpace" min="0" max="100" value="4">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="panelOpacity">
+                            <input type="range" id="sbFillOpacity" min="0" max="100" value="100" oninput="applySpeechBubbleStyleFromSidebar()">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="cornerRadius">
+                            <input type="range" id="sbSornerRadius" min="0" max="15" value="2">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secLinePreset"></div>
+                        <button id="sb_aButton" onclick="switchSBLine('sb_a')" data-tip-name="A" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/a.png" alt="Speech bubble outline style A">
+                        </button>
+                        <button id="sb_bButton" onclick="switchSBLine('sb_b')" data-tip-name="B" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/b.png" alt="Speech bubble outline style B">
+                        </button>
+                        <button id="sb_cButton" onclick="switchSBLine('sb_c')" data-tip-name="C" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/c.png" alt="Speech bubble outline style C">
+                        </button>
+                        <button id="sb_dButton" onclick="switchSBLine('sb_d')" data-tip-name="D" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/d.png" alt="Speech bubble outline style D">
+                        </button>
+                        <button id="sb_eButton" onclick="switchSBLine('sb_e')" data-tip-name="E" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/e.png" alt="Speech bubble outline style E">
+                        </button>
+                        <button id="sb_fButton" onclick="switchSBLine('sb_f')" data-tip-name="F" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/f.png" alt="Speech bubble outline style F">
+                        </button>
+                        <button id="sb_gButton" onclick="switchSBLine('sb_g')" data-tip-name="G" data-tip="tipLineStyle">
+                            <img src="03_images/preset/line/g.png" alt="Speech bubble outline style G">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+<!-- ========== Panel: Text ========== -->
+            <div class="left_area" id="text-area" style="display: none;">
+                <div class="area-header" data-i18n="text">Text</div>
+                <div id="text-preview-area">
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secTextAdd"></div>
+                        <button onclick="createTextbox()">
+                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">east</i>
+                            <span data-i18n="HorizontalText"></span>
+                        </button>
+                        <button id="verticalText">
+                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">south</i>
+                            <span data-i18n="VerticalText"></span>
+                        </button>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secTextDecor"></div>
+                        <div class="preset-current-hint" data-i18n="textDecorCardTarget"></div>
+                        <button class="preset-current" id="textDecorPresetCurrent" data-action="openPresetPicker" data-preset-kind="textDecor" data-tip="textDecorCardHint">
+                            <span class="preset-current-row">
+                                <span class="preset-current-name" data-i18n="presetNotSelected"></span>
+                                <span class="preset-current-swap">
+                                    <i class="material-icons">unfold_more</i>
+                                    <span data-i18n="presetChange"></span>
+                                </span>
+                            </span>
+                            <img class="preset-current-thumb" alt="" hidden>
+                        </button>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secFontSettings"></div>
+                        <div class="input-group">
+                            <div id="fontSelector"></div>
+                        </div>
+                        <div class="input-group-multi" data-group="bold_group">
+                            <button id="bold-toggle-btn" onclick="toggleBoldWithUI(this)">
+                                <i class="material-icons">format_bold</i>
+                                <span data-i18n="bold">Bold</span>
+                            </button>
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="textColor">Text</label>
+                            <input id="textColorPicker" class="jscolor-color-picker" data-initial-color="rgba(0,0,0,1)" oninput="changeTextColor(this.value)">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="outlineColor">Outline</label>
+                            <input id="textOutlineColorPicker" class="jscolor-color-picker" data-initial-color="rgba(0,0,0,1)" oninput="changeOutlineTextColor(this.value)">
+                        </div>
+                        <div class="input-group">
+                            <label data-i18n="com-bgColor">Background</label>
+                            <input id="textBgColorPicker" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)" oninput="changeTextBgColor(this.value)">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="fontSize">
+                            <input type="range" id="fontSizeSlider" min="7" max="150" value="14" oninput="changeFontSize(this.value)">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="outlineSize">
+                            <input type="range" id="fontStrokeWidthSlider" min="0" max="30" step="1" value="0" oninput="changeStrokeWidthSize(this.value)">
+                        </div>
+                        <div class="input-group-multi" data-group="align_group">
+                            <button id="align-left" data-value="left" class="selected" onclick="alignText('left', this)" data-tip="tipAlignLeft">
+                                <i class="material-icons">format_align_left</i>
+                            </button>
+                            <button id="align-center" data-value="center" onclick="alignText('center', this)" data-tip="tipAlignCenter">
+                                <i class="material-icons">format_align_center</i>
+                            </button>
+                            <button id="align-right" data-value="right" onclick="alignText('right', this)" data-tip="tipAlignRight">
+                                <i class="material-icons">format_align_right</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secFontAdd"></div>
+                        <div class="input-group">
+                            <button onclick="fontManager.openUserFontManager()" data-i18n="add_font">add font</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<!-- ========== Panel: Image Text ========== -->
+            <div class="left_area preset-panel" id="text-area2" style="display: none;">
+                <div class="area-header preset-panel-header">
+                    <span class="pp-title" data-i18n="side-label-image-text">Image Text</span>
+                </div>
+
+                <button class="preset-current" id="imageTextPresetCurrent" data-action="openPresetPicker" data-preset-kind="text2" data-tip="presetCurrentHintCreate">
+                    <span class="preset-current-row">
+                        <span class="preset-current-name" data-i18n="presetNotSelected"></span>
+                        <span class="preset-current-swap">
+                            <i class="material-icons">unfold_more</i>
+                            <span data-i18n="presetChange"></span>
+                        </span>
+                    </span>
+                    <img class="preset-current-thumb" alt="" hidden>
+                </button>
+
+                <!-- フォントは種類を変えても引き継ぐ設定。#text-area2-settings は
+                     switchText2Ui() が丸ごと差し替えるため、その外側に置いて作り直しを避ける -->
+                <div class="preset-panel-font" id="fontT2Selector"></div>
+
+                <div class="preset-panel-body" id="text-area2-settings"></div>
+
+                <!-- 種類を選ぶだけでは増やさない。キャンバスに増えるのはこの操作だけ -->
+                <button class="preset-panel-foot" id="imageTextInsertButton" data-action="insertImageText">
+                    <i class="material-icons">add</i>
+                    <span data-i18n="imageTextInsert"></span>
+                </button>
+            </div>
+
+
+
+
+
+<!-- ========== Panel: Manga Effect ========== -->
+            <div class="left_area preset-panel" id="manga-effect-area" style="display: none;">
+                <div class="area-header preset-panel-header">
+                    <span class="pp-title" data-i18n="side-label-effect">効果</span>
+                    <a class="pp-help" href="html/Minual/effect.html" target="_blank" data-tip="help">
+                        <i class="material-icons">help_outline</i>
+                    </a>
+                </div>
+
+                <div class="preset-panel-body">
+
+                    <!-- 変換：適用範囲に従う。範囲の選択はこのグループの内側に置き、
+                         下の「1枚ずつ調整」には掛からないことを見た目で示す -->
+                    <div class="preset-group-header">
+                        <span data-i18n="effectGroupConvert">変換</span>
+                        <span class="preset-group-hint" data-i18n="effectGroupConvertHint">押すと即適用</span>
+                    </div>
+                    <div class="preset-section">
+                        <label class="effect-scope-label" data-i18n="effectApplyScope">Apply to</label>
+                        <div class="input-group-multi effect-scope-group" data-group="effectApplyScope">
+                            <button id="effectScopeSelectedButton" data-value="selected" class="selected" onclick="changeSelected(this)">
+                                <span data-i18n="effectScopeSelectedShort">Selected</span>
+                            </button>
+                            <button id="effectScopePageButton" data-value="page" onclick="changeSelected(this)">
+                                <span data-i18n="effectScopePageShort">Page</span>
+                            </button>
+                            <button id="effectScopeAllPagesButton" data-value="allPages" onclick="changeSelected(this)">
+                                <span data-i18n="effectScopeAllPagesShort">All</span>
+                            </button>
+                        </div>
+
+                        <div class="preset-list" id="manga-effect-buttons">
+                            <button class="preset-item" id="Color2BlackWhiteLightButton" onclick="switchMangaEffect('Color2BlackWhiteLight')">
+                                <span class="preset-item-name" data-i18n="Color2BlackWhiteLight">Color2BlackWhiteLight</span>
+                                <img class="preset-item-thumb" src="03_images/preset/effect/color2monoLight.webp" alt="">
+                            </button>
+                            <button class="preset-item" id="Color2BlackWhiteDarkButton" onclick="switchMangaEffect('Color2BlackWhiteDark')">
+                                <span class="preset-item-name" data-i18n="Color2BlackWhiteDark">Color2BlackWhiteDark</span>
+                                <img class="preset-item-thumb" src="03_images/preset/effect/color2monoDark.webp" alt="">
+                            </button>
+                            <button class="preset-item" id="Color2BlackWhiteNoDotButton" onclick="switchMangaEffect('Color2BlackWhiteRough')">
+                                <span class="preset-item-name" data-i18n="Color2BlackWhiteRough">Color2BlackWhiteRough</span>
+                                <img class="preset-item-thumb" src="03_images/preset/effect/color2monoRough.webp" alt="">
+                            </button>
+                            <button class="preset-item" id="Color2BlackWhiteSimpleButton" onclick="switchMangaEffect('Color2BlackWhiteSimple')">
+                                <span class="preset-item-name" data-i18n="Color2BlackWhiteSimple">Color2BlackWhiteSimple</span>
+                                <img class="preset-item-thumb" src="03_images/preset/effect/color2monoSimple.webp" alt="">
+                            </button>
+                            <button class="preset-item" id="Color2BlackLightColorButton" onclick="switchMangaEffect('Color2BlackLightColor')">
+                                <span class="preset-item-name" data-i18n="Color2BlackLightColor">Color2BlackLightColor</span>
+                                <img class="preset-item-thumb" src="03_images/preset/effect/Color2BlackLightColor.webp" alt="">
+                            </button>
+                            <!-- 一括型で唯一パラメータを持つ。設定を出してからSubmitで確定する -->
+                            <button class="preset-item" id="EnhanceDarkButton" onclick="switchMangaEffect('EnhanceDark')">
+                                <span class="preset-item-name">
+                                    <span data-i18n="EnhanceDark">EnhanceDark</span>
+                                    <i class="material-icons preset-item-mark" data-tip="effectMarkParam">tune</i>
+                                </span>
+                                <img class="preset-item-thumb" src="03_images/preset/effect/enhanceDark.webp" alt="">
+                            </button>
+                        </div>
+
+                        <!-- 退避は全ページ適用のときだけ作られる。バックアップが無い間は
+                             effectRefreshRestoreButton()がdisabledにし、CSSで非表示になる -->
+                        <button class="effect-restore-button" id="effectRestoreBatchButton" data-action="effectRestoreBatchBackup" disabled>
+                            <i class="material-icons">restore</i>
+                            <span data-i18n="effectRestoreBatch">Undo batch apply</span>
+                        </button>
+                    </div>
+
+                    <div class="preset-group-header">
+                        <span data-i18n="effectGroupAdjust">1枚ずつ調整</span>
+                        <span class="preset-group-hint" data-i18n="effectGroupAdjustHint">選択中の1枚のみ</span>
+                    </div>
+                    <div class="preset-list">
+                        <button class="preset-item" id="EffectGlowButton" onclick="switchMangaEffect('EffectGlow')">
+                            <span class="preset-item-name">
+                                <span data-i18n="Glow"></span>
+                                <i class="material-icons preset-item-mark" data-tip="effectMarkPreview">visibility</i>
+                            </span>
+                            <img class="preset-item-thumb" src="03_images/preset/effect/glow.webp" alt="">
+                        </button>
+                        <button class="preset-item" id="EffectGLFXButton" onclick="switchMangaEffect('EffectGLFX')">
+                            <span class="preset-item-name">
+                                <span data-i18n="GLFX"></span>
+                                <i class="material-icons preset-item-mark" data-tip="effectMarkPreview">visibility</i>
+                            </span>
+                            <img class="preset-item-thumb" src="03_images/preset/effect/glfx.webp" alt="">
+                        </button>
+                        <button class="preset-item" id="blendButton" onclick="switchMangaEffect('EffectBlend')">
+                            <span class="preset-item-name">
+                                <span data-i18n="25blends"></span>
+                                <i class="material-icons preset-item-mark" data-tip="effectMarkDialog">open_in_new</i>
+                            </span>
+                            <img class="preset-item-thumb" src="03_images/preset/effect/25_blend.webp" alt="">
+                        </button>
+                    </div>
+
+                    <!-- 選んだ効果の設定。一覧を消さず、この下に出す -->
+                    <div id="manga-effect-settings"></div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+<!-- ========== Panel: Pen Tools ========== -->
+            <div class="left_area preset-panel" id="tool-area" style="display: none;">
+                <div class="area-header preset-panel-header">
+                    <span class="pp-title" data-i18n="side-label-pen">Pen</span>
+                </div>
+
+                <!-- 8種の一覧は押したときだけピッカーに出す。パネルには今のペンだけを置き、
+                     残り全部を設定に使う -->
+                <button class="preset-current" id="penPresetCurrent" data-action="openPresetPicker" data-preset-kind="pen" data-tip="presetCurrentHintToggle">
+                    <span class="preset-current-row">
+                        <span class="preset-current-name" data-i18n="presetNotSelected"></span>
+                        <span class="preset-current-swap">
+                            <i class="material-icons">unfold_more</i>
+                            <span data-i18n="presetChange"></span>
+                        </span>
+                    </span>
+                    <img class="preset-current-thumb" alt="" hidden>
+                </button>
+
+                <div class="preset-panel-body" id="tool-settings"></div>
+            </div>
+
+
+
+
+
+<!-- ========== Panel: Manga Tone ========== -->
+            <div class="left_area preset-panel" id="manga-tone-area" style="display: none;">
+                <div class="area-header preset-panel-header">
+                    <span class="pp-title" data-i18n="side-label-tone">Screen Tone</span>
+                    <a class="pp-help" href="html/Minual/screen-tone.html" target="_blank" data-tip="help">
+                        <i class="material-icons">help_outline</i>
+                    </a>
+                </div>
+
+                <button class="preset-current" id="tonePresetCurrent" data-action="openPresetPicker" data-preset-kind="tone" data-tip="presetCurrentHintToggle">
+                    <span class="preset-current-row">
+                        <span class="preset-current-name" data-i18n="presetNotSelected"></span>
+                        <span class="preset-current-swap">
+                            <i class="material-icons">unfold_more</i>
+                            <span data-i18n="presetChange"></span>
+                        </span>
+                    </span>
+                    <img class="preset-current-thumb" alt="" hidden>
+                </button>
+
+                <div class="preset-panel-body" id="manga-tone-settings"></div>
+            </div>
+
+
+
+
+<!-- ========== Panel: Controls ========== -->
+            <div class="left_area" id="control-area" style="display: none;">
+                <div class="area-header" data-i18n="Controle">Controle</div>
+                <div id="control-preview-area">
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secInfoDisplay"></div>
+                        <div class="input-group">
+                            <label>
+                                <input type="checkbox" id="InformationFPS" checked>
+                                FPS :0
+                            </label>
+                        </div>
+                        <div class="input-group">
+                            <label>
+                                <input type="checkbox" id="InformationCoordinate" checked>
+                                X:0.0 Y:0.0
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secTransform"></div>
+                        <div class="input-container-leftSpace" data-i18n-label="angle">
+                            <input type="range" id="angle-control" min="0" max="360" value="0">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="scale">
+                            <input type="range" id="scale-control" min="0.01" max="10.0" step="0.01" value="1.00">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="top">
+                            <input type="range" id="top-control" min="-300" max="600" value="100">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="left">
+                            <input type="range" id="left-control" min="-300" max="600" value="100">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="skewX">
+                            <input type="range" id="skewX-control" min="-60" max="60" value="0">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="skewY">
+                            <input type="range" id="skewY-control" min="-60" max="60" value="0">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="opacity">
+                            <input type="range" id="opacity-control" min="0" max="100" step="0.1" value="100">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secFlip"></div>
+                        <div class="input-group-multi">
+                            <button data-action="flipHorizontally" data-tip="flipHorizontal">
+                                <i class="material-icons">swap_horiz</i>
+                            </button>
+                            <button data-action="flipVertically" data-tip="flipVertical">
+                                <i class="material-icons">swap_vert</i>
+                            </button>
+                            <button style="visibility: hidden;" aria-hidden="true" tabindex="-1">
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+<!-- ========== Panel: Shape ========== -->
+            <div class="left_area" id="shape-area" style="display: none;">
+                <div class="area-header" data-i18n="shape">Shape</div>
+                <div id="shape-preview-area">
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secIconSearch"></div>
+                        <div class="input-group">
+                            <input type="text" id="svg_icon_searchInput" placeholder="Enter icon name"
+                                data-i18n="svg_icon_search_placeholder"
+                                onkeydown="if (event.key === 'Enter') searchIcon();">
+                            <button onclick="searchIcon()" data-i18n="svg_icon_search_button">Search</button>
+                        </div>
+                        <div class="input-group">
+                            <label for="svg_icon_iconStyle" data-i18n="svg_icon_icon_style">Style</label>
+                            <select id="svg_icon_iconStyle" onchange="searchInitialIcons()">
+                                <option value="filled" data-i18n="svg_icon_filled">Filled</option>
+                                <option value="outlined" data-i18n="svg_icon_outlined">Outlined</option>
+                                <option value="rounded" data-i18n="svg_icon_rounded">Rounded</option>
+                                <option value="twotone" data-i18n="svg_icon_twotone">Two-tone</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secIconStyle"></div>
+                        <div class="input-group">
+                            <label for="svg_icon_lineColor" data-i18n="svg_icon_line_color">Line</label>
+                            <input id="svg_icon_lineColor" class="jscolor-color-picker" data-initial-color="rgba(0,0,0,1)"  oninput="updateSVGStyles()">
+                        </div>
+                        <div class="input-group">
+                            <label for="svg_icon_fillColor" data-i18n="svg_icon_fill_color">Fill</label>
+                            <input id="svg_icon_fillColor" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)" oninput="updateSVGStyles()">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="svg_icon_line_width">
+                            <input type="range" id="svg_icon_lineWidth" min="0" max="5" step="1" value="1" oninput="updateSVGStyles()">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="svg_icon_fill_opacity">
+                            <input type="range" id="svg_icon_fillOpacity" min="0" max="1" step="0.1" value="1" oninput="updateSVGStyles()">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secIconShadow"></div>
+                        <div class="input-group">
+                            <label for="svg_icon_shadowColor" data-i18n="svg_icon_shadow_color">Color</label>
+                            <input id="svg_icon_shadowColor" class="jscolor-color-picker" data-initial-color="rgba(255,255,255,1)" oninput="updateSVGStyles(this.value)">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="svg_icon_shadow_blur">
+                            <input type="range" id="svg_icon_shadowBlur" min="0" max="100" step="0.1" value="3" oninput="updateSVGStyles()">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="svg_icon_shadow_offset_x">
+                            <input type="range" id="svg_icon_shadowOffsetX" min="-20" max="20" step="1" value="0" oninput="updateSVGStyles()">
+                        </div>
+                        <div class="input-container-leftSpace" data-i18n-label="svg_icon_shadow_offset_y">
+                            <input type="range" id="svg_icon_shadowOffsetY" min="-20" max="20" step="1" value="0" oninput="updateSVGStyles()">
+                        </div>
+                    </div>
+
+                    <div class="param-group">
+                        <div class="param-group-header" data-i18n="secIconPreset"></div>
+                        <div id="svg_icon_results"></div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+<!-- ========== Canvas Area ========== -->
+            <div id="canvas-area">
+                <div class="area-header">
+
+
+                    <input type="file" id="imageInput" multiple style="display: none;" accept="image/*">
+
+                    <button id="clearMode" onclick="operationModeClear()">
+                        <span class="material-symbols-outlined">cancel_presentation</span>
+                        <label data-i18n="exitModeButton" style="margin:0px;">
+                            モード解除
+                        </label>
+                    </button>
+                    <button id="zoomIn" onclick="zoomIn()">
+                        <span class="material-symbols-outlined">zoom_in</span>
+                    </button>
+                    <button id="zoomOut" onclick="zoomOut()">
+                        <span class="material-symbols-outlined">zoom_out</span>
+                    </button>
+                    <button id="zoomFit" onclick="zoomFit()">
+                        <span class="material-symbols-outlined">1x_mobiledata_badge</span>
+                    </button>
+                    <span id="zoom-level" class="zoom-level" aria-live="polite">100%</span>
+                    <span id="canvas-help-text" class="canvas-help-text"></span>
+                </div>
+
+                <div id="intro_content" class="content">
+                    <div class="resizable-container" id="resizable-container">
+                        <div class="canvas-container" id="canvas-container">
+                            <canvas id="mangaImageCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+<!-- ========== Layer Panel ========== -->
+            <div id="layer-panel">
+                <div class="area-header" >
+                        <label data-i18n="layers">Layers</label>
+                        <button onclick="LayersUp()" data-tip="tipLayerUp"><i class="material-icons">arrow_upward</i></button>
+                        <button onclick="LayersDown()" data-tip="tipLayerDown"><i class="material-icons">arrow_downward</i></button>
+                        <button onclick="lfCreateFolderFromSelection()" title="選んでいるレイヤーをフォルダにまとめる"><i class="material-icons">create_new_folder</i></button>
+                        <button onclick="lfReleaseFolderOfSelection()" title="選んでいるレイヤーのフォルダを解除"><i class="material-icons">folder_off</i></button>
+                        <button id="undo" onclick="undoByUser()"><i class="material-icons">undo</i></button>
+                        <button id="redo" onclick="redoByUser()"><i class="material-icons">redo</i></button>
+                </div>
+                <div id="layer-content"></div>
+
+            </div>
+
+
+<!-- ========== AI Controls ========== -->
+            <div id="controls">
+
+                <div class="panel" id="esApiControlsPanel">
+                    <div class="area-header" data-i18n="esApiControls" onclick='changeHiddenById("esApi-controls-mini", "esApiControls", "esApiControlsByClose")'>
+                    </div>
+                    <div id="esApi-controls-mini" class="controls-mini">
+                        <div class="input-group" data-group="externalApiGroup">
+                            <div class="es-trigger-row">
+                                <button class="role-assign-trigger" onclick="unifiedSettingsWindow.open()" data-i18n="roleAssignButton"></button>
+                                <button class="role-assign-trigger" onclick="modelSettingsWindow.open()" data-i18n="modelSettingsButton"></button>
+                                <button class="role-assign-trigger reference-sheet-trigger" onclick="referenceSheetWindow.toggle()"><span class="role-assign-label" data-i18n="refSheetButton">&#128444; 設定資料</span><span id="referenceSheetBadge" class="rs-badge"></span></button>
+                            </div>
+                            <div id="apiSettingsUrlHelpe">
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="provider-status-label" data-i18n="connectionStatus"></label>
+                    <div id="ExternalService_Heartbeat_Container"></div>
+
+
+                </div>
+
+
+                <hr>
+
+                <div class="panel" id="baseControlsPanel">
+
+
+                    <div class="area-header" data-i18n="baseControls" onclick='changeHiddenById("base-controls-mini", "baseControls", "baseControlsByClose")'>
+                    </div>
+                    <div id="base-controls-mini" class="controls-mini">
+
+
+
+                        
+
+                        <div  id="prompt-A" class="control textarea-control">
+                            <div class="textarea-label-wrapper">
+                                <label class="textarea-label" for="textarea">Prompt</label>
+                            </div>
+                            <textarea id="basePrompt_prompt" name="textarea" placeholder=" "></textarea>
+                        </div>
+                        <div id="negativeAreaId" class="control textarea-control">
+                            <div class="textarea-label-wrapper">
+                                <label class="textarea-label" for="textarea">Negative</label>
+                            </div>
+                            <textarea id="basePrompt_negative" name="textarea" placeholder=" "></textarea>
+                        </div>
+                        <hr>
+
+                        <div id="manualSelectModelId" class="controls-mini" style="display:none">
+                            <div class="input-group" data-group="generateModelGroup">
+                                <button id="SDButton" onclick="changeAiModelType(this)" data-value="SD" class="selected" >
+                                    SD(1.5 XL)
+                                </button>
+                                <button id="FluxButton" onclick="changeAiModelType(this)" data-value="Flux">
+                                    Flux
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="manualSelectWorkflowId" class="controls-mini" style="display:none">
+                            <div class="input-group" data-group="generateWorkflow">
+                                <button id="SimpleButton" onclick="changeWorkflowType(this)" data-value="Simple" class="selected" >
+                                    Simple
+                                </button>
+                                <button id="DiffutionButton" onclick="changeWorkflowType(this)" data-value="Diffution">
+                                    Diffution
+                                </button>
+                                <button id="NF4Button" onclick="changeWorkflowType(this)" data-value="NF4">
+                                    NF4
+                                </button>
+                            </div>
+                        </div>
+                        <div id="prompt-B" class="control" style="display:none">
+                            <select id="basePrompt_model" name="dropdown">
+                            </select>
+                            <span class="label">Model</span>
+                        </div>
+                        <div id="prompt-C" class="dual-number-control" style="display:none">
+                            <div class="control" id="clipDropdownControl">
+                                <input id="clipDropdownId">
+                                <span class="label">Clip</span>
+                            </div>
+                            <div class="control" id="vaeDropdownControl">
+                                <select id="vaeDropdownId" name="dropdown"></select>
+                                <span class="label">Vae</span>
+                            </div>
+                        </div>
+
+
+                        <hr id="prompt-J" style="display:none">
+
+                        <div id="prompt-D" class="dual-number-control" style="display:none">
+                            <div class="control">
+                                <input type="number" id="basePrompt_samplingSteps" name="number-input-1" placeholder=" ">
+                                <span class="label">Steps</span>
+                            </div>
+                            <div class="control">
+                                <select id="basePrompt_samplingMethod" name="dropdown">
+                                </select>
+                                <span class="label">Method</span>
+                            </div>
+                        </div>
+                    
+                        <div id="prompt-E" class="dual-number-control">
+                            <div class="control">
+                                <input type="number" id="basePrompt_width" name="number-input-1" placeholder=" " step="8">
+                                <span class="label">Width</span>
+                            </div>
+                            <div class="control">
+                                <input type="number" id="basePrompt_height" name="number-input-1" placeholder=" " step="8">
+                                <span class="label">Height</span>
+                            </div>
+                        </div>
+                    
+                        <div id="prompt-F" class="dual-number-control">
+                            <div class="control">
+                                <input type="number" id="basePrompt_seed" name="number-input-1" placeholder=" ">
+                                <span class="label">Seed</span>
+                            </div>
+                        </div>
+                        <div id="prompt-I" class="dual-number-control" style="display:none">
+                            <div class="control">
+                                <input type="number" id="basePrompt_cfg_scale" name="number-input-1" placeholder=" " min="1" max="30" step="0.1" >
+                                <span class="label">CFG</span>
+                            </div>
+                        </div>
+                        <hr id="prompt-K" style="display:none">
+                        <div id="prompt-G"  class="dual-number-control" style="display:none">
+                            <div class="control">
+                                <select id="text2img_hr_upscaler" name="dropdown">
+                                </select>
+                                <span class="label">Upscaler</span>
+                            </div>
+                            <div class="control">
+                                <input type="number" id="text2img_hr_step" name="number-input-1" placeholder=" ">
+                                <span class="label">Step</span>
+                            </div>
+                        </div>
+                        <div id="prompt-H"  class="dual-number-control" style="display:none">
+                            <div class="control">
+                                <input type="number" id="text2img_hr_denoise" name="number-input-1" placeholder=" ">
+                                <span class="label">Denoising</span>
+                            </div>
+                            <div class="control">
+                                <input type="number" id="text2img_hr_scale" name="number-input-1" placeholder=" ">
+                                <span class="label">Scale</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="control textarea-control" style="display: none;">
+                            <label>Adetailer</label>
+                            <input type="checkbox" id="AdetailerCheck">
+                        </div>
+                        <div class="control textarea-control" style="display: none;">
+                            <div class="textarea-label-wrapper">
+                                <label class="textarea-label" for="textarea">Adetiler</label>
+                            </div>
+                            <textarea id="AdetilerModels" name="textarea" placeholder=" "></textarea>
+                        </div>
+                        <div class="control textarea-control" style="display: none;">
+                            <div class="textarea-label-wrapper">
+                                <label class="textarea-label" for="textarea">Prompt</label>
+                            </div>
+                            <textarea id="AdetilerModelsPrompt" name="textarea" placeholder=" "></textarea>
+                        </div>
+                        <div class="control textarea-control" style="display: none;">
+                            <div class="textarea-label-wrapper">
+                                <label class="textarea-label" for="textarea">Negative</label>
+                            </div>
+                            <textarea id="AdetilerModelsNegative" name="textarea" placeholder=" "></textarea>
+                        </div>
+                        <label id="checSD_WebUI_Announce" style="font-size: 10px; display:none;" data-i18n="checSD_WebUI_Announce"/>
+                    </div>
+                </div>
+
+                <div class="panel" id="otherControlsPanel">
+                    <div class="area-header" data-i18n="otherControls" onclick='changeHiddenById("other-controls-mini", "otherControls", "otherControlsByClose")'>
+                    </div>
+                    <div id="other-controls-mini" class="controls-mini">
+                        <label>Panel or Image Prpmpt…</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- ========== Bottom Drawer ========== -->
+    <div id="btm-drawer" class="btm-drawer btm-closed" style="display: none;">
+        <div id="btm-drawer-handle" class="btm-drawer-handle neon-text">
+            OPEN (Ctrl+B)
+        </div>
+        <div class="btm-drawer-hint" data-i18n="pageDrawerHint">Each thumbnail is one page. Use the + on a page to add the next page.</div>
+        <div class="btm-drawer-content">
+            <div id="btm-image-container" class="btm-image-container"></div>
+            <button id="btm-scroll-left" class="btm-scroll-btn btm-scroll-left" style="display: none;">&lt;</button>
+            <button id="btm-scroll-right" class="btm-scroll-btn btm-scroll-right" style="display: none;">&gt;</button>
+        </div>
+    </div>
+
+<!-- ========== Toast Container ========== -->
+    <div id="sp-manga-toastContainer" class="position-fixed bottom-0 end-0 p-3">
+    </div>
+
+<!-- ========== Modal: Shortcut ========== -->
+    <div id="shortcutModal" class="shortcut-modal" style="display:none;">
+        <div class="shortcut-modal-overlay" onclick="closeShortcutModal()"></div>
+        <div class="shortcut-modal-content">
+            <div class="shortcut-modal-header">
+                <h2 data-i18n="shortcutTitle">Keyboard Shortcuts</h2>
+                <button class="shortcut-modal-close" onclick="closeShortcutModal()">&times;</button>
+            </div>
+            <div class="shortcut-modal-body">
+                <div class="shortcut-grid" id="shortcutGrid"></div>
+            </div>
+        </div>
+    </div>
+
+<!-- ========== Floating Window: Unified Settings ========== -->
+<div id="unifiedSettingsOverlay" class="us-overlay" onclick="if(event.target===this)unifiedSettingsWindow.close()">
+<div class="us-window">
+<div class="us-header">
+<h2 data-i18n="usWindowTitle">⚙ 生成AI設定</h2>
+<span class="us-header-note" data-i18n="usAutoApplyNote">変更するとすぐ反映されます。保存ボタンはありません（「設定値自動保存」がONなら自動で保存されます）。Esc か × で閉じます</span>
+<button class="us-close" onclick="unifiedSettingsWindow.close()">&times;</button>
+</div>
+<div class="us-body">
+<div class="us-tab-content active" id="usTabAI">
+<div class="us-split">
+<div class="us-left">
+<div style="display:flex;align-items:center;gap:8px;">
+<div class="us-panel-title" data-i18n="usServiceTitle" style="padding-bottom:0;">使用サービス</div>
+<button class="role-assign-trigger" onclick="modelSettingsWindow.open()" data-i18n="modelSettingsButton"></button>
+</div>
+<div style="height:8px;"></div>
+<table class="role-matrix">
+<thead>
+<tr>
+<th></th>
+<th class="role-col-none" data-i18n="roleNone">なし</th>
+<th>ComfyUI<span class="us-tag us-tag-local" data-i18n="usTagLocal">ローカル</span></th>
+<th>RunPod<br>ComfyUI<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></th>
+<th>SD WebUI<br>(A1111/Forge)<span class="us-tag us-tag-local" data-i18n="usTagLocal">ローカル</span></th>
+<th>Fal.ai<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></th>
+<th>Google<br>Nano Banana<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></th>
+<th>Grok<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></th>
+<th>Ollama<span class="us-tag us-tag-local" data-i18n="usTagLocal">ローカル</span></th>
+</tr>
+</thead>
+<tbody id="roleMatrixBody"></tbody>
+</table>
+<div class="role-assign-note" data-i18n="roleAssignNote">「—」は非対応のサービスです</div>
+</div>
+<div class="us-right">
+<div class="us-panel-title" data-i18n="usConnectionTitle">接続先</div>
+<table class="us-conn-table">
+<colgroup>
+<col style="width:10%">
+<col style="width:12%">
+<col style="width:50%">
+<col style="width:28%">
+</colgroup>
+<thead>
+<tr>
+<th data-i18n="usConnService">サービス</th>
+<th></th>
+<th data-i18n="usConnSettings">URL / API Key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ComfyUI<span class="us-tag us-tag-local" data-i18n="usTagLocal">ローカル</span></td>
+<td class="us-field-label">URL</td>
+<td><input type="text" id="comfyUIPageUrl" value="http://127.0.0.1:8188" placeholder="URL"></td>
+<td><button id="comfyUIPageUrlDefaultUrl" class="us-btn-s" data-i18n="usBtnReset">初期値</button><a href="html/API_Help/comfyui_settings.html" target="_blank" class="us-btn-s">?</a></td>
+</tr>
+<tr>
+<td>RunPod<br>ComfyUI<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></td>
+<td class="us-field-label">URL</td>
+<td><input type="text" id="runpodComfyUIUrl" value="" placeholder="https://{pod-id}-8188.proxy.runpod.net"></td>
+<td><button id="runpodComfyUIUrlClear" class="us-btn-s" data-i18n="usBtnReset">初期値</button><a href="https://console.runpod.io" target="_blank" class="us-link-btn" data-i18n="usDashboard">Web ↗</a></td>
+</tr>
+<tr>
+<td>SD WebUI<br>(A1111/Forge)<span class="us-tag us-tag-local" data-i18n="usTagLocal">ローカル</span></td>
+<td class="us-field-label">URL</td>
+<td><input type="text" id="sdWebUIPageUrl" value="http://127.0.0.1:7860" placeholder="URL"></td>
+<td><button id="sdWebUIPageUrlDefaultUrl" class="us-btn-s" data-i18n="usBtnReset">初期値</button><a href="html/API_Help/sd-api-guide.html" target="_blank" class="us-btn-s">?</a></td>
+</tr>
+<tr>
+<td rowspan="6">Fal.ai<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></td>
+<td class="us-field-label">API Key</td>
+<td><input type="password" id="falaiApiKey" value="" placeholder="API Key" autocomplete="off"></td>
+<td><button id="falaiApiKeyToggle" class="us-btn-s" data-i18n="usBtnShow">表示</button><button id="falaiReloadModels" class="us-btn-s" data-i18n="falaiReloadModels">再取得</button><a href="https://fal.ai/dashboard" target="_blank" class="us-link-btn" data-i18n="usDashboard">Web ↗</a></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="roleText2Image">Text → Image</td>
+<td><select id="falaiModelT2I" disabled><option value="" data-i18n="falaiSelectModel">モデルを選択してください</option></select></td>
+<td><button class="us-link-btn falai-list-btn" data-select="falaiModelT2I" data-i18n="falaiModelList">モデル一覧 ↗</button><button class="us-link-btn falai-model-btn" data-select="falaiModelT2I" style="display:none" data-i18n="falaiSelectedModel">選択モデル ↗</button></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="roleImage2Image">Image → Image</td>
+<td><select id="falaiModelI2I" disabled><option value="" data-i18n="falaiSelectModel">モデルを選択してください</option></select></td>
+<td><button class="us-link-btn falai-list-btn" data-select="falaiModelI2I" data-i18n="falaiModelList">モデル一覧 ↗</button><button class="us-link-btn falai-model-btn" data-select="falaiModelI2I" style="display:none" data-i18n="falaiSelectedModel">選択モデル ↗</button></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="roleUpscaler">高解像度化</td>
+<td><select id="falaiModelUpscale" disabled><option value="" data-i18n="falaiSelectModel">モデルを選択してください</option></select></td>
+<td><button class="us-link-btn falai-list-btn" data-select="falaiModelUpscale" data-i18n="falaiModelList">モデル一覧 ↗</button><button class="us-link-btn falai-model-btn" data-select="falaiModelUpscale" style="display:none" data-i18n="falaiSelectedModel">選択モデル ↗</button></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="roleRemoveBG">背景削除</td>
+<td><select id="falaiModelRembg" disabled><option value="" data-i18n="falaiSelectModel">モデルを選択してください</option></select></td>
+<td><button class="us-link-btn falai-list-btn" data-select="falaiModelRembg" data-i18n="falaiModelList">モデル一覧 ↗</button><button class="us-link-btn falai-model-btn" data-select="falaiModelRembg" style="display:none" data-i18n="falaiSelectedModel">選択モデル ↗</button></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="usConcurrency">同時実行数</td>
+<td><input type="number" id="falaiConcurrency" value="1" min="1" max="10"></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="5">Google<br>Nano Banana<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></td>
+<td class="us-field-label">API Key</td>
+<td><input type="password" id="googleImageApiKey" value="" placeholder="API Key" autocomplete="off"><div id="googleImageConnNotice" class="us-conn-notice" style="display:none"></div></td>
+<td><button id="googleImageApiKeyToggle" class="us-btn-s" data-i18n="usBtnShow">表示</button><a href="https://ai.google.dev/gemini-api/docs/image-generation" target="_blank" class="us-btn-s">?</a><a href="https://aistudio.google.com/apikey" target="_blank" class="us-link-btn" data-i18n="usDashboard">Web ↗</a></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="roleText2Image">Text → Image</td>
+<td><select id="googleImageModelT2I">
+<option value="gemini-3.1-flash-lite-image" selected>Nano Banana 2 Lite (gemini-3.1-flash-lite-image)</option>
+<option value="gemini-3.1-flash-image">Nano Banana 2 (gemini-3.1-flash-image)</option>
+<option value="gemini-3-pro-image">Nano Banana Pro (gemini-3-pro-image)</option>
+<option value="gemini-2.5-flash-image">Nano Banana (gemini-2.5-flash-image)</option>
+</select></td>
+<td></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="roleImage2Image">Image → Image</td>
+<td><select id="googleImageModelI2I">
+<option value="gemini-3.1-flash-lite-image" selected>Nano Banana 2 Lite (gemini-3.1-flash-lite-image)</option>
+<option value="gemini-3.1-flash-image">Nano Banana 2 (gemini-3.1-flash-image)</option>
+<option value="gemini-3-pro-image">Nano Banana Pro (gemini-3-pro-image)</option>
+<option value="gemini-2.5-flash-image">Nano Banana (gemini-2.5-flash-image)</option>
+</select></td>
+<td></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="googleImageSizeLabel">解像度</td>
+<td><select id="googleImageSize">
+<option value="1K" selected>1K</option>
+<option value="2K">2K</option>
+<option value="4K">4K</option>
+</select></td>
+<td><span class="us-field-note" data-i18n="googleImageSizeNote">Liteは1Kのみ</span></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="usConcurrency">同時実行数</td>
+<td><input type="number" id="googleImageConcurrency" value="1" min="1" max="10"></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="4">Grok<span class="us-tag us-tag-ext" data-i18n="usTagExternal">外部</span></td>
+<td class="us-field-label">API Key</td>
+<td><input type="password" id="grokApiKey" value="" placeholder="API Key" autocomplete="off"><div id="grokConnNotice" class="us-conn-notice" style="display:none"></div></td>
+<td><button id="grokApiKeyToggle" class="us-btn-s" data-i18n="usBtnShow">表示</button><button id="grokReloadModels" class="us-btn-s" data-i18n="falaiReloadModels">再取得</button><a href="html/API_Help/llm_settings.html#grok" target="_blank" class="us-btn-s">?</a><a href="https://console.x.ai" target="_blank" class="us-link-btn" data-i18n="usDashboard">Web ↗</a></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="llmModelText">テキスト</td>
+<td><select id="grokModelText" disabled><option value="" data-i18n="llmSelectModel">モデルを選択してください</option></select></td>
+<td></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="llmModelVision">画像認識</td>
+<td><select id="grokModelVision" disabled><option value="" data-i18n="llmSelectModel">モデルを選択してください</option></select></td>
+<td></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="usConcurrency">同時実行数</td>
+<td><input type="number" id="grokConcurrency" value="1" min="1" max="10"></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="4">Ollama<span class="us-tag us-tag-local" data-i18n="usTagLocal">ローカル</span></td>
+<td class="us-field-label">URL</td>
+<td><input type="text" id="ollamaUrl" value="http://127.0.0.1:11434" placeholder="http://127.0.0.1:11434"><div id="ollamaConnNotice" class="us-conn-notice" style="display:none"></div></td>
+<td><button id="ollamaUrlDefaultUrl" class="us-btn-s" data-i18n="usBtnReset">初期値</button><button id="ollamaReloadModels" class="us-btn-s" data-i18n="falaiReloadModels">再取得</button><a href="html/API_Help/llm_settings.html#ollama" target="_blank" class="us-btn-s">?</a></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="llmModelText">テキスト</td>
+<td><select id="ollamaModelText" disabled><option value="" data-i18n="llmSelectModel">モデルを選択してください</option></select></td>
+<td></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="llmModelVision">画像認識</td>
+<td><select id="ollamaModelVision" disabled><option value="" data-i18n="llmSelectModel">モデルを選択してください</option></select></td>
+<td></td>
+</tr>
+<tr>
+<td class="us-field-label" data-i18n="usConcurrency">同時実行数</td>
+<td><input type="number" id="ollamaConcurrency" value="1" min="1" max="10"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ========== Floating Window: Model Settings ========== -->
+<div id="modelSettingsOverlay" class="us-overlay" onclick="if(event.target===this)modelSettingsWindow.close()">
+<div class="us-window">
+<div class="us-header">
+<h2 data-i18n="modelSettingsTitle">🔧 使用モデル・ワークフロー設定</h2>
+<button class="us-close" onclick="modelSettingsWindow.close()">&times;</button>
+</div>
+<div class="us-tabs">
+<button class="us-tab active" onclick="modelSettingsWindow.switchTab(0)">ComfyUI Workflow</button>
+<button class="us-tab" onclick="modelSettingsWindow.switchTab(1)">RunPod ComfyUI Workflow</button>
+<button class="us-tab" onclick="modelSettingsWindow.switchTab(2)">SD WebUI</button>
+</div>
+<div class="us-body">
+<div class="us-tab-content active" id="msTabLocalComfyUI">
+<div id="msLocalContainer" style="width:100%;height:100%;"></div>
+</div>
+<div class="us-tab-content" id="msTabRunpodComfyUI">
+<div id="msRunpodContainer" style="width:100%;height:100%;"></div>
+</div>
+<div class="us-tab-content" id="msTabSDWebUI">
+<div id="msSDWebuiContainer"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ========== Floating Window: Reference Sheets ========== -->
+<div id="referenceSheetOverlay" class="rs-float">
+<div class="rs-window">
+<div class="rs-titlebar" id="rsTitlebar">
+<h2 data-i18n="refWindowTitle">&#128444; 設定資料</h2>
+<span class="rs-titlebar-spacer"></span>
+<button class="rs-icon-btn" id="rsCollapseBtn" onclick="referenceSheetWindow.toggleCollapse()" data-tip="refCollapse"><i class="material-icons">expand_less</i></button>
+<button class="rs-icon-btn" onclick="referenceSheetWindow.close()" data-tip="refClose"><i class="material-icons">close</i></button>
+</div>
+
+<div class="rs-bar rs-collapsible">
+<div class="rs-bar-item"><span class="rs-bar-label" data-i18n="refTargetLabel">対象コマ</span><span id="rsTargetLabel"></span></div>
+<div class="rs-bar-item"><span class="rs-bar-label" data-i18n="refCountLabel">送る画像</span><span id="rsCount">0 / 14</span></div>
+<div class="rs-bar-item"><span class="rs-bar-label" data-i18n="refTokenLabel">トークン（目安）</span><span id="rsSize"></span></div>
+<span class="rs-bar-spacer"></span>
+<label class="rs-check" data-tip="refShowOnCanvasTip"><input type="checkbox" id="rsShowOnCanvas" onchange="referenceSheetWindow.onShowOnCanvasChange(this)"><span data-i18n="refShowOnCanvas">キャンバスに出す</span></label>
+</div>
+
+<div id="rsModelNotice" class="rs-collapsible" style="display:none"></div>
+
+<div id="rsHowto" class="rs-howto rs-collapsible" style="display:none"><i class="material-icons">touch_app</i><span class="rs-howto-lines"><span id="rsHowtoWhat" class="rs-howto-what"></span><span id="rsHowtoText"></span><span id="rsHowtoDrag" class="rs-howto-drag"></span></span></div>
+
+<div id="rsMissing" class="rs-missing rs-collapsible" style="display:none"></div>
+
+<div class="rs-slots rs-collapsible">
+<div class="rs-slots-head">
+<span class="rs-section-title" data-i18n="refSlotsTitle">送る順と関係</span>
+<span class="rs-slots-hint" data-i18n="refSlotsHint">ドラッグで並べ替え。同じ枠に入れた資料どうしが関係します</span>
+</div>
+<div id="rsSlots" class="rs-slot-list"></div>
+<div id="rsGroupNotice" class="rs-relation-notice" style="display:none"></div>
+</div>
+
+<div class="rs-toolbar rs-collapsible">
+<div class="rs-tabs">
+<button class="rs-tab active" data-category="character" onclick="referenceSheetWindow.switchTab('character')" data-i18n="refCatCharacter">登場人物</button>
+<button class="rs-tab" data-category="background" onclick="referenceSheetWindow.switchTab('background')" data-i18n="refCatBackground">背景・ロケ</button>
+<button class="rs-tab" data-category="prop" onclick="referenceSheetWindow.switchTab('prop')" data-i18n="refCatProp">小道具</button>
+<button class="rs-tab" data-category="other" onclick="referenceSheetWindow.switchTab('other')" data-i18n="refCatOther">その他</button>
+</div>
+<input type="search" id="rsSearch" class="rs-search" oninput="referenceSheetWindow.onSearchInput(this)">
+<div class="rs-viewmodes">
+<button class="rs-viewmode" data-view="grid" onclick="referenceSheetWindow.switchView('grid')" data-tip="refViewLarge"><i class="material-icons">grid_view</i></button>
+<button class="rs-viewmode" data-view="compact" onclick="referenceSheetWindow.switchView('compact')" data-tip="refViewSmall"><i class="material-icons">apps</i></button>
+<button class="rs-viewmode" data-view="list" onclick="referenceSheetWindow.switchView('list')" data-tip="refViewList"><i class="material-icons">view_list</i></button>
+</div>
+<span class="rs-bar-spacer"></span>
+<div class="rs-actions">
+<button class="us-btn-s rs-gen-toggle" id="rsGenToggle" onclick="ReferenceGenerator.toggleForm()"><span class="rs-disclosure-mark">&#9656;</span><span data-i18n="refGenerate">AIで作る</span></button>
+<button class="us-btn-s" onclick="referenceSheetWindow.addFromSelectedLayer()" data-i18n="refAddFromLayer">選択中のコマから</button>
+<button class="us-btn-s" onclick="referenceSheetWindow.exportBase()" data-i18n="refExportBase">共通の資料を書き出し</button>
+<button class="us-btn-s" onclick="document.getElementById('rsImportInput').click()" data-i18n="refImportBase">共通の資料を読み込み</button>
+<input type="file" id="rsFileInput" accept="image/*" multiple style="display:none" onchange="referenceSheetWindow.addFromFiles(this.files);this.value=''">
+<input type="file" id="rsImportInput" accept="application/json,.json" style="display:none" onchange="referenceSheetWindow.importBase(this.files);this.value=''">
+</div>
+</div>
+
+<div id="rsGenForm" class="rs-gen rs-collapsible" style="display:none">
+<div class="rs-gen-row">
+<input type="text" id="rsGenName" class="rs-gen-name">
+<select id="rsGenRatio" class="rs-gen-ratio"></select>
+<span id="rsGenTarget" class="rs-gen-target"></span>
+</div>
+<div class="rs-gen-row">
+<textarea id="rsGenPrompt" class="rs-gen-prompt" rows="2"></textarea>
+<button class="us-btn-s rs-gen-run" id="rsGenRun" onclick="ReferenceGenerator.run()" data-i18n="refGenRun">生成</button>
+</div>
+<div id="rsGenStatus" class="rs-gen-status"></div>
+<div id="rsGenNotice" class="rs-gen-notice" style="display:none"></div>
+</div>
+
+<div id="rsGrid" class="rs-grid rs-collapsible"></div>
+
+<div class="rs-foot rs-collapsible">
+<div class="rs-foot-head">
+<button class="rs-disclosure" id="rsPreambleToggle" onclick="referenceSheetWindow.togglePreamble()"><span class="rs-disclosure-mark">&#9656;</span><span data-i18n="refPreambleTitle">プロンプトに付く説明</span></button>
+<label class="rs-check"><input type="checkbox" id="referenceDescribeInPrompt" checked onchange="referenceSheetWindow.onDescribeChange()"><span data-i18n="refDescribeInPrompt">説明をプロンプトに付ける</span></label>
+</div>
+<textarea id="rsPreamble" readonly style="display:none"></textarea>
+</div>
+
+<div id="rsZoom" class="rs-zoom-view" onclick="referenceSheetWindow.closeZoom()"><img id="rsZoomImage" alt=""><span class="rs-zoom-caption" id="rsZoomCaption"></span></div>
+<div id="rsDropOverlay" class="rs-drop-overlay"><span data-i18n="refDropHere">画像をドロップ（複数枚まとめて）</span></div>
+<div class="rs-resize rs-resize-n" data-dir="n"></div>
+<div class="rs-resize rs-resize-s" data-dir="s"></div>
+<div class="rs-resize rs-resize-w" data-dir="w"></div>
+<div class="rs-resize rs-resize-e" data-dir="e"></div>
+<div class="rs-resize rs-resize-nw" data-dir="nw"></div>
+<div class="rs-resize rs-resize-ne" data-dir="ne"></div>
+<div class="rs-resize rs-resize-sw" data-dir="sw"></div>
+<div class="rs-resize rs-resize-se" id="rsResize" data-dir="se"></div>
+</div>
+</div>
+
+<!-- ========== Additional CSS ========== -->
+    <link rel="stylesheet" href="css/ui/role-assign-modal.css?v=7.9" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/ui/unified-settings.css?v=7.4" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/ui/reference-sheet.css?v=8.6" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/ui/shortcut-modal.css?v=7.2" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/ui/confirm-dialog.css?v=7.3" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/ui/recovery-dialog.css?v=7.3" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="third/intro/introjs.min.css">
+    <link rel="stylesheet" href="css/ui/intro.css?" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/ui/tutorial.css?v=7.2" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/styles-css.css?v=7.2">
+
+<!-- ========== Third-party Scripts ========== -->
+    <script src="third/lz4/wasm.js"></script>
+    <script src="third/lz4/lz4asm.js"></script>
+    <script src="third/lz4/lz4wasm.js"></script>
+
+    <script src="third/pixi.min.js" defer></script>
+    <script src="third/advanced-blend-modes.min.js" defer></script>
+    <script src="third/interact.min.js" defer></script>
+    <script src="third/glfx/glfx.js"></script>
+    <script src="third/Fabric.js/fabric.min.js"></script>
+    <script src="third/Fabric.js/fabric.min_PlusEraser.js"></script>
+    <script src="third/i18next/i18next.min.js"></script>
+    <script src="third/jsts/jsts.min.js"></script>
+    <script src="third/browser-image-compression/browser-image-compression.js"></script>
+    <script src="third/intro/intro.min.js"></script>
+    <script src="third/lodash/lodash.min.js" defer></script>
+    <script src="third/hotkeys/hotkeys.min.js" defer></script>
+    <script src="third/tippy/popper.min.js"></script>
+    <script src="third/tippy/tippy-bundle.umd.min.js"></script>
+    <script src="third/jszip/jszip.min.js" defer></script>
+    <script src="third/crypto-js/crypto-js.min.js"></script>
+    <script src="third/Bootstrup/bootstrap.bundle.min.js"></script>
+    <script src="third/font-awesome/all.min.js"></script>
+    <script src="third/localforage/localforage.min.js"></script>
+
+<!-- ========== Application Scripts ========== -->
+    <script src="js/sidebar/pen/fabric/fabric-brush.min.js?v=7.2"></script>
+    <script src="js/sidebar/pen/fabric/brushes/crayon_brush.js?v=7.2"></script>
+    <script src="js/sidebar/pen/fabric/brushes/ink_brush.js?v=7.2"></script>
+    <script src="js/sidebar/pen/fabric/brushes/marker_brush.js?v=7.2"></script>
+    <script src="js/sidebar/pen/fabric/brushes/spray_brush.js?v=7.2"></script>
+    <script src="js/sidebar/pen/fabric/brushes/drip.js?v=7.2"></script>
+    <script src="js/sidebar/pen/fabric/brushes/stroke.js?v=7.2"></script>
+    <script src="js/core/settings.js?v=8.0" defer></script>
+    <script src="js/core/debug.js?v=7.2" defer></script>
+    <script src="js/core/logger.js?v=7.2" defer></script>
+    <script src="js/ui/util/focus-trap.js?v=7.2" defer></script>
+    <script src="js/ui/util/confirm-dialog.js?v=7.2" defer></script>
+    <script src="js/core/unsaved-guard.js?v=7.2" defer></script>
+    <script src="js/core/global-error-handler.js?v=7.2" defer></script>
+
+    <script src="js/ui/preset-picker.js?v=7.6" defer></script>
+    <script src="js/ui/glfx-ui.js?v=7.2" defer></script>
+    <script src="js/ui/canvas-object-menu.js?v=8.0" defer></script>
+    <script src="js/ui/third/intro.js?v=7.2" defer></script>
+    <script src="js/ui/tutorial.js?v=7.2" defer></script>
+    <script src="js/ui/toast.js?v=7.2" defer></script>
+    <script src="js/ui/util/ui-util.js?v=7.2" defer></script>
+    <script src="js/ui/util/event-delegator.js?v=7.2" defer></script>
+    <script src="js/ui/preset-panel.js?v=7.5" defer></script>
+    <script src="js/ui/third/tippy.js?v=7.2" defer></script>
+
+    <script src="js/ui/third/base-translation/base-de.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-en.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-es.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-fr.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-ja.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-ko.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-ru.js?v=7.2" defer></script>
+    <script src="js/ui/third/base-translation/base-zh.js?v=7.2" defer></script>
+    <script src="js/ui/third/i18next.js?v=8.1" defer></script>
+    <script src="js/dashboard/performance-storage.js?v=7.3" defer></script>
+    <script src="js/dashboard/prompt-frequency-storage.js?v=7.3" defer></script>
+    <script src="js/dashboard/api-cost-storage.js?v=7.3" defer></script>
+    <script src="js/dashboard/dashboard-ui.js?v=7.3" defer></script>
+
+    <script src="js/ui/util/mode-change.js?v=7.2" defer></script>
+    <script src="js/ui/util/mode-manager.js?v=7.2" defer></script>
+    <script src="js/ui/util/tagify-util.js?v=7.2" defer></script>
+    <script src="js/ui/imagePromptHelper/prompt-helper.js?v=7.2" defer></script>
+    <script src="js/ui/imagePromptHelper/hc-image-prompt-helper.js?v=7.2" defer></script>
+    <script src="js/ui/imagePromptHelper/image-prompt-helper.js?v=7.2" defer></script>
+    <script src="js/ui/ai/auto-prompt-ui.js?v=7.2" defer></script>
+    <script src="js/ui/overlay-progress.js?v=7.2" defer></script>
+    <script src="js/ui/custom-html-component.js?v=7.2" defer></script>
+
+    <script src="js/core/util/load-util.js?v=7.2" defer></script>
+    <script src="js/core/util/js-util.js?v=7.2" defer></script>
+    <script src="js/core/util/fabric-util.js?v=7.2" defer></script>
+    <script src="js/core/util/html-canvas-util.js?v=7.2" defer></script>
+    <script src="js/core/util/image-util.js?v=7.2" defer></script>
+    <script src="js/core/util/anime-util.js?v=7.2" defer></script>
+    <script src="js/core/util/share-util.js?v=7.2" defer></script>
+    <script src="js/core/util/log-util.js?v=7.2" defer></script>
+    <script src="js/core/util/image-analyzer-util.js?v=7.2" defer></script>
+    <script src="js/canvas-manager.js?v=7.2" defer></script>
+    <script src="js/project-management.js?v=7.2" defer></script>
+    <script src="js/project/qanima-folder-import.js" defer></script>
+    <script src="js/project/qanima-export.js" defer></script>
+    <script src="js/shortcut.js?v=7.2" defer></script>
+    <script src="js/panel/grid.js?v=7.2" defer></script>
+    <script src="js/panel/random-cut.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/panel-manager.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/panel-template.js?v=7.2" defer></script>
+    <script src="js/ui/prompt-manager.js?v=7.2" defer></script>
+    <script src="js/ai/role/ai-roles.js?v=7.2" defer></script>
+    <script src="js/ai/provider/ai-provider.js?v=8.0" defer></script>
+    <script src="js/ai/provider/provider-registry.js?v=7.3" defer></script>
+    <script src="js/ai/provider/local-comfyui-provider.js?v=7.3" defer></script>
+    <script src="js/ai/provider/local-sdwebui-provider.js?v=7.3" defer></script>
+    <script src="js/ai/provider/runpod-comfyui-provider.js?v=7.3" defer></script>
+    <script src="js/db/reference-repository.js?v=7.6" defer></script>
+    <script src="js/ai/reference/reference-sheet-store.js?v=7.6" defer></script>
+    <script src="js/ai/reference/reference-collector.js?v=8.1" defer></script>
+    <script src="js/ai/reference/reference-generator.js?v=7.8" defer></script>
+    <script src="js/ai/reference/reference-sheet-window.js?v=8.1" defer></script>
+    <script src="js/ai/reference/reference-canvas-overlay.js?v=8.1" defer></script>
+    <script src="js/ai/provider/cloud-image-provider.js?v=7.6" defer></script>
+    <script src="js/ai/provider/falai-provider.js?v=7.6" defer></script>
+    <script src="js/ai/provider/google-image-provider.js?v=8.0" defer></script>
+    <script src="js/ai/provider/llm-provider.js?v=7.6" defer></script>
+    <script src="js/ai/provider/grok-provider.js?v=7.5" defer></script>
+    <script src="js/ai/provider/ollama-provider.js?v=7.5" defer></script>
+    <!-- llm-storyboard-service.js が先。MANGA_EXPRESSION_TAGS を
+         llm-prompt-service.js が読み込み時に参照するため -->
+    <script src="js/ai/prompt/llm/llm-storyboard-service.js?v=7.6" defer></script>
+    <script src="js/ai/prompt/llm/llm-prompt-service.js?v=7.6" defer></script>
+    <script src="js/ai/prompt/llm/llm-prompt-ui.js?v=7.5" defer></script>
+    <script src="js/ai/prompt/llm/llm-storyboard-ui.js?v=7.5" defer></script>
+    <script src="js/ai/prompt/llm/llm-story-service.js?v=7.5" defer></script>
+    <script src="js/ai/prompt/llm/llm-story-ui.js?v=7.5" defer></script>
+    <script src="js/ai/queue/spinner.js?v=7.2" defer></script>
+    <script src="js/ai/queue/task-queue.js?v=7.2" defer></script>
+    <script src="js/ai/queue/generation-task-manager.js?v=7.2" defer></script>
+    <script src="js/ai/sdwebui/sdwebui-settings.js?v=7.2" defer></script>
+    <script src="js/ai/sdwebui/sdwebui-multi-call-api.js?v=7.2" defer></script>
+    <script src="js/ai/sdwebui/sdwebui-single-call-api.js?v=7.2" defer></script>
+    <script src="js/ai/comfyui/util/comfyui-util.js?v=7.2" defer></script>
+    <script src="js/ai/comfyui/util/comfyui-workflow-builder.js?v=7.2" defer></script>
+    <script src="js/ai/comfyui/comfyui-management.js?v=7.2" defer></script>
+    <script src="js/ai/ai-settings.js?v=7.2" defer></script>
+    <script src="js/ai/ai-management.js?v=7.2" defer></script>
+    <script src="js/ai/role/role-assignment-ui.js?v=7.4" defer></script>
+    <script src="js/ai/ui/unified-settings-window.js?v=7.4" defer></script>
+    <script src="js/ai/ui/model-settings-window.js?v=7.3" defer></script>
+    <script src="js/ai/inpainting/inpaint-mask.js?v=7.3" defer></script>
+    <script src="js/ai/inpainting/inpaint-workflow.js?v=7.3" defer></script>
+    <script src="js/ai/inpainting/inpaint-editor.js?v=7.3" defer></script>
+    <script src="third/three/three.min.js?v=7.2" defer></script>
+    <script src="js/ai/angle/camera-widget.js?v=7.3" defer></script>
+    <script src="js/ai/angle/angle-editor.js?v=7.3" defer></script>
+    <script src="js/ai/ui/ai-ui-util.js?v=7.2" defer></script>
+    <script src="js/ai/prompt/base-event-listener.js?v=7.2" defer></script>
+    <script src="js/ai/prompt/panel-composition.js?v=7.6" defer></script>
+    <script src="js/ai/prompt/prompt-apply.js?v=7.5" defer></script>
+    <script src="js/layer/floating-window-management.js?v=7.2" defer></script>
+    <script src="js/layer/layer-button.js?v=8.0" defer></script>
+    <script src="js/layer/layer-management.js?v=7.9" defer></script>
+    <script src="js/layer/layer-folder.js" defer></script>
+    <script src="js/fabric/click-select-first.js" defer></script>
+    <script src="js/sidebar/text/text-edit-modal.js" defer></script>
+    <script src="js/layer/image-history-management.js?v=7.2" defer></script>
+    <script src="js/layer/blend/blend.js?v=7.2" defer></script>
+    
+    <script src="js/sidebar/sidebar-ui.js?v=7.2" defer></script>
+    <script src="js/sidebar/sidebar.js?v=7.2" defer></script>
+    <script src="js/sidebar/text/text-effect.js?v=7.2" defer></script>
+    <script src="js/sidebar/text/vertical-text.js?v=7.2" defer></script>
+    <script src="js/sidebar/text/vertical-textbox.js?v=7.2"></script>
+    <script src="js/sidebar/text/text-decor-presets.js?v=7.7" defer></script>
+    <script src="js/sidebar/text/text-decor.js?v=7.7" defer></script>
+    <script src="js/sidebar/speechBubble/speech-bubble-effect.js?v=7.2" defer></script>
+    <script src="js/sidebar/speechBubble/speech-bubble-freehand.js?v=7.2" defer></script>
+    <script src="js/sidebar/speechBubble/speech-bubble-text.js?v=7.2" defer></script>    
+    <script src="js/sidebar/pen/original-brush.js?v=7.2" defer></script>
+    <script src="js/sidebar/pen/pen-tools.js?v=7.2" defer></script>
+    <script src="js/sidebar/tone/tone-manager.js?v=7.2" defer></script>
+    <script src="js/sidebar/tone/speedline.js?v=7.2" defer></script>
+    <script src="js/sidebar/tone/focusline.js?v=7.2" defer></script>
+    <script src="js/sidebar/tone/tone.js?v=7.2" defer></script>
+    <script src="js/sidebar/tone/tone-noise.js?v=7.2" defer></script>
+    <script src="js/sidebar/tone/snow-tone.js?v=7.2" defer></script>
+    <!-- custom-text-util.js が持つ定数を text-2-manager.js がトップレベルで読むため、
+         util を先に置く。逆にすると読み込み時点でReferenceErrorになる -->
+    <script src="js/sidebar/text/custom/custom-text-util.js?v=7.5" defer></script>
+    <script src="js/sidebar/text/custom/generic-text-effect.js?v=7.5" defer></script>
+    <script src="js/sidebar/text/custom/text-effect-presets.js?v=7.5" defer></script>
+    <script src="js/sidebar/text/text-2-manager.js?v=7.5" defer></script>
+    <script src="js/sidebar/text/custom/optimized-broken-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-cloud-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-layered-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-mesh-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-scratch-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-shadow-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-thrill-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-wild-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/text/custom/optimized-zebra-text.js?v=7.3" defer></script>
+    <script src="js/sidebar/effect/effect-manager.js?v=7.2" defer></script>
+    <script src="js/sidebar/effect/c2bw_tone.js?v=7.2" defer></script>
+    <script src="js/sidebar/effect/c2c.js?v=7.2" defer></script>
+    <script src="js/sidebar/effect/effect-batch.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-constants.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-state.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-geometry.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-line-renderer.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-split-engine.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-mode.js?v=7.2" defer></script>
+    <script src="js/sidebar/panel/knife/knife-index.js?v=7.2" defer></script>
+
+    <script src="js/ui/control/common-control-management.js?v=7.2" defer></script>
+    <script src="js/ui/control/object-control-sync.js?v=7.2" defer></script>
+    <script src="js/ui/control/image-control-manager.js?v=7.2" defer></script>
+    <script src="js/ui/control/information-control.js?v=7.2" defer></script>
+    <script src="js/ui/control/glfx-control.js?v=7.2" defer></script>
+    <script src="js/fabric/fabric-management.js?v=7.2" defer></script>
+    <script src="js/core/svg/google-icon-names.js?v=7.2"></script>
+    <script src="js/core/svg/google-icon-helper.js?v=7.2"></script>
+    <script src="js/ui/bottom-bar.js?v=7.2" defer></script>
+
+    <script src="js/ai/prompt/auto/prompt-map.js?v=7.2" defer></script>
+    <script src="js/ai/prompt/auto/story-prompt-map.js?v=7.2" defer></script>
+    <script src="js/ai/prompt/auto/auto-prompt-util.js?v=7.2" defer></script>
+    <script src="js/ai/prompt/auto/auto-generation.js?v=7.2" defer></script>
+
+    <script src="js/db/user-font-repository.js?v=7.2" defer></script>
+    <script src="js/ui/font/user-font-manager.js?v=7.2" defer></script>
+    <script src="js/core/font/font-manager-core.js?v=7.2" defer></script>
+    <script src="js/core/font/font-dropdown.js?v=7.5" defer></script>
+    <script src="js/core/font/project-font.js?v=7.2" defer></script>
+
+    <script src="js/core/service/worker-register.js?v=7.2" defer></script>
+
+    <script src="js/core/compression/lz4.js?v=7.2"></script>
+    <script src="js/core/util/array-buffer-utils.js?v=7.2"></script>
+    <script src="js/core/compression/project-compression.js?v=7.2"></script>
+    <script src="js/core/auto-save.js?v=7.2" defer></script>
+
+    <script src="js/ai/comfyui/v2/comfyui_workflow/comfyui-inpaint-default-workflows.js?v=7.3"></script>
+    <script src="js/ai/comfyui/v2/comfyui_workflow/comfyui-angle-default-workflows.js?v=7.3"></script>
+    <script src="js/ai/comfyui/v2/comfyui_workflow/comfyui-upscale-default-workflows.js?v=7.3"></script>
+    <script src="js/ai/comfyui/v2/comfyui_workflow/comfyui-rembg-default-workflows.js?v=7.3"></script>
+    <script src="js/ai/comfyui/v2/comfyui_workflow/comfyui-t2i-default-workflows.js?v=7.3"></script>
+    <script src="js/ai/comfyui/v2/comfyui_workflow/comfyui-default-workflows.js?v=7.3"></script>
+
+    <script src="js/ai/comfyui/v2/comfyui-default-object-info.js"></script>
+    <script src="js/ai/comfyui/v2/comfyui-workflow-repository.js"></script>
+    <script src="js/ai/comfyui/v2/comfyui-object-info-repository.js"></script>
+    <script src="js/ai/comfyui/v2/comfyui-util-v2.js"></script>
+    <script src="js/ai/comfyui/v2/comfyui-workflow-editor-tab.js"></script>
+    <script src="js/ai/comfyui/v2/comfyui-workflow-editor.js"></script>
+    <script src="js/ai/comfyui/v2/comfyui-workflow-interact.js"></script>
+
+    <script src="third/jscolor/jscolor.min.js?v=7.2"></script>
+<!-- ========== Inline Scripts ========== -->
+    
+<script>
+function autoResize(event) {
+    event.target.style.height = 'auto';
+    event.target.style.height = event.target.scrollHeight + 'px';
+}
+
+function setAutoSizeingControlMini() {
+    var controlsMinis = document.querySelectorAll('.controls-mini');
+    controlsMinis.forEach(function(controlsMini) {
+        var textareas = controlsMini.querySelectorAll('textarea');
+        textareas.forEach(function(textarea) {
+            textarea.removeEventListener('input', autoResize);
+            textarea.addEventListener('input', autoResize);
+        });
+    });
+}
+setAutoSizeingControlMini();
+
+
+
+
+
+
+
+
+        let tagifyAdetailer;
+        function initTagify(whitelist = []) {
+            const input = document.getElementById('AdetilerModels');
+            if (tagifyAdetailer) {
+                tagifyAdetailer.destroy();
+            }
+            tagifyAdetailer = new Tagify(input, {
+                enforceWhitelist: true,
+                whitelist: whitelist,
+                dropdown: {
+                    enabled: 0,
+                    maxItems: 100,
+                    position: "text",
+                    closeOnSelect: false,
+                    highlightFirst: true,
+                    showAllSuggestions: true
+                }
+            });
+            input.addEventListener('focus', () => {
+                tagifyAdetailer.dropdown.show();
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initTagify();
+        });
+
+    function getAdetailerList() {
+        if (!tagifyAdetailer) {
+            return [];
+        }
+        return tagifyAdetailer.value.map(tag => tag.value);
+    }
+
+</script>
+
+
+<!-- ========== Modal: Inpaint Editor ========== -->
+<div id="inpaint-modal" class="inpaint-modal-overlay" style="display:none;">
+<div id="inpaint-editor" class="inpaint-modal-content">
+<button id="inpaint-cancel-btn" class="inpaint-close-btn">✕</button>
+<div id="inpaint-left-panel">
+<button id="inpaint-brush-btn" class="inpaint-tool-btn" data-i18n="inpaintBrush">Brush</button>
+<button id="inpaint-eraser-btn" class="inpaint-tool-btn" data-i18n="inpaintEraser">Eraser</button>
+<button id="inpaint-fillall-btn" class="inpaint-tool-btn" data-i18n="inpaintFillAll">Fill All</button>
+<button id="inpaint-clear-btn" class="inpaint-tool-btn" data-i18n="inpaintClear">Clear</button>
+<span class="inpaint-separator"></span>
+<label data-i18n="inpaintBrushSize">Size</label>
+<input type="range" id="inpaint-brush-size" min="1" max="500" value="30">
+<span id="inpaint-brush-size-label">30</span>
+</div>
+<div id="inpaint-canvas-area">
+<div id="inpaint-canvas-wrapper">
+<canvas id="inpaint-image-canvas"></canvas>
+<canvas id="inpaint-mask-canvas"></canvas>
+</div>
+</div>
+<div id="inpaint-right-panel">
+<div class="inpaint-control-row">
+<label data-i18n="inpaintPrompt">Prompt</label>
+<textarea id="inpaint-prompt" rows="3" placeholder=""></textarea>
+</div>
+<div class="inpaint-control-row">
+<label data-i18n="inpaintNegative">Negative</label>
+<textarea id="inpaint-negative" rows="2" placeholder=""></textarea>
+</div>
+<div class="inpaint-denoise-row">
+<label data-i18n="inpaintDenoise">Denoise</label>
+<input type="range" id="inpaint-denoise" min="0" max="1" step="0.05" value="0.75"
+oninput="document.getElementById('inpaint-denoise-label').textContent=this.value">
+<span id="inpaint-denoise-label">0.75</span>
+</div>
+<button id="inpaint-generate-btn" class="inpaint-action-btn" data-i18n="inpaintGenerate">Generate</button>
+</div>
+</div>
+</div>
+
+<!-- ========== Modal: Angle Editor ========== -->
+<div id="angle-modal" class="angle-modal-overlay" style="display:none;">
+<div class="angle-modal-content">
+<button id="angle-cancel-btn" class="angle-close-btn">✕</button>
+<div id="angle-left-panel">
+<label data-i18n="angleOriginal">Original</label>
+<img id="angle-original-img" alt="Original">
+</div>
+<div id="angle-center-panel">
+<div id="angle-camera-widget-container"></div>
+<button id="angle-camera-reset-btn" data-i18n="angleReset">Reset</button>
+<div id="angle-camera-prompt-display"></div>
+</div>
+<div id="angle-right-panel">
+<div class="angle-control-row">
+<label data-i18n="anglePrompt">Angle Prompt</label>
+<textarea id="angle-prompt" rows="3" placeholder=""></textarea>
+</div>
+<button id="angle-generate-btn" data-i18n="angleGenerate_btn">Generate</button>
+</div>
+</div>
+</div>
+
+<!-- ========== Modal: Dashboard ========== -->
+<div id="dashboard-modal" class="dashboard-modal-overlay" style="display:none;">
+<div class="dashboard-modal-content">
+<button id="dashboard-close-btn" class="dashboard-modal-close-btn">&#10005;</button>
+<div class="dashboard-container">
+<div class="dashboard-header">
+<h3 data-i18n="dashboardTitle">Performance Dashboard</h3>
+<button class="dashboard-clear-btn" id="dashboardClearStats" data-i18n="dashboardClearAll">Clear All</button>
+</div>
+<div class="dashboard-summary">
+<div class="summary-card">
+<div class="summary-value" id="dashboardTotalGenerations">0</div>
+<div class="summary-label" data-i18n="dashboardTotal">Total</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardGlobalAvg">-</div>
+<div class="summary-label" data-i18n="dashboardAvg">AVG</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardGlobalMin">-</div>
+<div class="summary-label" data-i18n="dashboardMin">MIN</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardGlobalMax">-</div>
+<div class="summary-label" data-i18n="dashboardMax">MAX</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardUniqueTags">0</div>
+<div class="summary-label" data-i18n="dashboardTags">Tags</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardLaunchCount">0</div>
+<div class="summary-label" data-i18n="dashboardLaunch">Launch</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardFirstLaunch">-</div>
+<div class="summary-label" data-i18n="dashboardSince">Since</div>
+</div>
+<div class="summary-card">
+<div class="summary-value" id="dashboardApiCost">$0.0000</div>
+<div class="summary-label" data-i18n="dashboardApiCost">API Cost</div>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardModeStats">Mode Statistics</h4>
+</div>
+<div class="stats-table-container">
+<table class="stats-table">
+<thead>
+<tr>
+<th data-i18n="dashboardMode">Mode</th>
+<th data-i18n="dashboardCount">Count</th>
+<th data-i18n="dashboardAvgMs">AVG (ms)</th>
+<th data-i18n="dashboardMinMs">MIN (ms)</th>
+<th data-i18n="dashboardMaxMs">MAX (ms)</th>
+</tr>
+</thead>
+<tbody id="dashboardStatsTable"></tbody>
+</table>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardTimeGraph">Generation Time Graph</h4>
+<select id="dashboardModeSelector" class="mode-selector">
+<option value="T2I" data-i18n="dashboardModeT2I">T2I</option>
+<option value="I2I" data-i18n="dashboardModeI2I">I2I</option>
+<option value="I2I_Angle" data-i18n="dashboardModeI2IAngle">I2I Angle</option>
+<option value="Inpaint" data-i18n="dashboardModeInpaint">Inpaint</option>
+<option value="Upscaler" data-i18n="dashboardModeUpscaler">Upscaler</option>
+<option value="Rembg" data-i18n="dashboardModeRembg">Rembg</option>
+</select>
+</div>
+<div class="chart-container">
+<canvas id="dashboardChart" width="600" height="200"></canvas>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardHourlyHeatmap">Hourly Activity Heatmap</h4>
+</div>
+<div class="heatmap-container" id="dashboardHeatmap"></div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardTrendGraph">Generation Trend</h4>
+<select id="dashboardTrendSelector" class="mode-selector">
+<option value="daily" data-i18n="dashboardDaily">Daily</option>
+<option value="weekly" data-i18n="dashboardWeekly">Weekly</option>
+<option value="monthly" data-i18n="dashboardMonthly">Monthly</option>
+</select>
+</div>
+<div class="chart-container">
+<canvas id="dashboardTrendChart" width="600" height="200"></canvas>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardTopTags">Most Used Tags</h4>
+<button class="dashboard-clear-btn-small" id="dashboardClearTags" data-i18n="dashboardClearTags">Clear Tags</button>
+</div>
+<div class="top-tags-container" id="dashboardTopTags">
+<div class="no-tags" data-i18n="dashboardNoTags">No tags recorded</div>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardWordcloud">Word Cloud</h4>
+<button class="dashboard-download-btn" id="dashboardDownloadWordcloud" data-i18n="dashboardDownload">Download</button>
+</div>
+<div class="wordcloud-container">
+<canvas id="dashboardWordcloud" width="600" height="300"></canvas>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardStreak">Streak</h4>
+</div>
+<div class="streak-session-row">
+<div class="streak-card">
+<div class="streak-icon">&#x1F525;</div>
+<div class="streak-value" id="dashboardCurrentStreak">0</div>
+<div class="streak-label" data-i18n="dashboardCurrentStreak">Current</div>
+</div>
+<div class="streak-card">
+<div class="streak-icon">&#x1F3C6;</div>
+<div class="streak-value" id="dashboardLongestStreak">0</div>
+<div class="streak-label" data-i18n="dashboardLongestStreak">Longest</div>
+</div>
+<div class="streak-card">
+<div class="streak-icon">&#x1F4C5;</div>
+<div class="streak-value" id="dashboardTodayCount">0</div>
+<div class="streak-label" data-i18n="dashboardToday">Today</div>
+</div>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardSessionStats">Session</h4>
+</div>
+<div class="streak-session-row">
+<div class="streak-card">
+<div class="streak-value" id="dashboardCurrentSession">0m</div>
+<div class="streak-label" data-i18n="dashboardCurrentSession">This Session</div>
+</div>
+<div class="streak-card">
+<div class="streak-value" id="dashboardSessionGenCount">0</div>
+<div class="streak-label" data-i18n="dashboardGenPerSession">Gens</div>
+</div>
+<div class="streak-card">
+<div class="streak-value" id="dashboardAvgSession">0m</div>
+<div class="streak-label" data-i18n="dashboardAvgSession">Avg Session</div>
+</div>
+<div class="streak-card">
+<div class="streak-value" id="dashboardTotalSessions">0</div>
+<div class="streak-label" data-i18n="dashboardTotalSessions">Sessions</div>
+</div>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardCalendar">Activity Calendar</h4>
+</div>
+<div class="calendar-container" id="dashboardCalendar"></div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardSuccessRate">Success Rate</h4>
+</div>
+<div class="success-rate-container">
+<canvas id="dashboardSuccessRateChart" width="300" height="150"></canvas>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardPromptLength">Prompt Length</h4>
+</div>
+<div class="chart-container">
+<canvas id="dashboardPromptLengthChart" width="600" height="200"></canvas>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardCoOccurrence">Tag Co-occurrence</h4>
+</div>
+<div class="stats-table-container">
+<table class="stats-table cooccurrence-table">
+<thead>
+<tr>
+<th data-i18n="dashboardTagPair">Tag Pair</th>
+<th data-i18n="dashboardPairCount">Count</th>
+</tr>
+</thead>
+<tbody id="dashboardCoOccurrenceTable"></tbody>
+</table>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardModelUsage">Model Usage</h4>
+</div>
+<div class="chart-container model-chart-container">
+<canvas id="dashboardModelChart" width="600" height="200"></canvas>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardApiCostSection">External API Cost (estimated)</h4>
+<button class="dashboard-clear-btn-small" id="dashboardClearApiCost" data-i18n="dashboardClearApiCost">Clear Cost</button>
+</div>
+<div class="stats-table-container">
+<table class="stats-table">
+<thead>
+<tr>
+<th data-i18n="dashboardApiCostService">Service</th>
+<th data-i18n="dashboardApiCostModel">Model</th>
+<th data-i18n="dashboardCount">Count</th>
+<th data-i18n="dashboardApiCostInput">Input</th>
+<th data-i18n="dashboardApiCostOutput">Output</th>
+<th data-i18n="dashboardApiCostEstimated">Est. (USD)</th>
+<th data-i18n="dashboardApiCostUnpriced">No price</th>
+</tr>
+</thead>
+<tbody id="dashboardApiCostTable"></tbody>
+</table>
+</div>
+<div class="api-cost-note" data-i18n="dashboardApiCostNote">Estimated from the published rates returned by each API. It may differ from your actual bill.</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardGoals">Goals</h4>
+</div>
+<div class="goal-container">
+<div class="goal-row">
+<span class="goal-label" data-i18n="dashboardDailyGoal">Daily Goal</span>
+<input type="number" id="dashboardDailyGoalInput" class="goal-input" min="1" max="9999" placeholder="0">
+<button class="dashboard-download-btn goal-save-btn" id="dashboardSaveDailyGoal" data-i18n="dashboardGoalSave">Save</button>
+</div>
+<div class="goal-progress-wrap">
+<div class="goal-progress-bar" id="dashboardDailyProgressBar"><span id="dashboardDailyProgressText"></span></div>
+</div>
+<div class="goal-row">
+<span class="goal-label" data-i18n="dashboardWeeklyGoal">Weekly Goal</span>
+<input type="number" id="dashboardWeeklyGoalInput" class="goal-input" min="1" max="9999" placeholder="0">
+<button class="dashboard-download-btn goal-save-btn" id="dashboardSaveWeeklyGoal" data-i18n="dashboardGoalSave">Save</button>
+</div>
+<div class="goal-progress-wrap">
+<div class="goal-progress-bar" id="dashboardWeeklyProgressBar"><span id="dashboardWeeklyProgressText"></span></div>
+</div>
+</div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardBadges">Badges</h4>
+</div>
+<div class="badge-grid" id="dashboardBadgeGrid"></div>
+</div>
+<div class="dashboard-section">
+<div class="section-header">
+<h4 data-i18n="dashboardExport">Export</h4>
+</div>
+<div class="export-section">
+<button class="dashboard-download-btn" id="dashboardExportJSON" data-i18n="dashboardExportJSON">JSON</button>
+<button class="dashboard-download-btn" id="dashboardExportCSV" data-i18n="dashboardExportCSV">CSV</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+
+</html>

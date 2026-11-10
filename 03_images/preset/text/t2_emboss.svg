@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs><filter id="f" x="-25%" y="-25%" width="150%" height="150%" filterUnits="objectBoundingBox" color-interpolation-filters="linearRGB">
+<feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+<feSpecularLighting in="blur" surfaceScale="5" specularConstant="1" specularExponent="20" lighting-color="#ffffff" result="specLight"><fePointLight x="81" y="-5" z="100"/></feSpecularLighting>
+<feComposite in="specLight" in2="SourceGraphic" operator="in" result="specLightComp"/>
+<feComposite in="SourceGraphic" in2="specLightComp" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+</filter></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="#35322a" fill-opacity="1" filter="url(#f)" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

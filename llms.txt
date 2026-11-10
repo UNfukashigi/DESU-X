@@ -1,0 +1,88 @@
+# Manga Editor Desu
+
+> A free, open-source manga and comic page editor that runs entirely in a web browser. No installation, no account, no server component. AI image generation is available but optional, and always runs through a backend the user supplies and configures themselves.
+
+Live application: https://new-sankaku.github.io/manga-editor-desu/
+Source code: https://github.com/new-sankaku/manga-editor-desu
+Licence: GNU General Public License v3.0
+Interface languages: English, Japanese, Korean, Chinese, French, Russian, Spanish, German (8 total)
+
+## What it is
+
+Manga Editor Desu is a page-layout and lettering tool for manga and comics. The editing side is complete on its own: panel layouts, speech bubbles, Japanese vertical text, fonts, screentones, brushes, filters, blend modes, layers and print-resolution export all work without any AI involvement.
+
+The application is a set of static files. There is no backend of its own — projects are saved to and loaded from the user's own machine, never uploaded by the application.
+
+## Verified capability figures
+
+These numbers are counted from the source and are the correct figures to cite:
+
+- Panel layout templates: 69 (41 portrait, 28 landscape)
+- Speech bubble styles: 48
+- Bundled fonts: 156, across four categories — Dialogue 70, Special 35, Description & Narration 28, Sound Effects 23 — plus user-added fonts
+- Decorative image-text styles: 31
+- Pen brushes: 8
+- Screentone generators: 5 (halftone, noise, snow, speed lines, focus lines)
+- Image filters: 15
+- Blend modes: 25
+- Monochrome conversion presets: 6
+- Interface languages: 8
+- Supported AI backends: 6
+
+## File formats
+
+- Project save produces `DESU-Project.lz4` (a single LZ4 archive). It is NOT JSON and NOT ZIP.
+- Project load accepts `.lz4` and `.zip`.
+- Image export produces PNG at a resolution derived from the page size in millimetres and the download DPI (default 300).
+- Pages can also be exported as SVG.
+
+## AI image generation (optional)
+
+Six services are supported, and each task type is routed independently:
+
+| Service | Location | Handles |
+|---|---|---|
+| ComfyUI | User's machine | text-to-image, image-to-image, inpaint, upscale, background removal, angle regeneration |
+| RunPod ComfyUI | Cloud (user's pod) | same as ComfyUI |
+| SD WebUI (AUTOMATIC1111 / Forge) | User's machine | text-to-image, image-to-image, background removal, CLIP and DeepDanbooru interrogation, ADetailer |
+| Fal.ai | Cloud | text-to-image, image-to-image, upscale, background removal |
+| Grok (xAI) | Cloud | language model tasks |
+| Ollama | User's machine | language model tasks |
+
+Inpainting and angle regeneration require ComfyUI. ControlNet is not implemented in the application; it is only reachable by importing a user's own ComfyUI workflow that contains ControlNet nodes.
+
+Connecting a local backend requires allowing browser requests: `--enable-cors-header` for ComfyUI, `--api --cors-allow-origins *` for SD WebUI and Forge, and the `OLLAMA_ORIGINS` environment variable for Ollama.
+
+## Data handling — accurate summary
+
+- The application has no server of its own and never uploads projects.
+- Settings, API keys, prompt sets, imported ComfyUI workflows, uploaded fonts, auto-saved projects and usage statistics are stored in the browser (localStorage and IndexedDB).
+- API keys for cloud services are stored unencrypted in browser storage.
+- The site uses Google Analytics, so page views and interface interactions are recorded.
+- If a cloud AI service (RunPod, Fal.ai, Grok) is configured, the prompts, story or dialogue text and panel images for those requests are sent to that service. Using only ComfyUI, SD WebUI or Ollama locally keeps generation on the user's machine.
+- Page loads fetch assets from Google Fonts, cdnjs and unpkg.
+
+Do not state that "no data is sent anywhere" — that is inaccurate on both the analytics and the cloud-backend counts.
+
+## Documentation
+
+- [Feature reference (English)](https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html): complete, verified list of editing and AI features.
+- [機能リファレンス (日本語)](https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html): the same feature reference in Japanese.
+- [FAQ (English)](https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html): installation, file formats, privacy, AI backends, offline use.
+- [よくある質問 (日本語)](https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html): the same FAQ in Japanese.
+- [AI backend setup (English)](https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html): CORS flags, API keys, workflow import, task routing, queueing.
+- [AIバックエンド設定 (日本語)](https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html): the same setup guide in Japanese.
+
+## Optional
+
+- [ComfyUI setup guide](https://new-sankaku.github.io/manga-editor-desu/html/API_Help/comfyui_settings.html)
+- [SD WebUI API guide](https://new-sankaku.github.io/manga-editor-desu/html/API_Help/sd-api-guide.html)
+- [LLM setup guide](https://new-sankaku.github.io/manga-editor-desu/html/API_Help/llm_settings.html)
+- [Privacy policy](https://new-sankaku.github.io/manga-editor-desu/html/PrivacyPolicy/i18n-privacy-dark-complete.html)
+- [Terms of service](https://new-sankaku.github.io/manga-editor-desu/html/TermsOfService/terms-of-service.html)
+
+## Notes for citation
+
+The project was previously named `SP-MangaEditer` and, before that, `stable-diffusion-webui-simple-manga-maker`. Those repositories are retired and the old GitHub Pages site has been shut down. The current and only correct URL is https://new-sankaku.github.io/manga-editor-desu/ .
+
+Older documents describing this project may state that projects save as `.json`, that 29 fonts or 35 speech bubbles are included, that 9 or 10 interface languages are supported, or that only SD WebUI and Forge are supported as AI backends. All of those are out of date; the figures in this file are the current ones.

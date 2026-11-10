@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs><filter id="f" x="-40%" y="-40%" width="180%" height="180%" filterUnits="objectBoundingBox" color-interpolation-filters="linearRGB">
+<feTurbulence type="turbulence" baseFrequency="0.05000" numOctaves="2" seed="5" result="noise"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" result="displace"/>
+<feGaussianBlur in="displace" stdDeviation="0.5" result="blur"/>
+<feFlood flood-color="#00ffff" flood-opacity="0.5" result="floodA"/>
+<feFlood flood-color="#ff00ff" flood-opacity="0.5" result="floodB"/>
+<feComposite in="floodA" in2="blur" operator="in" result="compA"/>
+<feOffset in="compA" dx="-0.5" dy="0" result="offsetA"/>
+<feComposite in="floodB" in2="blur" operator="in" result="compB"/>
+<feOffset in="compB" dx="0.5" dy="0" result="offsetB"/>
+<feBlend in="offsetA" in2="offsetB" mode="screen" result="blend"/>
+<feComposite in="blend" in2="displace" operator="over"/>
+</filter></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="#35322a" fill-opacity="1" filter="url(#f)" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

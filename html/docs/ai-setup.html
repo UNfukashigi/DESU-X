@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connecting AI Backends to Manga Editor Desu — ComfyUI, SD WebUI, Forge, Fal.ai, Grok, Ollama</title>
+<meta name="description" content="How to connect Manga Editor Desu to an AI backend: CORS flags for ComfyUI, SD WebUI and Forge, the OLLAMA_ORIGINS setting for Ollama, API keys for Fal.ai and Grok, and how task routing works.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html">
+<link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html">
+<link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html">
+<link rel="stylesheet" href="../common.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Connect an AI backend to Manga Editor Desu",
+  "description": "Configure ComfyUI, SD WebUI, Forge, RunPod, Fal.ai, Grok or Ollama as an image or language model backend for Manga Editor Desu.",
+  "inLanguage": "en",
+  "url": "https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html",
+  "step": [
+    { "@type": "HowToStep", "name": "Start the backend with browser access enabled", "text": "Launch your backend with the flag that allows browser requests: --enable-cors-header for ComfyUI, --api --cors-allow-origins * for SD WebUI and Forge, or the OLLAMA_ORIGINS environment variable for Ollama. Cloud services need an API key instead." },
+    { "@type": "HowToStep", "name": "Enter the address or API key", "text": "Open Generative AI Settings in the editor and enter the backend URL, or paste the API key for a cloud service. The editor checks the connection every 15 seconds and reports whether it is reachable, blocked by CORS, or missing a key." },
+    { "@type": "HowToStep", "name": "Assign each task to a service", "text": "In the service matrix, choose which service handles each task: text-to-image, image-to-image, inpaint, upscale, background removal, angle regeneration, interrogation, and the language model tasks. A dash means the service does not support that task." },
+    { "@type": "HowToStep", "name": "Select models and workflows", "text": "Choose the model for each service. For ComfyUI, import API-format workflows and enable one per task type in the Models and Workflows window." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Manga Editor Desu",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Documentation",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Backend Setup",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-buttons">
+<a class="lang-btn active" href="ai-setup.html">English</a>
+<a class="lang-btn" href="ai-setup-ja.html">日本語</a>
+</div>
+
+<h1>Connecting an AI Backend to Manga Editor Desu</h1>
+
+<p>AI image generation in Manga Editor Desu is optional. Every editing feature works without it. When you do want generation, you supply the backend — the editor is a browser application and never generates images itself.</p>
+
+<p>See also the <a href="features.html">feature reference</a> and the <a href="faq.html">FAQ</a>.</p>
+
+<h2>The six supported services</h2>
+
+<div class="card">
+<table>
+<thead><tr><th>Service</th><th>Where it runs</th><th>Needs</th><th>Handles</th></tr></thead>
+<tbody>
+<tr><td>ComfyUI</td><td>Your machine</td><td>A launch flag</td><td>Text-to-image, image-to-image, inpaint, upscale, background removal, angle regeneration</td></tr>
+<tr><td>RunPod ComfyUI</td><td>Your RunPod pod</td><td>The pod URL</td><td>Same as ComfyUI</td></tr>
+<tr><td>SD WebUI (A1111 / Forge)</td><td>Your machine</td><td>Launch flags</td><td>Text-to-image, image-to-image, background removal, CLIP and DeepDanbooru interrogation, ADetailer</td></tr>
+<tr><td>Fal.ai</td><td>Cloud</td><td>An API key</td><td>Text-to-image, image-to-image, upscale, background removal</td></tr>
+<tr><td>Grok (xAI)</td><td>Cloud</td><td>An API key</td><td>Language model tasks: prompts from text, prompts from images, story to panel prompts</td></tr>
+<tr><td>Ollama</td><td>Your machine</td><td>An environment variable</td><td>Same language model tasks as Grok</td></tr>
+</tbody>
+</table>
+<p>You do not have to pick one. Each task type is routed independently, so a local ComfyUI can generate images while Grok turns your story into panel prompts.</p>
+</div>
+
+<h2>Why a launch flag is needed</h2>
+
+<div class="card">
+<p>Manga Editor Desu runs inside your browser, and browsers block a page on one address from calling a server on another address unless that server explicitly permits it. This is the CORS policy, and it is why a backend that works fine in its own web interface will still refuse the editor until it is started with the right flag.</p>
+<p>The editor distinguishes between the possible failures rather than showing one generic error: it will tell you separately whether the server is unreachable, running but blocking the request through CORS, or missing an API key.</p>
+</div>
+
+<h2>ComfyUI</h2>
+
+<div class="card">
+<p>Default address: <code>http://127.0.0.1:8188</code></p>
+<p>Start ComfyUI with the CORS header enabled:</p>
+<pre><code>python main.py --enable-cors-header</code></pre>
+<p>For the portable Windows build, add the flag to the run script:</p>
+<pre><code>.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --enable-cors-header</code></pre>
+<p>Under Stability Matrix, put <code>--enable-cors-header</code> into <em>Extra Launch Arguments</em> in the package settings. Under Pinokio, add it to the launch arguments in <code>start.js</code>.</p>
+
+<h3>Workflows</h3>
+<p>ComfyUI generation is driven by workflows exported from ComfyUI in <strong>API format</strong> — not the ordinary workflow save. Import them in the Models and Workflows window, assign each a task type, and enable one workflow per type.</p>
+<p>Default workflows ship for text-to-image, image-to-image, inpainting, upscaling, background removal and angle regeneration, covering SD 1.5, SDXL, Flux, Z-Image-turbo and Qwen-Image.</p>
+<p>Inside an imported workflow the editor substitutes <code>%prompt%</code> and <code>%negative%</code> with the panel's prompts, fills <code>width</code> and <code>height</code> from the panel, randomises <code>seed</code> or <code>noise_seed</code> when it is set to <code>-1</code> or <code>0</code>, and supplies the uploaded source image or inpaint mask where the workflow expects one.</p>
+<p>Node inputs are editable inline, with checkpoint, LoRA, sampler and VAE dropdowns populated from your running server. Nodes your server does not recognise are flagged before you generate.</p>
+</div>
+
+<h2>SD WebUI (AUTOMATIC1111)</h2>
+
+<div class="card">
+<p>Default address: <code>http://127.0.0.1:7860</code></p>
+<p>Add the API and CORS flags to <code>webui-user.bat</code> on Windows or <code>webui-user.sh</code> on Linux and macOS:</p>
+<pre><code>set COMMANDLINE_ARGS=--api --cors-allow-origins *</code></pre>
+<p>Restart the WebUI afterwards. Models, samplers and upscalers are then read from the running server.</p>
+</div>
+
+<h2>Forge</h2>
+
+<div class="card">
+<p>Forge uses the same flags as SD WebUI. Historically it also required a small patch to <code>modules/initialize_util.py</code> so that the CORS middleware was applied correctly.</p>
+<div class="notice">That patch was documented in November 2024 and was submitted upstream. Recent Forge builds may no longer need it. Try the standard flags first, and only apply the patch if the connection is still blocked by CORS. The step-by-step patch is in the <a href="../API_Help/sd-api-guide.html">SD WebUI API guide</a>.</div>
+</div>
+
+<h2>RunPod ComfyUI</h2>
+
+<div class="card">
+<p>Enter the proxy address of your pod, in the form <code>https://{pod-id}-8188.proxy.runpod.net</code>. Behaviour is otherwise identical to a local ComfyUI, and RunPod keeps its own separate set of imported workflows.</p>
+<div class="notice">Requests to a RunPod pod are sent without authentication. Anyone who learns the pod URL can reach it, so treat the address as a secret and shut the pod down when you are finished.</div>
+</div>
+
+<h2>Fal.ai</h2>
+
+<div class="card">
+<p>Fal.ai is a paid cloud service. Create an API key in the Fal.ai dashboard and paste it into the connection panel. Available models are then listed for each task — text-to-image, image-to-image, upscaling and background removal are chosen separately.</p>
+<p>Prompts and, for image-to-image work, your panel images are uploaded to Fal.ai.</p>
+</div>
+
+<h2>Grok (xAI)</h2>
+
+<div class="card">
+<p>Default address: <code>https://api.x.ai</code></p>
+<p>Create an API key in the xAI console and paste it into the connection panel. No CORS configuration is needed. Two models are selected separately: a text model and a vision model, the latter used when an image is being read.</p>
+<p>Where xAI publishes its rates, the editor records estimated spend per model on the dashboard. This is an estimate for your own reference, not a bill.</p>
+</div>
+
+<h2>Ollama</h2>
+
+<div class="card">
+<p>Default address: <code>http://127.0.0.1:11434</code></p>
+<p>Ollama refuses browser requests until it is told which origins to accept. Set the environment variable, then restart Ollama:</p>
+<pre><code># Windows
+setx OLLAMA_ORIGINS "*"
+
+# macOS
+launchctl setenv OLLAMA_ORIGINS "*"
+
+# Linux (systemd), in the service unit
+Environment="OLLAMA_ORIGINS=*"</code></pre>
+<p>If <code>*</code> does not work in your setup, try <code>OLLAMA_ORIGINS=null</code>, which covers the case where the editor is opened directly from disk.</p>
+<p>As with Grok, a text model and a vision model are selected separately. Ollama runs locally, so nothing is sent outside your machine and no cost is recorded.</p>
+</div>
+
+<h2>Assigning tasks to services</h2>
+
+<div class="card">
+<p>The Generative AI Settings window has a matrix with one row per task and one column per service. Assign each task to whichever service should handle it; a dash marks a combination the service does not support.</p>
+<table>
+<thead><tr><th>Task</th><th>Available on</th></tr></thead>
+<tbody>
+<tr><td>Text to Image</td><td>ComfyUI, RunPod ComfyUI, SD WebUI, Fal.ai</td></tr>
+<tr><td>Image to Image</td><td>ComfyUI, RunPod ComfyUI, SD WebUI, Fal.ai</td></tr>
+<tr><td>Inpaint</td><td>ComfyUI, RunPod ComfyUI</td></tr>
+<tr><td>Upscale</td><td>ComfyUI, RunPod ComfyUI, Fal.ai</td></tr>
+<tr><td>Remove Background</td><td>ComfyUI, RunPod ComfyUI, SD WebUI, Fal.ai</td></tr>
+<tr><td>Image to Image Angle</td><td>ComfyUI, RunPod ComfyUI</td></tr>
+<tr><td>CLIP interrogation</td><td>SD WebUI</td></tr>
+<tr><td>DeepDanbooru interrogation</td><td>SD WebUI</td></tr>
+<tr><td>Text to Prompt</td><td>Grok, Ollama</td></tr>
+<tr><td>Image to Prompt</td><td>Grok, Ollama</td></tr>
+</tbody>
+</table>
+<p>Background removal on SD WebUI relies on the rembg extension being installed there. ADetailer likewise requires the ADetailer extension in SD WebUI or Forge.</p>
+</div>
+
+<h2>Queueing and concurrency</h2>
+
+<div class="card">
+<p>Generation requests are queued per service. Local ComfyUI and SD WebUI process one request at a time. Fal.ai, Grok and Ollama accept a concurrency setting between 1 and 10.</p>
+<p>Each queued task appears on the layer it belongs to, showing its position, live progress where the backend reports it, and a cancel control.</p>
+<div class="notice">Cancelling a queued task removes it. Cancelling a task that is already running on ComfyUI sends a real interrupt. For a running cloud request the editor stops waiting for the result, but the remote job continues and you will still be charged for it.</div>
+</div>
+
+<h2>What is sent where</h2>
+
+<div class="card">
+<p>Requests go only to the service you configured for that task. A local ComfyUI, SD WebUI or Ollama keeps everything on your machine. RunPod, Fal.ai and Grok are remote, and requests to them carry the prompts, story or dialogue text and any panel images the task involves.</p>
+<p>API keys are stored unencrypted in browser storage, so avoid entering them on a shared computer. See the <a href="faq.html">FAQ</a> for the full data summary.</p>
+</div>
+
+<p><a href="../../index.html">← Open Manga Editor Desu</a> · <a href="features.html">Feature reference</a> · <a href="faq.html">FAQ</a></p>
+
+</div>
+</body>
+</html>

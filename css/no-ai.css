@@ -1,0 +1,21 @@
+/* AI生成機能を外した画面（js/core/settings.js の AI_FEATURES_ENABLED=false と対）。
+   コードは消さずに、入口だけを隠す。戻すときはこのファイルの読み込みを index.html から外す */
+
+/* 右のAIカラム（生成AI設定・全体AI設定・各AI設定） */
+#controls { display: none !important; }
+
+/* 表示メニューの「AI」「Prompt View」 */
+li:has(#view_controls_checkbox),
+li:has(#view_prompt_checkbox) { display: none !important; }
+
+/* 上のメニューの「プロンプト」「ダッシュボード」（APIの使用量） */
+li:has(#navbarDropdownPrompt),
+li:has(a[onclick^="openDashboardModal"]) { display: none !important; }
+
+/* 左のサイドバーの「自動生成」「プロンプト」 */
+.icon-wrapper[data-target="auto-generate-area"],
+.icon-wrapper[data-target="prompt-manager-area"] { display: none !important; }
+
+/* 隠したアイコンの後ろの区切り線も隠す（残ると線が重なって見える） */
+.icon-wrapper[data-target="auto-generate-area"] + hr,
+.icon-wrapper[data-target="prompt-manager-area"] + hr { display: none !important; }

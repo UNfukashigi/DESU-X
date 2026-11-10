@@ -1,0 +1,181 @@
+{
+ "format": "qanima-editor-1",
+ "title": "サンプル（絵なし）",
+ "fonts": [],
+ "pages": [
+  {
+   "width": 1748,
+   "height": 2480,
+   "items": [
+    {
+     "type": "panel",
+     "poly": [
+      [
+       904,
+       110
+      ],
+      [
+       1648,
+       110
+      ],
+      [
+       1648,
+       1100
+      ],
+      [
+       865,
+       1140
+      ]
+     ],
+     "line": 6,
+     "folder": "コマ1",
+     "name": "コマ1"
+    },
+    {
+     "type": "bubble",
+     "box": [
+      1395,
+      140,
+      223,
+      273
+     ],
+     "line": 4,
+     "text": "今日は\n雨だね",
+     "font": "Klee One",
+     "size": 46,
+     "panelIndex": 0,
+     "folder": "コマ1"
+    },
+    {
+     "type": "panel",
+     "poly": [
+      [
+       100,
+       110
+      ],
+      [
+       880,
+       110
+      ],
+      [
+       860,
+       650
+      ],
+      [
+       100,
+       600
+      ]
+     ],
+     "line": 6,
+     "folder": "コマ2",
+     "name": "コマ2"
+    },
+    {
+     "type": "bubble",
+     "box": [
+      636,
+      146,
+      204,
+      423
+     ],
+     "text": "傘\n持ってきた？",
+     "font": "Klee One",
+     "size": 40,
+     "panelIndex": 1,
+     "folder": "コマ2",
+     "line": 4
+    },
+    {
+     "type": "panel",
+     "poly": [
+      [
+       100,
+       624
+      ],
+      [
+       859,
+       674
+      ],
+      [
+       841,
+       1142
+      ],
+      [
+       100,
+       1180
+      ]
+     ],
+     "line": 6,
+     "folder": "コマ3",
+     "name": "コマ3"
+    },
+    {
+     "type": "text",
+     "text": "……あ",
+     "font": "Klee One",
+     "size": 48,
+     "cx": 700,
+     "cy": 860,
+     "w": 60,
+     "h": 220,
+     "stroke": 10,
+     "folder": "コマ3"
+    },
+    {
+     "type": "panel",
+     "poly": [
+      [
+       100,
+       1204
+      ],
+      [
+       1648,
+       1124
+      ],
+      [
+       1648,
+       2370
+      ],
+      [
+       100,
+       2370
+      ]
+     ],
+     "line": 6,
+     "folder": "コマ4",
+     "name": "コマ4"
+    },
+    {
+     "type": "bubble",
+     "box": [
+      1302,
+      1283,
+      283,
+      352
+     ],
+     "text": "忘れた\n‼",
+     "font": "Klee One",
+     "size": 64,
+     "panelIndex": 3,
+     "folder": "コマ4",
+     "line": 4
+    },
+    {
+     "type": "bubble",
+     "box": [
+      148,
+      1319,
+      146,
+      475
+     ],
+     "text": "どうしよう…",
+     "font": "Klee One",
+     "size": 46,
+     "panelIndex": 3,
+     "folder": "コマ4",
+     "line": 4
+    }
+   ]
+  }
+ ]
+}

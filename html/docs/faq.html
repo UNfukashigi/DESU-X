@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manga Editor Desu FAQ — Installation, File Formats, Privacy and AI Backends</title>
+<meta name="description" content="Answers to common questions about Manga Editor Desu: whether installation is needed, what format projects save in, what data stays in your browser, what is transmitted, and which AI backends are supported.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html">
+<link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html">
+<link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html">
+<link rel="stylesheet" href="../common.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "url": "https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to install anything to use Manga Editor Desu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Manga Editor Desu runs in a web browser with no installation and no account. Open the page and start working. It can optionally be installed as a standalone application through the browser's own install prompt, and it also runs from a local copy opened directly from disk." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Manga Editor Desu without AI image generation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every editing feature works on its own: panel layouts, speech bubbles, text, fonts, screentones, pens, filters, blend modes, layers and export. AI generation is optional and requires a backend that you supply and configure yourself." }
+    },
+    {
+      "@type": "Question",
+      "name": "What file format does Manga Editor Desu save projects in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Saving a project produces a single LZ4-compressed file named DESU-Project.lz4, downloaded to your computer. Loading accepts both .lz4 and .zip project files. Projects are not saved to any server." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I export a manga page at print resolution?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Set the page size in millimetres and the download DPI, which defaults to 300, then use Image Download. The exported PNG resolution is calculated from the page size and the DPI, and the paper orientation follows the canvas. Pages can also be exported as SVG." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI image generation backends does Manga Editor Desu support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Six services are supported: ComfyUI running locally, ComfyUI running on RunPod, SD WebUI (AUTOMATIC1111 or Forge), Fal.ai, Grok from xAI, and Ollama. ComfyUI, SD WebUI and Ollama run on your own machine; RunPod, Fal.ai and Grok are cloud services. Each task type can be routed to a different service independently. Inpainting and angle regeneration require ComfyUI." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why will my AI backend not connect?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Almost always because the backend has not been told to accept browser requests. ComfyUI needs --enable-cors-header. SD WebUI and Forge need --api --cors-allow-origins *, and Forge additionally needs a small source patch. Ollama needs the OLLAMA_ORIGINS environment variable set before it is restarted. Also check that the URL is right, that the backend is actually running, and try 127.0.0.1 instead of localhost." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use my own ComfyUI workflows?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Workflows exported from ComfyUI in API format can be imported, assigned a task type, and enabled one per type. Node inputs are editable inside the editor, with model, LoRA, sampler and VAE lists read from your running ComfyUI server. Local ComfyUI and RunPod ComfyUI keep separate workflow sets." }
+    },
+    {
+      "@type": "Question",
+      "name": "What data does Manga Editor Desu store in my browser?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Interface language, tool and canvas settings, AI connection settings including API keys, and saved prompt sets are kept in browser local storage. Imported ComfyUI workflows, uploaded fonts, auto-saved projects and usage statistics are kept in IndexedDB. Note that API keys for cloud services are stored unencrypted, so avoid entering them on a shared computer." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my artwork sent anywhere?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The editor has no server of its own, and your projects are never uploaded by the application. Two things do leave your machine. First, the site uses Google Analytics, so page views and interface interactions are recorded. Second, if you configure a cloud AI service — RunPod, Fal.ai or Grok — then the prompts, story or dialogue text and panel images involved in those requests are sent to that service. Using only ComfyUI, SD WebUI or Ollama on your own machine keeps generation local. Page loads also fetch fonts and a small number of assets from Google Fonts, cdnjs and unpkg." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Manga Editor Desu work offline?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Static assets are cached by a service worker after the first visit, and the editor can be installed as a standalone application. It also runs from a downloaded copy opened directly from disk. Cloud AI services naturally require a connection." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which languages is the interface available in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Eight: English, Japanese, Korean, Chinese, French, Russian, Spanish and German." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I undo a change made on a previous page?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Undo history is kept per page and is cleared when you switch or load a page. Within a single page there is no step limit on undo and redo." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Manga Editor Desu cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nothing. It is free and open source under the GNU General Public License v3.0. If you use a paid cloud AI service such as Fal.ai or Grok, that service bills you directly." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I clear my saved settings?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use Settings Reset in the application, which lists exactly what will be deleted before proceeding. Alternatively use your browser's clear-site-data feature." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Manga Editor Desu",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Documentation",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "FAQ",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-buttons">
+<a class="lang-btn active" href="faq.html">English</a>
+<a class="lang-btn" href="faq-ja.html">日本語</a>
+</div>
+
+<h1>Manga Editor Desu — Frequently Asked Questions</h1>
+
+<p>Answers about installation, file formats, privacy and AI backends. See also the <a href="features.html">full feature reference</a> and the <a href="ai-setup.html">AI backend setup guide</a>.</p>
+
+<h2>Getting started</h2>
+
+<div class="card">
+<h3>Do I need to install anything to use Manga Editor Desu?</h3>
+<p>No. Manga Editor Desu runs in a web browser with no installation and no account. Open the page and start working. It can optionally be installed as a standalone application through the browser's own install prompt, and it also runs from a local copy opened directly from disk.</p>
+</div>
+
+<div class="card">
+<h3>Can I use Manga Editor Desu without AI image generation?</h3>
+<p>Yes. Every editing feature works on its own: panel layouts, speech bubbles, text, fonts, screentones, pens, filters, blend modes, layers and export. AI generation is optional and requires a backend that you supply and configure yourself.</p>
+</div>
+
+<div class="card">
+<h3>How much does Manga Editor Desu cost?</h3>
+<p>Nothing. It is free and open source under the GNU General Public License v3.0. If you use a paid cloud AI service such as Fal.ai or Grok, that service bills you directly.</p>
+</div>
+
+<h2>Files and export</h2>
+
+<div class="card">
+<h3>What file format does Manga Editor Desu save projects in?</h3>
+<p>Saving a project produces a single LZ4-compressed file named <code>DESU-Project.lz4</code>, downloaded to your computer. Loading accepts both <code>.lz4</code> and <code>.zip</code> project files. Projects are not saved to any server.</p>
+</div>
+
+<div class="card">
+<h3>How do I export a manga page at print resolution?</h3>
+<p>Set the page size in millimetres and the download DPI, which defaults to 300, then use Image Download. The exported PNG resolution is calculated from the page size and the DPI, and the paper orientation follows the canvas. Pages can also be exported as SVG.</p>
+</div>
+
+<div class="card">
+<h3>Can I undo a change made on a previous page?</h3>
+<p>No. Undo history is kept per page and is cleared when you switch or load a page. Within a single page there is no step limit on undo and redo.</p>
+</div>
+
+<h2>AI generation</h2>
+
+<div class="card">
+<h3>Which AI image generation backends does Manga Editor Desu support?</h3>
+<p>Six services are supported: ComfyUI running locally, ComfyUI running on RunPod, SD WebUI (AUTOMATIC1111 or Forge), Fal.ai, Grok from xAI, and Ollama. ComfyUI, SD WebUI and Ollama run on your own machine; RunPod, Fal.ai and Grok are cloud services. Each task type can be routed to a different service independently. Inpainting and angle regeneration require ComfyUI.</p>
+</div>
+
+<div class="card">
+<h3>Why will my AI backend not connect?</h3>
+<p>Almost always because the backend has not been told to accept browser requests. ComfyUI needs <code>--enable-cors-header</code>. SD WebUI and Forge need <code>--api --cors-allow-origins *</code>, and Forge additionally needs a small source patch. Ollama needs the <code>OLLAMA_ORIGINS</code> environment variable set before it is restarted. Also check that the URL is right, that the backend is actually running, and try <code>127.0.0.1</code> instead of <code>localhost</code>.</p>
+<p>Full instructions are in the <a href="ai-setup.html">AI backend setup guide</a>.</p>
+</div>
+
+<div class="card">
+<h3>Can I use my own ComfyUI workflows?</h3>
+<p>Yes. Workflows exported from ComfyUI in API format can be imported, assigned a task type, and enabled one per type. Node inputs are editable inside the editor, with model, LoRA, sampler and VAE lists read from your running ComfyUI server. Local ComfyUI and RunPod ComfyUI keep separate workflow sets.</p>
+</div>
+
+<h2>Privacy and data</h2>
+
+<div class="card">
+<h3>What data does Manga Editor Desu store in my browser?</h3>
+<p>Interface language, tool and canvas settings, AI connection settings including API keys, and saved prompt sets are kept in browser local storage. Imported ComfyUI workflows, uploaded fonts, auto-saved projects and usage statistics are kept in IndexedDB.</p>
+<div class="notice">API keys for cloud services are stored unencrypted in browser storage. Avoid entering them on a shared or public computer.</div>
+</div>
+
+<div class="card">
+<h3>Is my artwork sent anywhere?</h3>
+<p>The editor has no server of its own, and your projects are never uploaded by the application. Two things do leave your machine.</p>
+<p>First, the site uses Google Analytics, so page views and interface interactions are recorded.</p>
+<p>Second, if you configure a cloud AI service — RunPod, Fal.ai or Grok — then the prompts, story or dialogue text and panel images involved in those requests are sent to that service. Using only ComfyUI, SD WebUI or Ollama on your own machine keeps generation local.</p>
+<p>Page loads also fetch fonts and a small number of assets from Google Fonts, cdnjs and unpkg.</p>
+</div>
+
+<div class="card">
+<h3>How do I clear my saved settings?</h3>
+<p>Use Settings Reset in the application, which lists exactly what will be deleted before proceeding. Alternatively use your browser's clear-site-data feature.</p>
+</div>
+
+<h2>Compatibility</h2>
+
+<div class="card">
+<h3>Does Manga Editor Desu work offline?</h3>
+<p>Yes. Static assets are cached by a service worker after the first visit, and the editor can be installed as a standalone application. It also runs from a downloaded copy opened directly from disk. Cloud AI services naturally require a connection.</p>
+</div>
+
+<div class="card">
+<h3>Which languages is the interface available in?</h3>
+<p>Eight: English, Japanese, Korean, Chinese, French, Russian, Spanish and German.</p>
+</div>
+
+<p><a href="../../index.html">← Open Manga Editor Desu</a> · <a href="features.html">Feature reference</a> · <a href="ai-setup.html">AI backend setup</a></p>
+
+</div>
+</body>
+</html>

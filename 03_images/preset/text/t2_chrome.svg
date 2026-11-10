@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs>
+<linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0.00%" stop-color="#4285f4"/><stop offset="25.00%" stop-color="#34a853"/><stop offset="50.00%" stop-color="#fbbc05"/><stop offset="75.00%" stop-color="#ea4335"/><stop offset="100.00%" stop-color="#4285f4"/></linearGradient></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="url(#g)" fill-opacity="1" stroke="#ffffff" stroke-width="0.3" paint-order="stroke" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

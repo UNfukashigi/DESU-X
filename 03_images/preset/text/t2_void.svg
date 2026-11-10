@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs><filter id="f" x="-25%" y="-25%" width="150%" height="150%" filterUnits="objectBoundingBox" color-interpolation-filters="linearRGB">
+<feTurbulence type="turbulence" baseFrequency="0.07000" numOctaves="3" result="noise"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/>
+<feComponentTransfer><feFuncR type="table" tableValues="1 0 1"/><feFuncG type="table" tableValues="0 1 0"/><feFuncB type="table" tableValues="1 0 1"/></feComponentTransfer>
+</filter></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="#35322a" fill-opacity="1" filter="url(#f)" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

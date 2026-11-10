@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manga Editor Desu よくある質問 — 導入・保存形式・プライバシー・AIバックエンド</title>
+<meta name="description" content="Manga Editor Desu のよくある質問。インストールの要否、プロジェクトの保存形式、ブラウザに保存されるデータ、外部に送信される内容、対応するAIバックエンドについて回答します。">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html">
+<link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html">
+<link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html">
+<link rel="stylesheet" href="../common.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "ja",
+  "url": "https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Manga Editor Desu を使うのにインストールは必要ですか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "不要です。Manga Editor Desu はブラウザで動作し、インストールもアカウント登録も必要ありません。ページを開けばすぐに作業を始められます。ブラウザのインストール機能を使ってスタンドアロンアプリとして導入することもでき、ダウンロードしたファイルをローカルから直接開いても動作します。" }
+    },
+    {
+      "@type": "Question",
+      "name": "AI画像生成なしでも使えますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "使えます。コマ割り、フキダシ、テキスト、フォント、スクリーントーン、ペン、フィルタ、ブレンドモード、レイヤー、書き出しといった編集機能はすべて単独で動作します。AI生成は任意の機能で、ご自身で用意・設定したバックエンドが必要です。" }
+    },
+    {
+      "@type": "Question",
+      "name": "プロジェクトはどの形式で保存されますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "プロジェクト保存を実行すると、DESU-Project.lz4 という名前のLZ4圧縮ファイルが1つダウンロードされます。読み込みは .lz4 と .zip の両方に対応します。プロジェクトがサーバーに保存されることはありません。" }
+    },
+    {
+      "@type": "Question",
+      "name": "印刷用の解像度で書き出すにはどうすればよいですか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "原稿サイズをミリ単位で指定し、ダウンロードDPI（既定は300）を設定してから画像ダウンロードを実行します。書き出されるPNGの解像度は原稿サイズとDPIから算出され、用紙の向きはキャンバスに追従します。SVG形式での書き出しも可能です。" }
+    },
+    {
+      "@type": "Question",
+      "name": "対応しているAI画像生成バックエンドを教えてください。",
+      "acceptedAnswer": { "@type": "Answer", "text": "6種類に対応しています。ローカルで動作するComfyUI、RunPod上のComfyUI、SD WebUI（AUTOMATIC1111 または Forge）、Fal.ai、xAIのGrok、Ollamaです。ComfyUI・SD WebUI・Ollamaはお使いのマシンで動作し、RunPod・Fal.ai・Grokはクラウドサービスです。処理の種類ごとに別のサービスへ振り分けられます。インペイントとアングル再生成にはComfyUIが必要です。" }
+    },
+    {
+      "@type": "Question",
+      "name": "AIバックエンドに接続できないのはなぜですか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "ほとんどの場合、バックエンド側がブラウザからのリクエストを受け付ける設定になっていないためです。ComfyUIには --enable-cors-header が必要です。SD WebUI と Forge には --api --cors-allow-origins * が必要で、Forge はさらにソースの修正が必要な場合があります。Ollama は OLLAMA_ORIGINS 環境変数を設定してから再起動する必要があります。あわせて、URLが正しいか、バックエンドが実際に起動しているかを確認し、localhost の代わりに 127.0.0.1 を試してください。" }
+    },
+    {
+      "@type": "Question",
+      "name": "自作のComfyUIワークフローは使えますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "使えます。ComfyUIからAPI形式で書き出したワークフローを読み込み、処理の種類を割り当てて、種類ごとに1つを有効化します。ノードの入力値はエディタ内で編集でき、モデル・LoRA・サンプラー・VAEの一覧は稼働中のComfyUIサーバーから読み込まれます。ローカルのComfyUIとRunPodのComfyUIはワークフローを別々に管理します。" }
+    },
+    {
+      "@type": "Question",
+      "name": "ブラウザにはどんなデータが保存されますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "表示言語、ツールとキャンバスの設定、APIキーを含むAI接続設定、保存したプロンプトセットがブラウザのローカルストレージに保存されます。読み込んだComfyUIワークフロー、アップロードしたフォント、自動保存されたプロジェクト、利用統計はIndexedDBに保存されます。なお、クラウドサービスのAPIキーは暗号化されずに保存されるため、共用のコンピューターでの入力は避けてください。" }
+    },
+    {
+      "@type": "Question",
+      "name": "作成した原稿はどこかに送信されますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "エディタ自体はサーバーを持たず、プロジェクトがアップロードされることはありません。ただし2点、外部に送信されるものがあります。1つ目は、本サイトがGoogleアナリティクスを使用しているため、ページの閲覧と画面上の操作が記録されます。2つ目は、クラウドAIサービス（RunPod、Fal.ai、Grok）を設定した場合、その処理に関わるプロンプト、ストーリーやセリフのテキスト、コマの画像が当該サービスへ送信されます。ComfyUI、SD WebUI、Ollama をご自身のマシンでのみ使用する場合、生成処理はローカルで完結します。またページ読み込み時に、Google Fonts、cdnjs、unpkg からフォントなどのアセットを取得します。" }
+    },
+    {
+      "@type": "Question",
+      "name": "オフラインでも使えますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "使えます。初回アクセス以降、静的アセットはService Workerによってキャッシュされ、スタンドアロンアプリとしてインストールすることもできます。ダウンロードしたファイルをローカルから直接開いても動作します。ただしクラウドAIサービスの利用には当然ながら接続が必要です。" }
+    },
+    {
+      "@type": "Question",
+      "name": "インターフェースは何言語に対応していますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "8言語です。英語、日本語、韓国語、中国語、フランス語、ロシア語、スペイン語、ドイツ語に対応しています。" }
+    },
+    {
+      "@type": "Question",
+      "name": "前のページで行った変更を元に戻せますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "できません。Undo履歴はページ単位で保持され、ページを切り替えるか読み込むと消去されます。同一ページ内であればUndoとRedoに回数制限はありません。" }
+    },
+    {
+      "@type": "Question",
+      "name": "利用料金はかかりますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "かかりません。GNU General Public License v3.0 で公開されている無料のオープンソースソフトウェアです。Fal.ai や Grok などの有料クラウドAIサービスを利用する場合は、そのサービスから直接請求されます。" }
+    },
+    {
+      "@type": "Question",
+      "name": "保存した設定を消すにはどうすればよいですか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "アプリ内の設定リセットを使用してください。実行前に削除される内容が一覧表示されます。ブラウザのサイトデータ削除機能を使うこともできます。" }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Manga Editor Desu",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ドキュメント",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "よくある質問",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-buttons">
+<a class="lang-btn" href="faq.html">English</a>
+<a class="lang-btn active" href="faq-ja.html">日本語</a>
+</div>
+
+<h1>Manga Editor Desu — よくある質問</h1>
+
+<p>導入方法、ファイル形式、プライバシー、AIバックエンドについての回答です。あわせて <a href="features-ja.html">機能リファレンス</a> と <a href="ai-setup-ja.html">AIバックエンド設定ガイド</a> もご覧ください。</p>
+
+<h2>はじめに</h2>
+
+<div class="card">
+<h3>Manga Editor Desu を使うのにインストールは必要ですか？</h3>
+<p>不要です。Manga Editor Desu はブラウザで動作し、インストールもアカウント登録も必要ありません。ページを開けばすぐに作業を始められます。ブラウザのインストール機能を使ってスタンドアロンアプリとして導入することもでき、ダウンロードしたファイルをローカルから直接開いても動作します。</p>
+</div>
+
+<div class="card">
+<h3>AI画像生成なしでも使えますか？</h3>
+<p>使えます。コマ割り、フキダシ、テキスト、フォント、スクリーントーン、ペン、フィルタ、ブレンドモード、レイヤー、書き出しといった編集機能はすべて単独で動作します。AI生成は任意の機能で、ご自身で用意・設定したバックエンドが必要です。</p>
+</div>
+
+<div class="card">
+<h3>利用料金はかかりますか？</h3>
+<p>かかりません。GNU General Public License v3.0 で公開されている無料のオープンソースソフトウェアです。Fal.ai や Grok などの有料クラウドAIサービスを利用する場合は、そのサービスから直接請求されます。</p>
+</div>
+
+<h2>ファイルと書き出し</h2>
+
+<div class="card">
+<h3>プロジェクトはどの形式で保存されますか？</h3>
+<p>プロジェクト保存を実行すると、<code>DESU-Project.lz4</code> という名前のLZ4圧縮ファイルが1つダウンロードされます。読み込みは <code>.lz4</code> と <code>.zip</code> の両方に対応します。プロジェクトがサーバーに保存されることはありません。</p>
+</div>
+
+<div class="card">
+<h3>印刷用の解像度で書き出すにはどうすればよいですか？</h3>
+<p>原稿サイズをミリ単位で指定し、ダウンロードDPI（既定は300）を設定してから画像ダウンロードを実行します。書き出されるPNGの解像度は原稿サイズとDPIから算出され、用紙の向きはキャンバスに追従します。SVG形式での書き出しも可能です。</p>
+</div>
+
+<div class="card">
+<h3>前のページで行った変更を元に戻せますか？</h3>
+<p>できません。Undo履歴はページ単位で保持され、ページを切り替えるか読み込むと消去されます。同一ページ内であればUndoとRedoに回数制限はありません。</p>
+</div>
+
+<h2>AI生成</h2>
+
+<div class="card">
+<h3>対応しているAI画像生成バックエンドを教えてください。</h3>
+<p>6種類に対応しています。ローカルで動作するComfyUI、RunPod上のComfyUI、SD WebUI（AUTOMATIC1111 または Forge）、Fal.ai、xAIのGrok、Ollamaです。ComfyUI・SD WebUI・Ollamaはお使いのマシンで動作し、RunPod・Fal.ai・Grokはクラウドサービスです。処理の種類ごとに別のサービスへ振り分けられます。インペイントとアングル再生成にはComfyUIが必要です。</p>
+</div>
+
+<div class="card">
+<h3>AIバックエンドに接続できないのはなぜですか？</h3>
+<p>ほとんどの場合、バックエンド側がブラウザからのリクエストを受け付ける設定になっていないためです。ComfyUIには <code>--enable-cors-header</code> が必要です。SD WebUI と Forge には <code>--api --cors-allow-origins *</code> が必要で、Forge はさらにソースの修正が必要な場合があります。Ollama は <code>OLLAMA_ORIGINS</code> 環境変数を設定してから再起動する必要があります。あわせて、URLが正しいか、バックエンドが実際に起動しているかを確認し、<code>localhost</code> の代わりに <code>127.0.0.1</code> を試してください。</p>
+<p>詳しい手順は <a href="ai-setup-ja.html">AIバックエンド設定ガイド</a> にあります。</p>
+</div>
+
+<div class="card">
+<h3>自作のComfyUIワークフローは使えますか？</h3>
+<p>使えます。ComfyUIからAPI形式で書き出したワークフローを読み込み、処理の種類を割り当てて、種類ごとに1つを有効化します。ノードの入力値はエディタ内で編集でき、モデル・LoRA・サンプラー・VAEの一覧は稼働中のComfyUIサーバーから読み込まれます。ローカルのComfyUIとRunPodのComfyUIはワークフローを別々に管理します。</p>
+</div>
+
+<h2>プライバシーとデータ</h2>
+
+<div class="card">
+<h3>ブラウザにはどんなデータが保存されますか？</h3>
+<p>表示言語、ツールとキャンバスの設定、APIキーを含むAI接続設定、保存したプロンプトセットがブラウザのローカルストレージに保存されます。読み込んだComfyUIワークフロー、アップロードしたフォント、自動保存されたプロジェクト、利用統計はIndexedDBに保存されます。</p>
+<div class="notice">クラウドサービスのAPIキーは暗号化されずにブラウザへ保存されます。共用のコンピューターや公共の端末での入力は避けてください。</div>
+</div>
+
+<div class="card">
+<h3>作成した原稿はどこかに送信されますか？</h3>
+<p>エディタ自体はサーバーを持たず、プロジェクトがアップロードされることはありません。ただし2点、外部に送信されるものがあります。</p>
+<p>1つ目は、本サイトがGoogleアナリティクスを使用しているため、ページの閲覧と画面上の操作が記録されます。</p>
+<p>2つ目は、クラウドAIサービス（RunPod、Fal.ai、Grok）を設定した場合、その処理に関わるプロンプト、ストーリーやセリフのテキスト、コマの画像が当該サービスへ送信されます。ComfyUI、SD WebUI、Ollama をご自身のマシンでのみ使用する場合、生成処理はローカルで完結します。</p>
+<p>またページ読み込み時に、Google Fonts、cdnjs、unpkg からフォントなどのアセットを取得します。</p>
+</div>
+
+<div class="card">
+<h3>保存した設定を消すにはどうすればよいですか？</h3>
+<p>アプリ内の設定リセットを使用してください。実行前に削除される内容が一覧表示されます。ブラウザのサイトデータ削除機能を使うこともできます。</p>
+</div>
+
+<h2>動作環境</h2>
+
+<div class="card">
+<h3>オフラインでも使えますか？</h3>
+<p>使えます。初回アクセス以降、静的アセットはService Workerによってキャッシュされ、スタンドアロンアプリとしてインストールすることもできます。ダウンロードしたファイルをローカルから直接開いても動作します。ただしクラウドAIサービスの利用には当然ながら接続が必要です。</p>
+</div>
+
+<div class="card">
+<h3>インターフェースは何言語に対応していますか？</h3>
+<p>8言語です。英語、日本語、韓国語、中国語、フランス語、ロシア語、スペイン語、ドイツ語に対応しています。</p>
+</div>
+
+<p><a href="../../index.html">← Manga Editor Desu を開く</a> ・ <a href="features-ja.html">機能リファレンス</a> ・ <a href="ai-setup-ja.html">AIバックエンド設定</a></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manga Editor Desu Features — Panels, Speech Bubbles, Text, Tones and AI Generation</title>
+<meta name="description" content="Complete feature reference for Manga Editor Desu: 69 panel templates, 48 speech bubble styles, 156 bundled fonts, 31 image-text styles, 5 screentone generators, 25 blend modes and optional AI image generation through six backends.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html">
+<link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html">
+<link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html">
+<link rel="stylesheet" href="../common.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Manga Editor Desu Features",
+  "description": "Complete feature reference for Manga Editor Desu, a browser-based manga editor with optional AI image generation.",
+  "inLanguage": "en",
+  "url": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Manga Editor Desu",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any modern web browser",
+    "url": "https://new-sankaku.github.io/manga-editor-desu/",
+    "license": "https://www.gnu.org/licenses/gpl-3.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Manga Editor Desu",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Feature Reference",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-buttons">
+<a class="lang-btn active" href="features.html">English</a>
+<a class="lang-btn" href="features-ja.html">日本語</a>
+</div>
+
+<h1>Manga Editor Desu — Feature Reference</h1>
+
+<p>Manga Editor Desu is a free manga and comic page editor that runs entirely in a web browser. There is no installation, no account and no server component: the application is a set of static files, and every page you create stays on your own machine until you choose to export it.</p>
+
+<p>This page documents what the editor actually does, verified against the source code. The application itself is at <a href="../../index.html">Manga Editor Desu</a>. See also the <a href="faq.html">FAQ</a> and the <a href="ai-setup.html">AI backend setup guide</a>.</p>
+
+<div class="notice">
+<strong>At a glance:</strong> 69 panel layout templates · 48 speech bubble styles · 156 bundled fonts · 31 decorative image-text styles · 8 pen brushes · 5 screentone generators · 15 image filters · 25 blend modes · 8 interface languages · 6 optional AI backends.
+</div>
+
+<h2>Panel layout</h2>
+
+<div class="card">
+<p>Pages are built from panels. You can start from a template, cut a page up by hand, or generate a layout randomly.</p>
+
+<table>
+<thead><tr><th>Feature</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Panel templates</td><td>69 ready-made layouts — 41 portrait and 28 landscape — selected from a gallery with an orientation toggle.</td></tr>
+<tr><td>Knife tool</td><td>Splits an existing panel along a line you draw with the mouse. The gutter width between the resulting panels is adjustable from 0 to 75.</td></tr>
+<tr><td>Panel edit mode</td><td>Exposes each panel's vertices so a rectangle can be dragged into a trapezoid or any other quadrilateral.</td></tr>
+<tr><td>Shape panels</td><td>Inserts a panel shaped as a square, tall rectangle, wide rectangle, triangle, pentagon, hexagon, star or heart.</td></tr>
+<tr><td>Random cut</td><td>Slices a page into panels automatically. You control the maximum number of vertical and horizontal cuts (0–5 each), maximum tilt (0–50%) and maximum line variance (0–45%).</td></tr>
+<tr><td>Panel styling</td><td>Per-panel stroke colour, fill colour, stroke width (0.1–10) and opacity (0–100), with a single action to apply the current settings to every panel on the page.</td></tr>
+<tr><td>Custom page size</td><td>New pages can be created in portrait, landscape, or at any width and height you enter between 1 and 4096.</td></tr>
+<tr><td>Multi-page creation</td><td>Creates between 2 and 50 pages in one operation.</td></tr>
+<tr><td>Grid</td><td>A snapping grid with adjustable spacing, toggled with Ctrl+G.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Multi-page projects</h2>
+
+<div class="card">
+<p>A project holds as many pages as you need. A thumbnail strip along the bottom of the window shows every page; click a thumbnail to switch to it, or drag thumbnails to reorder the book. Alt+← and Alt+→ move between pages, and Ctrl+B hides or shows the strip.</p>
+<p>Thumbnails refresh automatically as you edit.</p>
+</div>
+
+<h2>Speech bubbles</h2>
+
+<div class="card">
+<p>48 speech bubble templates ship with the editor, covering rounded bubbles, silent (thought) bubbles, rectangular captions, burst and shout shapes, and focus-line bubbles. Each one takes a stroke colour, fill colour, opacity (0–100) and stroke width (0–40), applied live.</p>
+
+<h3>Custom bubbles</h3>
+<p>Beyond the templates, bubbles can be drawn from scratch in two ways: <strong>point mode</strong>, where you click successive vertices, and <strong>freehand mode</strong>, where you drag the outline directly. Existing vertices can be moved or deleted afterwards.</p>
+<p>Freehand outlines can be smoothed, and corner rounding is applied over 0–15 iterations. Point spacing (0–100 px) controls how densely the drag is sampled. Seven outline line styles are provided.</p>
+<p>Overlapping custom bubbles are merged into a single outline using polygon boolean operations, which is how connected multi-lobe bubbles are produced.</p>
+<p>Text can be placed inside a bubble in either horizontal or vertical writing mode.</p>
+</div>
+
+<h2>Text</h2>
+
+<div class="card">
+<h3>Standard text</h3>
+<p>Text boxes can be horizontal or vertical (tategaki), the latter implemented as a dedicated vertical-writing text object rather than rotated horizontal text. Each text object has a fill colour, outline colour, background colour, font size (7–150), outline width (0–5), bold toggle and left/centre/right alignment.</p>
+
+<h3>Fonts</h3>
+<p>156 fonts are bundled, organised into four categories so that the right kind of face is easy to find:</p>
+<table>
+<thead><tr><th>Category</th><th>Fonts</th><th>Intended use</th></tr></thead>
+<tbody>
+<tr><td>Dialogue</td><td>70</td><td>Speech bubble text</td></tr>
+<tr><td>Special</td><td>35</td><td>Display and decorative lettering</td></tr>
+<tr><td>Description &amp; Narration</td><td>28</td><td>Captions and narration boxes</td></tr>
+<tr><td>Sound Effects</td><td>23</td><td>Onomatopoeia</td></tr>
+</tbody>
+</table>
+<p>A fifth category holds fonts you add yourself. You can register fonts already installed on your operating system by name, add web fonts by URL, or upload <code>.ttf</code>, <code>.otf</code>, <code>.woff</code> and <code>.woff2</code> files. Uploaded fonts are stored in the browser and persist between sessions.</p>
+<p>The fonts a project uses are recorded with the project and restored when it is loaded again.</p>
+
+<h3>Image text</h3>
+<p>31 decorative text styles render lettering as an image rather than as live text — the effects range from drop shadows and multiple outlines through rough, cracked and eroded treatments to neon, chrome, metal, circuit and aurora finishes.</p>
+<p>Common parameters (roughness, strength, edge width, pattern scale, glow size and opacity, up to four effect colours, edge and light colours, font size, line height, letter spacing, two shadow layers, fill colour and fill opacity) carry over when you switch between styles, and the selected object is replaced in place.</p>
+<div class="notice">Because image text is rasterised, only fonts installed on your operating system are available for it. The bundled web fonts cannot be used for image text.</div>
+</div>
+
+<h2>Pens and brushes</h2>
+
+<div class="card">
+<p>Eight brushes are available, each with its own parameter set:</p>
+<table>
+<thead><tr><th>Brush</th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td>Marker</td><td>Translucent stroke that builds up when layered.</td></tr>
+<tr><td>Ink</td><td>Tapered stroke with natural entry and exit.</td></tr>
+<tr><td>Crayon</td><td>Grainy, broken texture.</td></tr>
+<tr><td>Pencil</td><td>Adds a configurable shadow colour, width and X/Y offset alongside the line.</td></tr>
+<tr><td>Double Outline</td><td>Draws a line with a double outline.</td></tr>
+<tr><td>Circle</td><td>Builds the stroke from a chain of circles.</td></tr>
+<tr><td>Mosaic</td><td>Blurs whatever you trace over, with adjustable mosaic size and radius.</td></tr>
+<tr><td>Eraser</td><td>Removes drawn strokes.</td></tr>
+</tbody>
+</table>
+<p>All brushes share colour, size, opacity and a line style of solid, dashed or dotted.</p>
+</div>
+
+<h2>Screentones</h2>
+
+<div class="card">
+<p>Five tone generators are included. With a panel selected the tone is placed inside that panel; with nothing selected it is applied to the whole page.</p>
+<table>
+<thead><tr><th>Generator</th><th>What it produces</th></tr></thead>
+<tbody>
+<tr><td>Halftone</td><td>Dot screen with adjustable density and gradient. Dot shape can be circle, square, triangle, star, cross or heart; dot size and spacing run 1–100. An optional gradient runs top-to-bottom, bottom-to-top, left-to-right or right-to-left between configurable start and end densities.</td></tr>
+<tr><td>Noise</td><td>Sandy, granular texture.</td></tr>
+<tr><td>Snow</td><td>Snowfall built from separate near and far grain layers.</td></tr>
+<tr><td>Speed lines</td><td>Directional motion lines, with controls for line type, line count, size, width expansion and angle.</td></tr>
+<tr><td>Focus lines</td><td>Converging emphasis lines with a movable centre point, minimum and maximum radius, noise range and density.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Images and effects</h2>
+
+<div class="card">
+<h3>Import</h3>
+<p>Images can be brought in through the file picker, by dragging them onto the canvas, or by pasting from the clipboard. Dropping an image directly into a panel fits and clips it to the panel automatically.</p>
+
+<h3>One-click conversions</h3>
+<p>Six conversions turn colour artwork into manga-style monochrome: black &amp; white in light, dark, rough and simple variants; a tone-plus-desaturated-colour pass; and a black-emphasis pass with an adjustable intensity.</p>
+<p>Conversions can be applied to the selected image, to every image on the current page, or to every image in the whole project.</p>
+<div class="notice"><strong>Batch conversions cannot be reversed with Undo.</strong> A dedicated "restore state before batch apply" action is provided instead. That restore point is held in memory only and is lost when the page is reloaded.</div>
+
+<h3>Filters</h3>
+<p>15 image filters are selectable: brightness/contrast, hue/saturation, sepia, unsharp mask, vibrance, vignette, lens blur, triangle blur, zoom blur, colour halftone, dot screen, edge work, hexagonal pixelate, ink and swirl.</p>
+
+<h3>Blend modes</h3>
+<p>25 blend modes are grouped into five families:</p>
+<ul>
+<li><strong>Darken</strong> — Darken, Color Burn, Linear Burn</li>
+<li><strong>Lighten</strong> — Lighten, Screen, Color Dodge, Linear Dodge, Add, Add (NPM)</li>
+<li><strong>Contrast</strong> — Overlay, Hard Light, Soft Light, Pin Light, Vivid Light, Linear Light, Hard Mix</li>
+<li><strong>Difference</strong> — Difference, Exclusion, Negation, Subtract, Divide</li>
+<li><strong>Colour</strong> — Normal, Saturation, Color, Luminosity</li>
+</ul>
+<p>Blending needs at least two selected layer images. The result appears in a draggable window and can be re-blended after changing which layers take part.</p>
+
+<h3>Transforms</h3>
+<p>Objects can be rotated (0–360°), scaled (0.01–10×), repositioned, skewed on X and Y (±60°) and set to any opacity (0–100), plus horizontal and vertical flips. Images can be cropped, and per-edge "view limits" clip an image from the top, bottom, left or right independently.</p>
+</div>
+
+<h2>Layers</h2>
+
+<div class="card">
+<p>The layer panel (Ctrl+L) lists every object on the page with a thumbnail and an editable name, and shows grouped objects in a nested hierarchy.</p>
+<p>Each layer can be shown or hidden, locked against movement, moved up or down in the stacking order (also Ctrl+↑ and Ctrl+↓), and deleted. Layer images can be downloaded either in full or cropped to the panel frame that contains them.</p>
+<p>When an AI backend is configured, per-layer actions also cover image generation, background removal, upscaling, inpainting, angle regeneration and prompt interrogation.</p>
+<p>A right-click menu on the canvas groups the same operations into transform, style, panel, operation, view-limit and AI submenus, with inline sliders and colour pickers.</p>
+</div>
+
+<h2>Undo and redo</h2>
+
+<div class="card">
+<p>Undo (Ctrl+Z) and redo (Ctrl+Y) have no step limit within a page — the history stack is not truncated.</p>
+<div class="notice"><strong>History is per page.</strong> Switching or loading a page clears the stack, so edits cannot be undone across a page change.</div>
+<p>History entries are debounced so that a continuous drag becomes one entry rather than hundreds, and purely non-visual changes such as selection state do not create entries at all. Undo or redo pressed while a restore is still in progress is queued rather than dropped.</p>
+</div>
+
+<h2>Saving and exporting</h2>
+
+<div class="card">
+<table>
+<thead><tr><th>Action</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>Project Save (Ctrl+S)</td><td><code>DESU-Project.lz4</code> — every page compressed into a single LZ4 archive.</td></tr>
+<tr><td>Project Load (Ctrl+O)</td><td>Accepts <code>.lz4</code> and <code>.zip</code> project files.</td></tr>
+<tr><td>Image Download (Ctrl+D)</td><td>A timestamped PNG. The output resolution is derived from the page size in millimetres and the download DPI, which defaults to 300. Paper orientation follows the canvas, and the grid is removed before capture.</td></tr>
+<tr><td>Image Copy</td><td>Writes the rendered page to the system clipboard as a PNG.</td></tr>
+<tr><td>SVG Download</td><td>Exports the canvas as <code>canvas.svg</code>.</td></tr>
+<tr><td>Settings Save (Ctrl+Shift+S)</td><td>Stores tool, canvas and connection settings in the browser.</td></tr>
+<tr><td>Auto Save</td><td>Saves the project in the browser every 10 to 600 seconds (default 60). If the browser closes unexpectedly, the next launch offers to restore the auto-saved pages.</td></tr>
+</tbody>
+</table>
+<p>Settings Reset deletes stored settings and lists exactly what will be removed before it does so.</p>
+</div>
+
+<h2>AI image generation (optional)</h2>
+
+<div class="card">
+<p>Every editing feature above works without AI. Generation is entirely optional and requires a backend that you supply and configure.</p>
+<p>Six services are supported, and each task type is routed independently — you can send text-to-image to one service and prompt generation to another.</p>
+<table>
+<thead><tr><th>Service</th><th>Runs</th><th>Supports</th></tr></thead>
+<tbody>
+<tr><td>ComfyUI</td><td>On your machine</td><td>Text-to-image, image-to-image, inpaint, upscale, background removal, angle regeneration</td></tr>
+<tr><td>RunPod ComfyUI</td><td>Cloud (your pod)</td><td>Same as ComfyUI</td></tr>
+<tr><td>SD WebUI (A1111 / Forge)</td><td>On your machine</td><td>Text-to-image, image-to-image, background removal, CLIP and DeepDanbooru interrogation, ADetailer</td></tr>
+<tr><td>Fal.ai</td><td>Cloud</td><td>Text-to-image, image-to-image, upscale, background removal</td></tr>
+<tr><td>Grok (xAI)</td><td>Cloud</td><td>Text and vision language model tasks</td></tr>
+<tr><td>Ollama</td><td>On your machine</td><td>Text and vision language model tasks</td></tr>
+</tbody>
+</table>
+<p>Inpainting and angle regeneration require ComfyUI, local or on RunPod. Setup instructions for each service are in the <a href="ai-setup.html">AI backend setup guide</a>.</p>
+
+<h3>Inpainting</h3>
+<p>A dedicated editor lets you paint a mask over part of an image with a brush and eraser (size 1–500), fill or clear the whole mask, and run generation with its own prompt, negative prompt and denoise strength.</p>
+
+<h3>Angle regeneration</h3>
+<p>A 3D camera widget plus a free-text instruction regenerates an existing image from a different camera angle.</p>
+
+<h3>Language model features</h3>
+<p>With Grok or Ollama connected, the editor can turn a written scene description into image generation tags, read tags back out of an existing image, and expand a story into per-panel prompts across a page or a whole project. Generated prompts always land in an editable preview, where you choose whether to append or replace, rather than being written straight to the canvas.</p>
+
+<h3>ComfyUI workflows</h3>
+<p>Workflows exported from ComfyUI in API format can be imported, one or many at a time. Each is assigned a task type, and one workflow per type is active at a time. Node inputs are editable inline, with model, LoRA, sampler and VAE dropdowns populated from your running ComfyUI server; nodes your server does not have are flagged. Local and RunPod keep entirely separate workflow sets.</p>
+
+<h3>Queueing</h3>
+<p>Generation requests are queued per service. Cloud services allow 1–10 concurrent requests, configurable per service. Each queued task shows its position and progress on the layer it belongs to and can be cancelled individually.</p>
+</div>
+
+<h2>Statistics dashboard</h2>
+
+<div class="card">
+<p>A dashboard records how you use the editor: generation counts and timings with total, average, minimum and maximum, per-mode breakdowns, an hourly activity heatmap, daily/weekly/monthly trends, most-used tags, a downloadable word cloud, streaks, session statistics, an activity calendar, success rate, prompt length distribution, tag co-occurrence, model usage, daily and weekly goals with progress bars, and badges.</p>
+<p>Where a cloud service publishes its rates, estimated spend is shown per service and model, clearly labelled as an estimate rather than a bill. Everything can be exported as JSON or CSV.</p>
+</div>
+
+<h2>Interface</h2>
+
+<div class="card">
+<p>The interface is available in 8 languages: English, Japanese, Korean, Chinese, French, Russian, Spanish and German. The editor uses a dark interface.</p>
+<p>The editor can be installed as a standalone application through the browser's install prompt, and static assets are cached for offline use.</p>
+<p>A guided tour introduces each sidebar panel on first use.</p>
+</div>
+
+<h2>Keyboard shortcuts</h2>
+
+<div class="card">
+<table>
+<thead><tr><th>Action</th><th>Windows</th><th>macOS</th></tr></thead>
+<tbody>
+<tr><td>New page</td><td>Alt + N</td><td>Alt + N</td></tr>
+<tr><td>Previous / next page</td><td>Alt + ← / →</td><td>Alt + ← / →</td></tr>
+<tr><td>Project save</td><td>Ctrl + S</td><td>⌘ + S</td></tr>
+<tr><td>Project load</td><td>Ctrl + O</td><td>⌘ + O</td></tr>
+<tr><td>Image download</td><td>Ctrl + D</td><td>⌘ + D</td></tr>
+<tr><td>Settings save</td><td>Ctrl + Shift + S</td><td>⌘ + Shift + S</td></tr>
+<tr><td>Undo / redo</td><td>Ctrl + Z / Ctrl + Y</td><td>⌘ + Z / ⌘ + Y</td></tr>
+<tr><td>Copy / paste</td><td>Ctrl + C / Ctrl + V</td><td>⌘ + C / ⌘ + V</td></tr>
+<tr><td>Delete layer</td><td>Delete / Backspace</td><td>Delete / Backspace</td></tr>
+<tr><td>Toggle grid</td><td>Ctrl + G</td><td>Ctrl + G</td></tr>
+<tr><td>Toggle layer panel</td><td>Ctrl + L</td><td>Ctrl + L</td></tr>
+<tr><td>Toggle AI controls</td><td>Ctrl + K</td><td>Ctrl + K</td></tr>
+<tr><td>Toggle page bar</td><td>Ctrl + B</td><td>Ctrl + B</td></tr>
+<tr><td>Show prompts</td><td>Ctrl + P</td><td>⌘ + P</td></tr>
+<tr><td>Zoom in / out / reset</td><td>Ctrl + 8 / 9 / 0</td><td>Ctrl + 8 / 9 / 0</td></tr>
+<tr><td>Move object</td><td>Arrow keys</td><td>Arrow keys</td></tr>
+<tr><td>Move object by 10 px</td><td>Shift + Arrow</td><td>Shift + Arrow</td></tr>
+<tr><td>Layer up / down</td><td>Ctrl + ↑ / ↓</td><td>⌘ + ↑ / ↓</td></tr>
+<tr><td>Deselect / clear mode</td><td>Escape</td><td>Escape</td></tr>
+<tr><td>Shortcut list</td><td>F1</td><td>F1</td></tr>
+<tr><td>Complete crop</td><td>Enter</td><td>Enter</td></tr>
+</tbody>
+</table>
+<p>Arrow-key movement snaps to the grid spacing when the grid is on and moves 1 px otherwise, accelerating on a long press. Shortcuts are suppressed while a text field has focus.</p>
+</div>
+
+<h2>Licence</h2>
+<div class="card">
+<p>Manga Editor Desu is released under the GNU General Public License v3.0. The source is at <a href="https://github.com/new-sankaku/manga-editor-desu">github.com/new-sankaku/manga-editor-desu</a>.</p>
+</div>
+
+<p><a href="../../index.html">← Open Manga Editor Desu</a> · <a href="faq.html">FAQ</a> · <a href="ai-setup.html">AI backend setup</a></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manga Editor Desu のAIバックエンド設定 — ComfyUI・SD WebUI・Forge・Fal.ai・Grok・Ollama</title>
+<meta name="description" content="Manga Editor Desu にAIバックエンドを接続する手順。ComfyUI・SD WebUI・Forge のCORS設定、Ollama の OLLAMA_ORIGINS、Fal.ai と Grok のAPIキー、処理の振り分け方法を解説します。">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html">
+<link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html">
+<link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html">
+<link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html">
+<link rel="stylesheet" href="../common.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Manga Editor Desu にAIバックエンドを接続する",
+  "description": "ComfyUI、SD WebUI、Forge、RunPod、Fal.ai、Grok、Ollama を Manga Editor Desu の画像生成・言語モデルバックエンドとして設定する手順。",
+  "inLanguage": "ja",
+  "url": "https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html",
+  "step": [
+    { "@type": "HowToStep", "name": "ブラウザからのアクセスを許可して起動する", "text": "バックエンドをブラウザからのリクエストを受け付ける設定で起動します。ComfyUI は --enable-cors-header、SD WebUI と Forge は --api --cors-allow-origins *、Ollama は OLLAMA_ORIGINS 環境変数です。クラウドサービスの場合は代わりにAPIキーが必要です。" },
+    { "@type": "HowToStep", "name": "アドレスまたはAPIキーを入力する", "text": "エディタの生成AI設定を開き、バックエンドのURLを入力するか、クラウドサービスのAPIキーを貼り付けます。接続状態は15秒ごとに確認され、到達不可・CORSによる遮断・APIキー未設定のいずれであるかが表示されます。" },
+    { "@type": "HowToStep", "name": "処理ごとにサービスを割り当てる", "text": "サービス選択のマトリクスで、Text2Image、Image2Image、インペイント、高解像度化、背景削除、アングル再生成、解析、言語モデル処理のそれぞれをどのサービスで実行するか指定します。「—」はそのサービスが対応していない組み合わせです。" },
+    { "@type": "HowToStep", "name": "モデルとワークフローを選ぶ", "text": "サービスごとに使用するモデルを選択します。ComfyUI の場合は、API形式のワークフローを読み込み、使用モデル・ワークフロー設定の画面で処理の種類ごとに1つを有効化します。" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Manga Editor Desu",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ドキュメント",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AIバックエンド設定",
+      "item": "https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-buttons">
+<a class="lang-btn" href="ai-setup.html">English</a>
+<a class="lang-btn active" href="ai-setup-ja.html">日本語</a>
+</div>
+
+<h1>Manga Editor Desu へのAIバックエンド接続</h1>
+
+<p>Manga Editor Desu のAI画像生成は任意の機能です。編集機能はすべてAIなしで動作します。生成を利用する場合、バックエンドはご自身で用意していただく必要があります。エディタはブラウザアプリケーションであり、それ自体が画像を生成することはありません。</p>
+
+<p>あわせて <a href="features-ja.html">機能リファレンス</a> と <a href="faq-ja.html">よくある質問</a> もご覧ください。</p>
+
+<h2>対応する6つのサービス</h2>
+
+<div class="card">
+<table>
+<thead><tr><th>サービス</th><th>動作場所</th><th>必要なもの</th><th>担当できる処理</th></tr></thead>
+<tbody>
+<tr><td>ComfyUI</td><td>お使いのマシン</td><td>起動オプション</td><td>Text2Image、Image2Image、インペイント、高解像度化、背景削除、アングル再生成</td></tr>
+<tr><td>RunPod ComfyUI</td><td>ご自身のPod</td><td>PodのURL</td><td>ComfyUIと同じ</td></tr>
+<tr><td>SD WebUI（A1111 / Forge）</td><td>お使いのマシン</td><td>起動オプション</td><td>Text2Image、Image2Image、背景削除、CLIP・DeepDanbooru解析、ADetailer</td></tr>
+<tr><td>Fal.ai</td><td>クラウド</td><td>APIキー</td><td>Text2Image、Image2Image、高解像度化、背景削除</td></tr>
+<tr><td>Grok（xAI）</td><td>クラウド</td><td>APIキー</td><td>言語モデル処理：文章からのプロンプト生成、画像からのプロンプト生成、ストーリーからコマのプロンプト</td></tr>
+<tr><td>Ollama</td><td>お使いのマシン</td><td>環境変数</td><td>Grokと同じ言語モデル処理</td></tr>
+</tbody>
+</table>
+<p>1つに絞る必要はありません。処理の種類ごとに独立して振り分けられるため、画像生成はローカルのComfyUI、ストーリーからコマのプロンプト生成はGrok、といった構成が可能です。</p>
+</div>
+
+<h2>起動オプションが必要な理由</h2>
+
+<div class="card">
+<p>Manga Editor Desu はブラウザ内で動作します。ブラウザは、あるアドレスのページから別のアドレスのサーバーへのアクセスを、そのサーバーが明示的に許可しない限り遮断します。これがCORSの仕組みです。バックエンド自身のWeb画面では問題なく動作していても、適切なオプションを付けて起動するまでエディタからの接続が拒否されるのはこのためです。</p>
+<p>エディタは失敗の内容を1つのエラーにまとめず、サーバーに到達できないのか、起動しているがCORSで遮断されているのか、APIキーが未設定なのかを区別して表示します。</p>
+</div>
+
+<h2>ComfyUI</h2>
+
+<div class="card">
+<p>既定のアドレス: <code>http://127.0.0.1:8188</code></p>
+<p>CORSヘッダーを有効にして起動します。</p>
+<pre><code>python main.py --enable-cors-header</code></pre>
+<p>Windows版のポータブルビルドでは、起動スクリプトにオプションを追加します。</p>
+<pre><code>.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --enable-cors-header</code></pre>
+<p>Stability Matrix をお使いの場合は、パッケージ設定の <em>Extra Launch Arguments</em> に <code>--enable-cors-header</code> を入力します。Pinokio の場合は <code>start.js</code> の起動引数に追加します。</p>
+
+<h3>ワークフロー</h3>
+<p>ComfyUI による生成はワークフローによって制御されます。読み込めるのは ComfyUI から <strong>API形式</strong>で書き出したものです。通常のワークフロー保存とは異なる点にご注意ください。使用モデル・ワークフロー設定の画面から読み込み、処理の種類を割り当てて、種類ごとに1つを有効化します。</p>
+<p>Text2Image、Image2Image、インペイント、高解像度化、背景削除、アングル再生成の既定ワークフローを同梱しており、SD 1.5、SDXL、Flux、Z-Image-turbo、Qwen-Image に対応しています。</p>
+<p>読み込んだワークフロー内では、<code>%prompt%</code> と <code>%negative%</code> がコマのプロンプトに置換され、<code>width</code> と <code>height</code> にはコマの寸法が入り、<code>seed</code> または <code>noise_seed</code> が <code>-1</code> か <code>0</code> の場合はランダム化され、ワークフローが必要とする箇所にはアップロードされた元画像やインペイントのマスクが供給されます。</p>
+<p>ノードの入力値はその場で編集でき、チェックポイント・LoRA・サンプラー・VAEの選択肢は稼働中のサーバーから取得されます。サーバーが認識できないノードは生成前に印が付きます。</p>
+</div>
+
+<h2>SD WebUI（AUTOMATIC1111）</h2>
+
+<div class="card">
+<p>既定のアドレス: <code>http://127.0.0.1:7860</code></p>
+<p>Windows では <code>webui-user.bat</code>、Linux と macOS では <code>webui-user.sh</code> に、APIとCORSのオプションを追加します。</p>
+<pre><code>set COMMANDLINE_ARGS=--api --cors-allow-origins *</code></pre>
+<p>追加後、WebUIを再起動してください。モデル、サンプラー、アップスケーラーは稼働中のサーバーから読み込まれます。</p>
+</div>
+
+<h2>Forge</h2>
+
+<div class="card">
+<p>Forge も SD WebUI と同じオプションを使用します。従来はこれに加えて、CORSミドルウェアが正しく適用されるよう <code>modules/initialize_util.py</code> への小さな修正が必要でした。</p>
+<div class="notice">この修正は2024年11月時点のもので、本家へ提出済みです。最近のForgeでは不要になっている可能性があります。まず標準のオプションのみで試し、それでもCORSで遮断される場合にのみ適用してください。手順は <a href="../API_Help/sd-api-guide.html">SD WebUI API設定ガイド</a> に記載しています。</div>
+</div>
+
+<h2>RunPod ComfyUI</h2>
+
+<div class="card">
+<p><code>https://{pod-id}-8188.proxy.runpod.net</code> の形式で、Podのプロキシアドレスを入力します。動作はローカルのComfyUIと同一で、ワークフローはRunPod専用のセットとして別管理されます。</p>
+<div class="notice">RunPodのPodへのリクエストは認証なしで送信されます。PodのURLを知っている人は誰でもアクセスできるため、アドレスは秘密として扱い、使い終わったらPodを停止してください。</div>
+</div>
+
+<h2>Fal.ai</h2>
+
+<div class="card">
+<p>Fal.ai は有料のクラウドサービスです。Fal.aiのダッシュボードでAPIキーを作成し、接続設定に貼り付けてください。その後、処理ごとに利用可能なモデルが一覧表示されます。Text2Image、Image2Image、高解像度化、背景削除はそれぞれ個別に選択します。</p>
+<p>プロンプトと、Image2Imageの場合はコマの画像がFal.aiへアップロードされます。</p>
+</div>
+
+<h2>Grok（xAI）</h2>
+
+<div class="card">
+<p>既定のアドレス: <code>https://api.x.ai</code></p>
+<p>xAIのコンソールでAPIキーを作成し、接続設定に貼り付けてください。CORSの設定は不要です。モデルはテキスト用と画像認識用を個別に選択し、画像を読み取る処理では後者が使われます。</p>
+<p>xAIが単価を公開している範囲で、モデル別の概算費用がダッシュボードに記録されます。これはご自身の把握のための推定値であり、請求額ではありません。</p>
+</div>
+
+<h2>Ollama</h2>
+
+<div class="card">
+<p>既定のアドレス: <code>http://127.0.0.1:11434</code></p>
+<p>Ollama は受け付けるオリジンを指定するまでブラウザからのリクエストを拒否します。環境変数を設定してから Ollama を再起動してください。</p>
+<pre><code># Windows
+setx OLLAMA_ORIGINS "*"
+
+# macOS
+launchctl setenv OLLAMA_ORIGINS "*"
+
+# Linux（systemd）サービスユニットに記載
+Environment="OLLAMA_ORIGINS=*"</code></pre>
+<p>お使いの環境で <code>*</code> がうまく機能しない場合は <code>OLLAMA_ORIGINS=null</code> をお試しください。エディタをローカルファイルとして直接開いている場合はこちらが該当します。</p>
+<p>Grokと同様、テキスト用と画像認識用のモデルを個別に選択します。Ollama はローカルで動作するため、マシンの外へ送信されるものはなく、費用も記録されません。</p>
+</div>
+
+<h2>処理ごとのサービス割り当て</h2>
+
+<div class="card">
+<p>生成AI設定のウィンドウには、行が処理、列がサービスのマトリクスがあります。各処理をどのサービスで実行するかを指定してください。「—」はそのサービスが対応していない組み合わせを示します。</p>
+<table>
+<thead><tr><th>処理</th><th>利用できるサービス</th></tr></thead>
+<tbody>
+<tr><td>Text2Image</td><td>ComfyUI、RunPod ComfyUI、SD WebUI、Fal.ai</td></tr>
+<tr><td>Image2Image</td><td>ComfyUI、RunPod ComfyUI、SD WebUI、Fal.ai</td></tr>
+<tr><td>インペイント</td><td>ComfyUI、RunPod ComfyUI</td></tr>
+<tr><td>高解像度化</td><td>ComfyUI、RunPod ComfyUI、Fal.ai</td></tr>
+<tr><td>背景削除</td><td>ComfyUI、RunPod ComfyUI、SD WebUI、Fal.ai</td></tr>
+<tr><td>アングル再生成</td><td>ComfyUI、RunPod ComfyUI</td></tr>
+<tr><td>CLIP解析</td><td>SD WebUI</td></tr>
+<tr><td>DeepDanbooru解析</td><td>SD WebUI</td></tr>
+<tr><td>文章を英語プロンプト化</td><td>Grok、Ollama</td></tr>
+<tr><td>画像からプロンプト化</td><td>Grok、Ollama</td></tr>
+</tbody>
+</table>
+<p>SD WebUI での背景削除には、SD WebUI 側に rembg 拡張機能が導入されている必要があります。同様に ADetailer にも、SD WebUI または Forge 側の ADetailer 拡張機能が必要です。</p>
+</div>
+
+<h2>キューと同時実行数</h2>
+
+<div class="card">
+<p>生成リクエストはサービスごとにキューイングされます。ローカルの ComfyUI と SD WebUI は1件ずつ処理します。Fal.ai、Grok、Ollama では1〜10の同時実行数を設定できます。</p>
+<p>キュー内の各タスクは対象のレイヤー上に表示され、順番、バックエンドが進捗を返す場合はその進捗、そして取り消し操作が確認できます。</p>
+<div class="notice">待機中のタスクを取り消すとキューから削除されます。ComfyUI で実行中のタスクを取り消した場合は、実際に中断信号が送られます。一方、クラウドサービスで実行中のリクエストについては、エディタが結果の受け取りを中止するだけで、リモート側の処理は継続し、料金も発生します。</div>
+</div>
+
+<h2>送信先について</h2>
+
+<div class="card">
+<p>リクエストは、その処理に割り当てたサービスにのみ送信されます。ローカルの ComfyUI、SD WebUI、Ollama を使う場合、すべてお使いのマシン内で完結します。RunPod、Fal.ai、Grok はリモートであり、リクエストにはその処理に関わるプロンプト、ストーリーやセリフのテキスト、コマの画像が含まれます。</p>
+<p>APIキーは暗号化されずにブラウザへ保存されるため、共用のコンピューターでの入力は避けてください。データの取り扱い全般については <a href="faq-ja.html">よくある質問</a> をご覧ください。</p>
+</div>
+
+<p><a href="../../index.html">← Manga Editor Desu を開く</a> ・ <a href="features-ja.html">機能リファレンス</a> ・ <a href="faq-ja.html">よくある質問</a></p>
+
+</div>
+</body>
+</html>

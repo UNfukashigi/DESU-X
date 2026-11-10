@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"/>
+  </url>
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/features.html"/>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html"/>
+  </url>
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/faq.html"/>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html"/>
+  </url>
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://new-sankaku.github.io/manga-editor-desu/html/docs/ai-setup.html"/>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/API_Help/comfyui_settings.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/API_Help/llm_settings.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/API_Help/sd-api-guide.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/Minual/screen-tone.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/Minual/effect.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/Minual/custom-speechBubble.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/PrivacyPolicy/i18n-privacy-dark-complete.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://new-sankaku.github.io/manga-editor-desu/html/TermsOfService/terms-of-service.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

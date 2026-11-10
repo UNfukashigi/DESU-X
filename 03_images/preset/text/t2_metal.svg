@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs><filter id="f" x="-25%" y="-25%" width="150%" height="150%" filterUnits="objectBoundingBox" color-interpolation-filters="linearRGB">
+<feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+<feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.8" specularExponent="20" lighting-color="#ffffff" result="specOut"><fePointLight x="81" y="-10" z="200"/></feSpecularLighting>
+<feComposite in="specOut" in2="SourceGraphic" operator="in" result="specOut2"/>
+<feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+</filter>
+<linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0.00%" stop-color="#cccccc"/><stop offset="20.00%" stop-color="#ffffff"/><stop offset="40.00%" stop-color="#888888"/><stop offset="60.00%" stop-color="#cccccc"/><stop offset="80.00%" stop-color="#888888"/><stop offset="100.00%" stop-color="#ffffff"/></linearGradient></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="url(#g)" fill-opacity="1" filter="url(#f)" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

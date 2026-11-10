@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1015" height="260" viewBox="-20 -26 202 52">
+<rect x="-20" y="-26" width="202" height="52" fill="#ffffff"/>
+<defs>
+<pattern id="p" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M0,5 L10,5 M5,0 L5,10" stroke="#aaaaff" stroke-width="0.5" fill="none" opacity="0.5"/></pattern></defs>
+<text x="81" y="0" text-anchor="middle" dominant-baseline="middle" fill="url(#p)" fill-opacity="1" stroke="#ffffff" stroke-width="0.5" paint-order="stroke" style="font-size:20px;letter-spacing:0.4em">New Text</text>
+</svg>

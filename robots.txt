@@ -1,0 +1,61 @@
+# robots.txt for Manga Editor Desu
+#
+# NOTE: this site is published as a GitHub Pages *project* site at
+# https://new-sankaku.github.io/manga-editor-desu/ , so this file is served at
+# /manga-editor-desu/robots.txt , which crawlers do NOT read.
+#
+# The rules that actually apply are served from the domain root by a separate
+# repository: https://github.com/new-sankaku/new-sankaku.github.io
+# Keep the two in sync. This copy becomes live only if a custom domain (CNAME)
+# is added to this repository, at which point this repo owns its own root.
+#
+# Per-page crawling rules are additionally declared with <meta name="robots">
+# in each HTML file, which IS honoured at any path.
+
+User-agent: *
+Allow: /
+Disallow: /manga-editor-desu/html/mockup/
+Disallow: /manga-editor-desu/test/
+Disallow: /manga-editor-desu/01_build/
+
+# AI search and answer engines are welcome to index and cite this site.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+Sitemap: https://new-sankaku.github.io/manga-editor-desu/sitemap.xml

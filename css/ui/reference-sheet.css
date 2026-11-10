@@ -1,0 +1,283 @@
+/* 設定資料。
+   コマ割りを作りながら開いたままにできる必要があるため暗幕を持たない
+   フローティングウインドウにしてある（タイトルバーで移動、4辺と4隅で大きさを変える）。
+   キャンバスへの操作を塞がないので、ウインドウを開いたままコマを選んで割り当てられる */
+.rs-float{position:fixed;display:none;z-index:var(--z-floating-window);}
+.rs-float.active{display:block;}
+.rs-float.is-dragging{user-select:none;}
+/* 未入力の案内文。本文と同じ色だと、既に入っている文字と見分けが付かない。
+   入力欄を足すたびに書き忘れないよう、ウインドウ全体へ1か所で当てる */
+.rs-window input::placeholder,.rs-window textarea::placeholder{color:var(--color-text-secondary);opacity:0.45;}
+.rs-window{position:relative;display:flex;flex-direction:column;width:100%;height:100%;box-sizing:border-box;background:var(--color-base);border:1px solid rgba(255,255,255,0.2);border-radius:8px;box-shadow:0 10px 36px rgba(0,0,0,0.65);overflow:hidden;}
+
+/* 畳んだときはタイトルバーだけ残す。位置を覚えたまま場所だけ空ける */
+.rs-float.is-collapsed{height:auto!important;}
+/* 畳んだときに確実に隠す。#rsHowto・#rsMissingは出す/隠すを
+   インラインのdisplayで切り替えるため、!importantが無いとインライン側が勝って残る */
+.rs-float.is-collapsed .rs-collapsible{display:none!important;}
+
+.rs-titlebar{display:flex;align-items:center;gap:6px;padding:6px 6px 6px 12px;background:var(--color-secondary);border-bottom:1px solid var(--color-tertiary);cursor:move;user-select:none;flex:0 0 auto;}
+.rs-titlebar h2{margin:0;font-size:13px;font-weight:bold;color:var(--color-text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rs-titlebar-spacer{flex:1 1 auto;}
+.rs-icon-btn{display:inline-flex;align-items:center;justify-content:center;padding:2px;border:none;border-radius:4px;background:none;color:var(--color-text-secondary);cursor:pointer;margin:0;}
+.rs-icon-btn:hover{background:rgba(255,255,255,0.15);color:#fff;}
+.rs-icon-btn .material-icons{font-size:17px;line-height:1;}
+.rs-icon-btn[disabled]{opacity:0.35;cursor:not-allowed;}
+
+/* 大きさを変える掴み口。右下だけだと、画面の右端や下端に寄せたときに掴む場所が画面の外へ出る。
+   4辺と4隅の8か所に置き、隅を辺より上に重ねる */
+.rs-resize{position:absolute;z-index:3;}
+.rs-resize-n{left:0;right:0;top:0;height:6px;cursor:ns-resize;}
+.rs-resize-s{left:0;right:0;bottom:0;height:6px;cursor:ns-resize;}
+.rs-resize-w{top:0;bottom:0;left:0;width:6px;cursor:ew-resize;}
+.rs-resize-e{top:0;bottom:0;right:0;width:6px;cursor:ew-resize;}
+.rs-resize-nw,.rs-resize-ne,.rs-resize-sw,.rs-resize-se{width:16px;height:16px;z-index:4;}
+.rs-resize-nw{left:0;top:0;cursor:nwse-resize;}
+.rs-resize-ne{right:0;top:0;cursor:nesw-resize;}
+.rs-resize-sw{left:0;bottom:0;cursor:nesw-resize;}
+.rs-resize-se{right:0;bottom:0;cursor:nwse-resize;background:linear-gradient(135deg,transparent 46%,rgba(255,255,255,0.4) 46%,rgba(255,255,255,0.4) 55%,transparent 55%,transparent 66%,rgba(255,255,255,0.4) 66%,rgba(255,255,255,0.4) 75%,transparent 75%);}
+
+.rs-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:7px 12px;border-bottom:1px solid var(--color-tertiary);font-size:11px;color:var(--color-text-secondary);flex:0 0 auto;}
+.rs-bar-item{display:flex;align-items:center;gap:6px;min-width:0;}
+.rs-bar-label{opacity:0.7;white-space:nowrap;}
+#rsTargetLabel{font-weight:bold;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#rsTargetLabel.rs-target-none{font-weight:normal;color:var(--color-text-secondary);opacity:0.7;}
+.rs-bar-spacer{flex:1 1 auto;}
+/* 送られない設定のときは枚数もトークンも数字のまま出さない。
+   数字だけ出ていると送られていると読める（理由は#rsModelNoticeが出す） */
+.rs-bar.is-undelivered #rsCount,
+.rs-bar.is-undelivered #rsSize{opacity:0.45;text-decoration:line-through;}
+.rs-check{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap;}
+
+/* 割り当ての手順。対象が無いときに「どうやるのか」が読めないと詰まる */
+.rs-howto{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin:8px 12px 0;padding:6px 9px;font-size:11px;line-height:1.5;color:var(--color-text-secondary);background:rgba(255,255,255,0.05);border:1px solid var(--color-tertiary);border-radius:4px;}
+.rs-howto .material-icons{font-size:15px;line-height:1;opacity:0.8;flex:0 0 auto;}
+.rs-howto-lines{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.rs-howto-drag{opacity:0.75;}
+/* 手順の前に置く「何のための箱か」。手順と同じ濃さだと読み飛ばされる */
+.rs-howto-what{color:#fff;}
+
+.rs-missing{flex:0 0 auto;display:flex;align-items:center;gap:10px;margin:8px 12px 0;padding:6px 8px;font-size:11px;color:var(--btn-danger-color);background:var(--btn-danger-bg);border:1px solid var(--btn-danger-border-color);border-radius:4px;}
+
+/* 送る順。この並びがそのままプロンプトのImage Nになるため、順番を目で見えるようにする */
+.rs-slots{padding:8px 12px;border-bottom:1px solid var(--color-tertiary);background:rgba(255,255,255,0.03);flex:0 0 auto;}
+.rs-slots-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.rs-section-title{font-size:12px;font-weight:bold;color:var(--color-text-secondary);}
+.rs-slots-hint{font-size:11px;color:var(--color-text-secondary);opacity:0.6;}
+/* 枠と枠の間は、枠の中の間隔より広く取る。同じ間隔だと、どこで組が切れているのか読めない */
+.rs-slot-list{display:flex;flex-wrap:wrap;gap:12px;min-height:58px;align-items:flex-start;border-radius:6px;}
+.rs-slot-list.is-droptarget{outline:1px dashed var(--color-accent);outline-offset:2px;}
+/* 枠。**同じ枠に入っている＝関係がある**を、線で囲むだけで読めるようにする。
+   1枚だけの枠は関係を持たないので囲みを消す（全部囲むと、どれが組なのか読めない） */
+.rs-group{display:flex;flex-direction:column;gap:5px;padding:6px;border:1px solid transparent;border-radius:6px;}
+.rs-group.is-linked{border-color:var(--color-accent);background:rgba(129,0,0,0.16);box-shadow:0 0 0 1px rgba(160,48,48,0.45);}
+.rs-group.is-droptarget{border-color:var(--color-accent);border-style:dashed;background:rgba(129,0,0,0.28);}
+.rs-group-slots{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start;}
+.rs-group-foot{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.rs-group-prompt{width:100%;box-sizing:border-box;font-size:12px;padding:3px 5px;border:1px solid var(--color-tertiary);border-radius:3px;background:var(--color-secondary);color:var(--color-text-primary);}
+/* この枠から実際に送られる1行。「関係します」だけでは何がどう変わるのか読めない。
+   下端の「プロンプトに付く説明」は畳んであり、開くまで見えない */
+.rs-group-line{font-size:10px;line-height:1.4;color:var(--color-text-secondary);opacity:0.85;word-break:break-word;}
+.rs-group-line:empty{display:none;}
+/* 空の枠は持てない（中身が0枚になった枠は畳まれる）ので、
+   「作るボタン」ではなく「落とすと新しい枠になる受け口」を置く */
+.rs-group-new{display:flex;align-items:center;justify-content:center;align-self:stretch;min-height:76px;min-width:82px;padding:4px 8px;border:1px dashed var(--color-tertiary);border-radius:6px;color:var(--color-text-secondary);font-size:11px;line-height:1.3;text-align:center;opacity:0.7;}
+.rs-group-new.is-droptarget{border-color:var(--color-accent);color:#fff;background:rgba(129,0,0,0.28);opacity:1;}
+.rs-slot{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;width:clamp(92px,9vw,124px);padding:4px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--color-secondary);}
+.rs-slot.is-draggable{cursor:grab;}
+.rs-slot.is-fixed{opacity:0.75;}
+.rs-slot.is-dragging{opacity:0.35;}
+.rs-slot.is-dropbefore{box-shadow:-3px 0 0 var(--color-accent);}
+.rs-slot.is-dropafter{box-shadow:3px 0 0 var(--color-accent);}
+/* 同じ資料を複数の枠で使っているスロット。同じ番号が並ぶ理由をしるしで示す */
+.rs-slot.is-shared{border-style:dashed;}
+.rs-slot-index{position:absolute;top:3px;left:3px;min-width:16px;padding:0 4px;border-radius:2px;background:rgba(0,0,0,0.75);color:#fff;font-size:11px;line-height:16px;text-align:center;z-index:1;}
+.rs-slot-thumb{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:2px;}
+/* 名前はその場で直せる。取り込んだ直後のファイル名がそのまま送る文面に載るため、
+   一覧まで目を移さずに直せる必要がある。入力欄に見えないと押せないので、
+   載せたら枠、書いている間は色を変える */
+.rs-slot-name{width:100%;box-sizing:border-box;padding:1px 3px;border:1px solid transparent;border-radius:3px;background:transparent;font-size:11px;line-height:1.35;color:var(--color-text-primary);text-align:center;}
+.rs-slot-name:hover{border-color:var(--color-tertiary);}
+.rs-slot-name:focus{border-color:var(--color-accent);background:var(--color-base);outline:none;}
+.rs-slot-name.is-fixed{color:var(--color-text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rs-slot-remove{position:absolute;top:3px;right:3px;width:18px;height:18px;padding:0;border:none;border-radius:2px;background:rgba(0,0,0,0.75);color:#fff;font-size:13px;line-height:18px;cursor:pointer;z-index:1;}
+.rs-slot-remove:hover{background:var(--color-accent);}
+/* 枠の基準。左端という位置だけでは、枠が2つ並んだときにどちらの左端か読み違える。
+   番号バッジの右隣に置く（下端は名前の行が幅いっぱいに使っており、重ねると名前が読めない） */
+.rs-slot.is-anchor{border-color:var(--color-accent);}
+.rs-slot-anchor{position:absolute;top:3px;left:24px;padding:0 4px;border-radius:2px;background:var(--color-accent);color:#fff;font-size:11px;line-height:16px;z-index:1;}
+.rs-slot-empty{display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--color-text-secondary);opacity:0.6;align-self:center;}
+.rs-slot-empty-hint{font-size:11px;}
+
+.rs-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding:6px 12px;border-bottom:1px solid var(--color-tertiary);flex:0 0 auto;}
+.rs-tabs{display:flex;gap:2px;flex-wrap:wrap;}
+.rs-tab{font-size:11px;padding:5px 10px;border:none;border-bottom:2px solid transparent;background:none;color:var(--color-text-secondary);cursor:pointer;margin:0;}
+.rs-tab.active{border-bottom-color:var(--color-accent);color:#fff;}
+.rs-tab:hover{color:#fff;}
+.rs-tab.is-droptarget{background:rgba(255,255,255,0.12);color:#fff;}
+.rs-search{font-size:11px;padding:4px 8px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--color-secondary);color:var(--color-text-secondary);width:clamp(96px,16%,200px);box-sizing:border-box;}
+.rs-actions{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
+
+/* 表示の切り替え。サムネイルだけの一覧では名前も説明も直せないため、
+   大きく出す・詰めて出す・横一列に並べて全部直す、の3つを選べるようにする */
+.rs-viewmodes{display:flex;gap:0;border:1px solid var(--color-tertiary);border-radius:4px;overflow:hidden;}
+.rs-viewmode{display:inline-flex;align-items:center;justify-content:center;padding:3px 7px;border:none;background:var(--color-secondary);color:var(--color-text-secondary);cursor:pointer;margin:0;}
+.rs-viewmode .material-icons{font-size:16px;line-height:1;}
+.rs-viewmode:hover{background:rgba(255,255,255,0.15);color:#fff;}
+.rs-viewmode.active{background:var(--color-accent);color:#fff;}
+
+/* この場で作る欄。割り当てだけをしに来た人の画面を狭めないよう、押したときだけ開く。
+   幅はウインドウの大きさに合わせる（固定幅にすると畳んだ幅で欄がはみ出す） */
+.rs-gen{display:flex;flex-direction:column;gap:6px;padding:8px 12px;border-bottom:1px solid var(--color-tertiary);background:rgba(255,255,255,0.03);flex:0 0 auto;}
+.rs-gen-row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px;}
+.rs-gen-name{flex:1 1 120px;min-width:0;font-size:11px;padding:4px 8px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--color-secondary);color:var(--color-text-secondary);box-sizing:border-box;}
+/* width:autoを明示する。要素名だけの`select{width:100%}`が他のCSSにあり、
+   これが入るとflex-basisが親の幅になって1つで1行を占める */
+.rs-gen-ratio{flex:0 0 auto;width:auto;max-width:100%;font-size:11px;padding:4px 6px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--color-secondary);color:var(--color-text-secondary);}
+.rs-gen-target{flex:1 1 auto;align-self:center;font-size:10px;color:var(--color-text-secondary);opacity:0.8;}
+.rs-gen-prompt{flex:1 1 200px;min-width:0;box-sizing:border-box;resize:vertical;font-size:11px;line-height:1.5;padding:5px 8px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--color-base);color:var(--color-text-secondary);}
+.rs-gen-run{flex:0 0 auto;align-self:flex-start;}
+.rs-gen-status:empty{display:none;}
+.rs-gen-notice{font-size:10px;line-height:1.5;color:var(--color-accent);background:rgba(129,0,0,0.12);border:1px solid rgba(160,48,48,0.5);border-radius:4px;padding:5px 7px;}
+.rs-gen-toggle .rs-disclosure-mark{margin-right:4px;}
+.rs-gen-toggle.is-open .rs-disclosure-mark{transform:rotate(90deg);}
+
+.rs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(150px,22%,200px),1fr));gap:8px;padding:10px 12px;align-content:start;overflow-y:auto;flex:1 1 auto;min-height:0;}
+.rs-grid.is-compact{grid-template-columns:repeat(auto-fill,minmax(clamp(92px,14%,124px),1fr));gap:6px;}
+.rs-grid.is-list{display:flex;flex-direction:column;gap:4px;}
+.rs-add-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;border:2px dashed var(--color-tertiary);border-radius:6px;background:rgba(255,255,255,0.02);color:var(--color-text-secondary);cursor:pointer;min-height:120px;text-align:center;}
+.rs-add-tile:hover{border-color:var(--color-accent);color:#fff;}
+.rs-add-tile.is-dropactive{border-color:var(--color-accent);background:rgba(129,0,0,0.22);color:#fff;}
+.rs-add-icon{font-size:22px;line-height:1;}
+.rs-add-label{font-size:11px;}
+.rs-add-hint{font-size:9px;opacity:0.7;line-height:1.3;}
+.rs-add-lead{font-size:11px;opacity:0.7;}
+.rs-add-sub{font-size:9px;opacity:0.55;line-height:1.3;}
+.rs-grid.is-compact .rs-add-tile{min-height:90px;}
+.rs-grid.is-compact .rs-add-hint{display:none;}
+.rs-grid.is-list .rs-add-tile{flex-direction:row;gap:8px;min-height:0;padding:8px;}
+
+/* 1枚も無いうちは一覧の幅いっぱいに広げる。カード1枚分のままだと、
+   開いた直後は隣の空白の方が広く、そちらへ落として素通りする。
+   ウインドウ全体でも受けるが、狙う先が見えていないと最初の1枚を入れる手が分からない */
+.rs-add-tile.is-wide{grid-column:1/-1;min-height:clamp(150px,32vh,280px);gap:6px;padding:16px;}
+.rs-add-tile.is-wide .rs-add-icon{font-size:34px;}
+.rs-add-tile.is-wide .rs-add-label{font-size:13px;}
+.rs-add-tile.is-wide .rs-add-hint{font-size:11px;}
+.rs-add-tile.is-wide .rs-add-sub{font-size:10px;}
+.rs-grid.is-compact .rs-add-tile.is-wide .rs-add-hint{display:block;}
+.rs-grid.is-list .rs-add-tile.is-wide{flex-direction:column;padding:16px;min-height:clamp(150px,32vh,280px);}
+.rs-empty{padding:28px 0;text-align:center;font-size:11px;color:var(--color-text-secondary);opacity:0.7;line-height:1.8;}
+.rs-grid:not(.is-list) .rs-empty{grid-column:1/-1;}
+
+.rs-card{position:relative;display:flex;flex-direction:column;gap:4px;padding:6px;border:1px solid var(--color-tertiary);border-radius:6px;background:var(--color-secondary);min-width:0;}
+.rs-card:hover{border-color:rgba(255,255,255,0.35);}
+.rs-card.is-attached{border-color:var(--color-accent);background:rgba(129,0,0,0.2);}
+.rs-card.is-blocked{opacity:0.55;}
+
+/* サムネイルは市松の明るい下地に置き、切らずに全体を出す。
+   暗い下地＋object-fit:coverだと、透過のあるキャラ表が黒くつぶれて中身が読めない */
+.rs-thumb-wrap{position:relative;width:100%;aspect-ratio:1/1;border-radius:4px;overflow:hidden;cursor:pointer;background-color:#d9d9d9;background-image:linear-gradient(45deg,#bfbfbf 25%,transparent 25%),linear-gradient(-45deg,#bfbfbf 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#bfbfbf 75%),linear-gradient(-45deg,transparent 75%,#bfbfbf 75%);background-size:14px 14px;background-position:0 0,0 7px,7px -7px,-7px 0;}
+.rs-thumb{width:100%;height:100%;object-fit:contain;display:block;}
+/* imgの既定のドラッグを止める。掴んだのが画像そのものになると、
+   ブラウザによってはファイル扱いで落ちてきて同じ絵が増える */
+.rs-window img{-webkit-user-drag:none;user-drag:none;}
+/* サムネイルはコマへ落として付けられる。掴めることが分かるようにカーソルを変える */
+.rs-thumb-wrap{cursor:grab;}
+.rs-thumb-wrap:active{cursor:grabbing;}
+.rs-thumb-wrap.is-dragging{opacity:0.4;}
+.rs-check-mark{position:absolute;top:4px;left:4px;width:18px;height:18px;border-radius:3px;background:var(--color-accent);color:#fff;font-size:12px;line-height:18px;text-align:center;}
+.rs-source{position:absolute;top:4px;right:4px;font-size:9px;padding:1px 5px;border-radius:3px;white-space:nowrap;}
+.rs-source-project{background:rgba(129,0,0,0.85);color:#fff;}
+.rs-source-base{background:rgba(0,0,0,0.7);color:#fff;}
+.rs-zoom{position:absolute;bottom:4px;right:4px;display:inline-flex;align-items:center;justify-content:center;padding:1px;border:none;border-radius:3px;background:rgba(0,0,0,0.6);color:#fff;cursor:pointer;margin:0;}
+.rs-zoom .material-icons{font-size:14px;line-height:1;}
+.rs-zoom:hover{background:rgba(0,0,0,0.9);}
+
+.rs-card-body{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1 1 auto;}
+.rs-card-name,.rs-card-note{font-size:11px;padding:3px 5px;border:1px solid transparent;border-radius:3px;background:rgba(0,0,0,0.28);color:#fff;width:100%;box-sizing:border-box;min-width:0;}
+.rs-card-note{font-size:10px;color:var(--color-text-secondary);}
+.rs-card-name:hover,.rs-card-note:hover{border-color:var(--color-tertiary);}
+.rs-card-name:focus,.rs-card-note:focus{border-color:var(--color-accent);outline:none;background:var(--color-base);}
+.rs-card-foot{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.rs-card-cat{font-size:10px;padding:2px 4px;border:1px solid var(--color-tertiary);border-radius:3px;background:var(--color-base);color:var(--color-text-secondary);min-width:0;flex:1 1 auto;}
+.rs-card-meta{font-size:9px;color:var(--color-text-secondary);opacity:0.7;white-space:nowrap;}
+.rs-card-tools{display:flex;gap:2px;flex:0 0 auto;}
+.rs-card-tools .rs-icon-btn .material-icons{font-size:15px;}
+.rs-use-btn{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;padding:4px 6px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--btn-bg,rgba(255,255,255,0.07));color:var(--color-text-secondary);font-size:11px;cursor:pointer;margin:0;box-sizing:border-box;}
+.rs-use-btn:hover{background:var(--btn-hover-bg,rgba(255,255,255,0.15));color:#fff;}
+.rs-use-btn.is-on{background:var(--color-accent);border-color:var(--color-accent);color:#fff;}
+.rs-use-btn[disabled]{opacity:0.45;cursor:not-allowed;}
+.rs-use-btn .material-icons{font-size:14px;line-height:1;}
+
+.rs-grid.is-compact .rs-card-note,.rs-grid.is-compact .rs-card-foot{display:none;}
+.rs-grid.is-compact .rs-card-name{font-size:10px;}
+.rs-grid.is-compact .rs-use-btn{font-size:10px;padding:2px 4px;}
+.rs-grid.is-compact .rs-use-btn span{display:none;}
+
+.rs-grid.is-list .rs-card{flex-direction:row;align-items:center;gap:8px;padding:5px 8px;}
+.rs-grid.is-list .rs-thumb-wrap{width:clamp(48px,8vw,64px);flex:0 0 auto;}
+.rs-grid.is-list .rs-check-mark,.rs-grid.is-list .rs-source,.rs-grid.is-list .rs-zoom{transform:scale(0.8);transform-origin:top left;}
+.rs-grid.is-list .rs-zoom{transform-origin:bottom right;}
+.rs-grid.is-list .rs-card-body{flex-direction:row;align-items:center;gap:6px;flex-wrap:wrap;}
+.rs-grid.is-list .rs-card-name{flex:1 1 clamp(90px,16%,180px);width:auto;}
+.rs-grid.is-list .rs-card-note{flex:2 1 clamp(120px,26%,340px);width:auto;}
+.rs-grid.is-list .rs-card-foot{flex:0 1 auto;}
+.rs-grid.is-list .rs-card-cat{flex:0 0 auto;}
+.rs-grid.is-list .rs-use-btn{width:auto;flex:0 0 auto;}
+
+/* 拡大表示。サムネイルでは絵柄の細部が読めないため、その場で大きく見せる */
+.rs-zoom-view{display:none;position:absolute;inset:0;z-index:4;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;background:rgba(0,0,0,0.86);cursor:zoom-out;}
+.rs-zoom-view.active{display:flex;}
+.rs-zoom-view img{max-width:100%;max-height:calc(100% - 28px);object-fit:contain;border-radius:4px;}
+.rs-zoom-caption{font-size:11px;color:#fff;text-align:center;}
+
+.rs-foot{border-top:1px solid var(--color-tertiary);padding:8px 12px;display:flex;flex-direction:column;gap:6px;flex:0 0 auto;}
+.rs-foot-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--color-text-secondary);}
+.rs-disclosure{display:flex;align-items:center;gap:5px;padding:0;border:none;background:none;color:var(--color-text-secondary);font-size:11px;cursor:pointer;margin:0;}
+.rs-disclosure:hover{color:#fff;}
+.rs-disclosure-mark{display:inline-block;font-size:9px;transition:transform 0.12s;}
+.rs-disclosure.is-open .rs-disclosure-mark{transform:rotate(90deg);}
+#rsPreamble{width:100%;box-sizing:border-box;min-height:92px;max-height:22vh;resize:vertical;font-size:11px;line-height:1.5;padding:6px 8px;border:1px solid var(--color-tertiary);border-radius:4px;background:var(--color-base);color:var(--color-text-secondary);}
+/* 枚数のすぐ下に置く。下端に置くと、数字を見ている目には入らない */
+#rsModelNotice{flex:0 0 auto;margin:8px 12px 0;font-size:11px;line-height:1.5;color:var(--btn-danger-color);background:var(--btn-danger-bg);border:1px solid var(--btn-danger-border-color);border-radius:4px;padding:5px 7px;}
+
+/* ウインドウ全体が受け口。追加タイルへ狙って落とす必要が無いことを、
+   掴んだ時点で画面いっぱいの枠で示す */
+.rs-drop-overlay{display:none;position:absolute;inset:0;z-index:2;align-items:center;justify-content:center;padding:12px;background:rgba(0,0,0,0.6);border:2px dashed var(--color-accent);border-radius:8px;color:#fff;font-size:14px;text-align:center;pointer-events:none;}
+.rs-drop-overlay.active{display:flex;}
+
+.reference-sheet-trigger{position:relative;}
+.rs-badge{display:none;margin-left:5px;min-width:16px;padding:0 4px;border-radius:8px;background:var(--color-accent);color:#fff;font-size:10px;line-height:16px;text-align:center;}
+
+/* キャンバス上の表示。どのコマに何が付いているかを、ウインドウを見なくても読めるようにする。
+   fabricのラッパー（キャンバスと同じ論理座標系）に置くため、拡大・スクロールに勝手に追従する。
+   見た目の大きさだけは倍率の逆数で戻す */
+#referenceCanvasOverlay{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:hidden;}
+/* 付けたものは1枚も省かずに並べ、コマの幅で折り返す（幅はJS側が画面上の大きさで渡す）。
+   **入れ物には枠も下地も持たせない。** 中の枠（組）と二重になり、どちらが関係の印なのか読めない。
+   当たり判定はサムネイルと枠だけにして、隙間はキャンバスへ通す */
+.rs-canvas-chip{position:absolute;display:flex;flex-wrap:wrap;align-items:flex-start;gap:7px;padding:0;border:none;background:none;pointer-events:none;cursor:pointer;transform-origin:top left;transform:scale(var(--rs-chip-inv,1));box-sizing:border-box;}
+.rs-canvas-chip img,.rs-canvas-group,.rs-canvas-solo,.rs-canvas-chip-missing{pointer-events:auto;}
+/* 押せることは示すが、**下地は敷かない**（敷くと外側の囲みが増えて組の枠と二重になる）。
+   形に沿って少し光らせるだけにする */
+.rs-canvas-chip:hover{filter:brightness(1.1) drop-shadow(0 0 3px rgba(255,255,255,0.75));}
+/* チップの画像も既定のドラッグを止める。掴んでウインドウへ落とすと、
+   ブラウザがファイルとして渡すためベースに同じ絵が増える */
+.rs-canvas-chip img{-webkit-user-drag:none;user-drag:none;width:44px;height:44px;object-fit:contain;border-radius:3px;background:#d9d9d9;display:block;}
+/* 枠。**色味も塗りも極力持たせない。** 絵の上に出るものなので、原稿より目立ってはいけない。
+   下地は白のコマにも黒い絵にもなるため、**中間のグレーの細線**にする（白にも黒にも差が出る）。
+   塗りは輪郭を助ける程度にごく薄く。濃い灰色を敷くと絵に膜が掛かって見える */
+.rs-canvas-group{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:4px;border:1px solid rgba(150,150,150,0.9);border-radius:6px;background:rgba(0,0,0,0.12);}
+.rs-canvas-group-mark{color:rgba(150,150,150,1);font-size:15px;line-height:1;}
+/* 組に入っていない1枚も、**枠と同じ余白と線の幅（透明）で包む**。
+   包まないと枠の分だけ上へずれて、並びが揃わない */
+.rs-canvas-solo{display:flex;padding:4px;border:1px solid transparent;}
+.rs-canvas-chip-missing{color:#ff8080;font-size:14px;line-height:1;padding:2px 5px;border-radius:4px;background:rgba(0,0,0,0.72);}
+
+/* ドロップ先の枠。落とす前にどのコマへ入るのかが見えないと、
+   ロックしたコマへ落とす操作は当てずっぽうになる */
+#referenceCanvasDropTarget{position:absolute;z-index:3;pointer-events:none;border:3px solid var(--color-accent);background:rgba(129,0,0,0.22);box-sizing:border-box;}
+
+/* 説明をプロンプトに付けないときの注意書き。枠の下に出す */
+.rs-relation-notice{margin-top:6px;font-size:10px;line-height:1.4;color:var(--btn-danger-color);}
